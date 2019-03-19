@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="江山如画">
 <meta property="og:description" content="JComboBoxInteger Month[]= {1,2,3,4,5,6,7,8,9,10,11,12}; JComboBox jComboBox1=new JComboBox(Month); jComboBox1.addItemListener(new ItemListener() {     public void itemStateChanged(ItemEvent event)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-23T04:30:59.316Z">
+<meta property="og:updated_time" content="2019-03-19T15:59:17.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="swing 中一些控件的点击事件 (2)--JComboBox">
 <meta name="twitter:description" content="JComboBoxInteger Month[]= {1,2,3,4,5,6,7,8,9,10,11,12}; JComboBox jComboBox1=new JComboBox(Month); jComboBox1.addItemListener(new ItemListener() {     public void itemStateChanged(ItemEvent event)">
@@ -359,9 +359,8 @@ jComboBox1.addItemListener(new ItemListener()
         }
     }
 });
+</code></pre><p>JComboBox的监听事件，通过 event.getStateChange() 方法来获取是否处于选中某一项的状态，若处于选中状态,则再通过 event。getItem()即可获取选中项。</p>
 
-JComboBox的监听事件，通过 event.getStateChange() 方法来获取是否处于选中某一项的状态，若处于选中状态,则再通过 event。getItem()即可获取选中项。
-</code></pre>
       
     </div>
     
@@ -401,7 +400,7 @@ JComboBox的监听事件，通过 event.getStateChange() 方法来获取是否�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/19/2019-2-9-android-fx02/" rel="prev" title="几个布局的简单注意点">
+              <a href="/2019/03/19/android_layout/" rel="prev" title="几个布局的简单注意点">
                 几个布局的简单注意点 <i class="fa fa-chevron-right"></i>
               </a>
             

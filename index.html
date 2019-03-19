@@ -249,6 +249,239 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/20/2018-12-25-java-io01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="1215ccc">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江山如画">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/20/2018-12-25-java-io01/" itemprop="url">java文件读写操作的一个简单事例</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-20T00:02:23+08:00">
+                2019-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="java文件读写操作的一个简单事例"><a href="#java文件读写操作的一个简单事例" class="headerlink" title="java文件读写操作的一个简单事例"></a>java文件读写操作的一个简单事例</h5><pre><code>package Number;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+
+public class coin extends JFrame implements ActionListener{
+
+    //代码中涉及的异常处理自己看情况添加即可  包名更换成自己的  创建的 ceshi.txt 在自己的java项目中的scr文件夹，点击刷新即可看见
+
+    private JTextArea jTextArea=new JTextArea(15,15);
+    private JButton jButton=new JButton(&quot;读取&quot;);
+    private JButton jButton2=new JButton(&quot;写入&quot;);
+    public coin() {
+        JFrame jFrame=new JFrame(&quot;文件读写&quot;);
+        jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        jFrame.setLayout(new FlowLayout());
+        jFrame.setSize(300,200);
+
+        jButton.addActionListener(this);
+        jButton2.addActionListener(this);
+        jFrame.add(jTextArea);
+        jFrame.add(jButton);
+        jFrame.add(jButton2);
+        jFrame.setVisible(true);
+    }
+    //读取文件
+    public void readfile() throws IOException {
+        File file=new File(&quot;ceshi.txt&quot;);//创建文件
+        try {
+            InputStream is=new FileInputStream(file);//创建输入流
+            byte[] buffer=new byte[200];
+            while(is.read(buffer)!=-1) {
+                String string=new String(buffer);
+                jTextArea.setText(string);
+            }
+            is.close();
+        } catch (FileNotFoundException e) {
+            // TODO 自动生成的 catch 块
+            e.printStackTrace();
+        }
+    }
+    //写入文件
+    public void writefile() throws IOException {
+        File file=new File(&quot;ceshi.txt&quot;);
+        try {
+            OutputStream os=new FileOutputStream(file,true);//true是追加写入 默认不追加
+            String string=jTextArea.getText().toString();
+            byte[] buffer=string.getBytes();//将字符串 转换成byte数组
+            os.write(buffer);
+            os.close();
+        } catch (FileNotFoundException e) {
+            // TODO 自动生成的 catch 块
+            e.printStackTrace();
+        }//
+    }
+
+    //按钮点击事件实现
+    public void actionPerformed(ActionEvent e) {
+        // TODO 自动生成的方法存根
+        if(e.getSource()==jButton) {
+            try {
+                readfile();
+            } catch (IOException e1) {
+                // TODO 自动生成的 catch 块
+                e1.printStackTrace();
+            }
+        }else if(e.getSource()==jButton2) {
+            try {
+                writefile();
+            } catch (IOException e1) {
+                // TODO 自动生成的 catch 块
+                e1.printStackTrace();
+            }
+        }
+    }
+    public static void main(String args[])  {
+        new coin();
+    }
+}
+</code></pre><p><img width="300" src="/2019/03/20/2018-12-25-java-io01/io01.png"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/19/begin/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -268,7 +501,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/19/begin/" itemprop="url">begin</a></h1>
+                <a class="post-title-link" href="/2019/03/19/begin/" itemprop="url">阿里巴巴矢量图标库</a></h1>
         
 
         <div class="post-meta">
@@ -320,8 +553,8 @@
       
         
           
-            <h2 id="分享一个很棒的图标网站"><a href="#分享一个很棒的图标网站" class="headerlink" title="分享一个很棒的图标网站"></a>分享一个很棒的图标网站</h2><h1 id="点击下面的链接即可查看"><a href="#点击下面的链接即可查看" class="headerlink" title="点击下面的链接即可查看"></a>点击下面的链接即可查看</h1><p><a href="https://www.iconfont.cn/" target="_blank" rel="noopener">Iconfont–阿里巴巴矢量图标库</a></p>
-<p><img src="https://i.imgur.com/n2nfhJJ.png" alt></p>
+            <h4 id="分享一个很棒的图标网站"><a href="#分享一个很棒的图标网站" class="headerlink" title="分享一个很棒的图标网站"></a>分享一个很棒的图标网站</h4><h4 id="点击下面的链接即可查看"><a href="#点击下面的链接即可查看" class="headerlink" title="点击下面的链接即可查看"></a>点击下面的链接即可查看</h4><p><a href="https://www.iconfont.cn/" target="_blank" rel="noopener">Iconfont–阿里巴巴矢量图标库</a></p>
+<p><img width="300" src="/2019/03/19/begin/alibabatubiao.jpg"></p>
 
           
         
@@ -370,7 +603,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/19/2019-2-9-android-fx02/">
+    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/19/android_layout/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="1215ccc">
@@ -389,7 +622,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/19/2019-2-9-android-fx02/" itemprop="url">几个布局的简单注意点</a></h1>
+                <a class="post-title-link" href="/2019/03/19/android_layout/" itemprop="url">几个布局的简单注意点</a></h1>
         
 
         <div class="post-meta">
@@ -463,13 +696,11 @@
       
         
           
-            <h5 id="1-LinearLayout-线性布局"><a href="#1-LinearLayout-线性布局" class="headerlink" title="1.LinearLayout(线性布局)"></a>1.LinearLayout(线性布局)</h5><pre><code>注意两个点：
-1.orientation 属性：布局中组件的排列方式，有horizontal(水平)，vertical(竖直，默认)两种方式。
-
-2.weight 属性：权重属性在屏幕适配时用的比较多(有几种用法可以去百度一下，用一种当 layout_width和layout_height都为match_parent时，可能难理解)
-</code></pre><h5 id="2-RelativeLayout-相对布局"><a href="#2-RelativeLayout-相对布局" class="headerlink" title="2.RelativeLayout(相对布局)"></a>2.RelativeLayout(相对布局)</h5><pre><code>直接看图，也没啥，还有margin和padding写个简单的梅花布局练练就应该都理解了.
-</code></pre><p><img src="https://i.imgur.com/HlLpxrG.png" alt></p>
-<p><img src="https://i.imgur.com/RM4ItBM.png" alt></p>
+            <h5 id="1-LinearLayout-线性布局"><a href="#1-LinearLayout-线性布局" class="headerlink" title="1.LinearLayout(线性布局)"></a>1.LinearLayout(线性布局)</h5><p>注意两个点：<br>1.orientation 属性：布局中组件的排列方式，有horizontal(水平)，vertical(竖直，默认)两种方式。</p>
+<p>2.weight 属性：权重属性在屏幕适配时用的比较多(有几种用法可以去百度一下，用一种当 layout_width和layout_height都为match_parent时，可能难理解)</p>
+<h5 id="2-RelativeLayout-相对布局"><a href="#2-RelativeLayout-相对布局" class="headerlink" title="2.RelativeLayout(相对布局)"></a>2.RelativeLayout(相对布局)</h5><p>直接看图，也没啥，还有margin和padding写个简单的梅花布局练练就应该都理解了.</p>
+<p><img width="300" src="/2019/03/19/android_layout/005-01.png"></p>
+<p><img width="300" src="/2019/03/19/android_layout/005-02.png"></p>
 <h5 id="3-TableLayout-表格布局"><a href="#3-TableLayout-表格布局" class="headerlink" title="3.TableLayout(表格布局)"></a>3.TableLayout(表格布局)</h5><p>这个基本不常用，一般线性+相对布局就可以了，只需要了解一下。</p>
 <p>1.如果我们想一行上有多个组件的话,就要添加一个TableRow的容器,把组件都丢到里面.</p>
 <p>2.tablerow中的组件个数就决定了该行有多少列,而列的宽度由该列中最宽的单元格决定.</p>
@@ -484,9 +715,8 @@ android:stretchColumns:设置运行被拉伸的列的列序号
 <p>除了这三个常用属性,还有两个属性,分别就是跳格子以及合并单元格,这和HTML中的Table类似:</p>
 <p>android:layout_column=”2”:表示的就是跳过第二个,直接显示到第三个格子处,从1开始算的!</p>
 <p>android:layout_span=”4”:表示合并4个单元格,也就说这个组件占4个单元格</p>
-<pre><code>eg:
-
- &lt;TableRow&gt;
+<p>eg:</p>
+<pre><code> &lt;TableRow&gt;
     &lt;TextView /&gt;
     &lt;Button
         android:layout_width=&quot;wrap_content&quot;
@@ -503,9 +733,8 @@ android:stretchColumns:设置运行被拉伸的列的列序号
 
 android:foregroundGravity:设置前景图像显示的位置
 </code></pre><p>当我们往帧布局里面添加控件的时候,会默认把他们放到这块区域的左上角,而这种布局方式却没有任何的定位方式,所以它应用的场景并不多;帧布局的大小由控件中最大的子控件决定,如果控件的大小一样大的话,那么同一时刻就只能看到最上面的那个组件!后续添加的控件会覆盖前一个!</p>
-<pre><code>eg:
-
-&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;    
+<p>eg:</p>
+<pre><code>&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;    
     xmlns:tools=&quot;http://schemas.android.com/tools&quot;       
     android:layout_width=&quot;match_parent&quot;    
     android:layout_height=&quot;match_parent&quot;    
@@ -525,17 +754,17 @@ android:foregroundGravity:设置前景图像显示的位置
         android:layout_height=&quot;100dp&quot;    
         android:background=&quot;#FFFF00&quot; /&gt;                
 &lt;/FrameLayout&gt;    
-</code></pre><p><img src="https://i.imgur.com/OpVtvgJ.png" alt></p>
-<h5 id="5-GridLayout-网格布局"><a href="#5-GridLayout-网格布局" class="headerlink" title="5.GridLayout(网格布局)"></a>5.GridLayout(网格布局)</h5><p><img src="https://i.imgur.com/gH0b0PU.jpg" alt></p>
+</code></pre><p><img width="300" height="100" src="/2019/03/19/android_layout/005-03.png"></p>
+<h5 id="5-GridLayout-网格布局"><a href="#5-GridLayout-网格布局" class="headerlink" title="5.GridLayout(网格布局)"></a>5.GridLayout(网格布局)</h5><p><img width="300" src="/2019/03/19/android_layout/005-04.jpg"></p>
 <p>用法：</p>
 <p>step 1:先定义组件的对其方式 android:orientation 水平或者竖直,设置多少行与多少列</p>
 <p>step 2:设置组件所在的行或者列,记得是从0开始算的,不设置默认每个组件占一行一列</p>
 <p>step 3:设置组件横跨几行或者几列;设置完毕后,需要在设置一个填充:android:layout_gravity = “fill”</p>
-<pre><code>eg:计算器的清除键占2格
- &lt;Button
-    android:layout_columnSpan=&quot;2&quot;
-    android:layout_gravity=&quot;fill&quot;
-    android:text=&quot;清空&quot; /&gt;
+<p>eg:计算器的清除键占2格</p>
+<pre><code>&lt;Button
+   android:layout_columnSpan=&quot;2&quot;
+   android:layout_gravity=&quot;fill&quot;
+   android:text=&quot;清空&quot; /&gt;
 </code></pre><h5 id="6-AbsoluteLayout-绝对布局"><a href="#6-AbsoluteLayout-绝对布局" class="headerlink" title="6.AbsoluteLayout(绝对布局)"></a>6.AbsoluteLayout(绝对布局)</h5><p>这个没啥好说的，基本不用，学java swing时就强调过了</p>
 <p>控制大小: </p>
 <pre><code>android:layout_width:组件宽度
@@ -701,9 +930,8 @@ jComboBox1.addItemListener(new ItemListener()
         }
     }
 });
+</code></pre><p>JComboBox的监听事件，通过 event.getStateChange() 方法来获取是否处于选中某一项的状态，若处于选中状态,则再通过 event。getItem()即可获取选中项。</p>
 
-JComboBox的监听事件，通过 event.getStateChange() 方法来获取是否处于选中某一项的状态，若处于选中状态,则再通过 event。getItem()即可获取选中项。
-</code></pre>
           
         
       
@@ -850,35 +1078,34 @@ btn.addActionListener(new ActionListener() {
                 //此处添加要执行的操作
             }
         });
-一般按钮个数比较少的情况下，直接使用匿名内部类的方式更为方便。
+</code></pre><p>一般按钮个数比较少的情况下，直接使用匿名内部类的方式更为方便。</p>
+<p>当有多个按钮的时候，需要让类继承 ActionListener 接口</p>
+<pre><code>JButton jButton1=new JButton(&quot;btn1&quot;);
+JButton jButton2=new JButton(&quot;btn2&quot;);
+jButton1.addActionListener(this);
+jButton2.addActionListener(this);
 
-当有多个按钮的时候，需要让类继承 ActionListener 接口
-    JButton jButton1=new JButton(&quot;btn1&quot;);
-    JButton jButton2=new JButton(&quot;btn2&quot;);
-    jButton1.addActionListener(this);
-    jButton2.addActionListener(this);
+//下面需要实现 ActionListener     接口的actionPerformed（）方法    
+1.
+public void actionPerformed(ActionEvent e) {
+    if(e.getSource()==jButton1) {
+        System.out.println(&quot;111111&quot;);
+    }else if(e.getSource()==jButton2){
+        System.out.println(&quot;222222&quot;);
+    }
+}
+2.
+public void actionPerformed(ActionEvent e) {
+    if(e.getActionCommand().equals(&quot;btn1&quot;)) {
+        System.out.println(&quot;111111&quot;);
+    }else if(e.getActionCommand().equals(&quot;btn2&quot;)){
+        System.out.println(&quot;222222&quot;);
+    }
+}
+</code></pre><p>这里会有两种方式，都可以</p>
+<p>1.是利用 e.getSource()来直接获取点击的对象名（注意是对象名，jButton1,jButton2）</p>
+<p>2.是利用 e.getActionCommand().equals()来直接获取点击按钮的名称，即字符串（btn1.btn2）</p>
 
-    //下面需要实现 ActionListener     接口的actionPerformed（）方法    
-    1.
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==jButton1) {
-            System.out.println(&quot;111111&quot;);
-        }else if(e.getSource()==jButton2){
-            System.out.println(&quot;222222&quot;);
-        }
-    }
-    2.
-    public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equals(&quot;btn1&quot;)) {
-            System.out.println(&quot;111111&quot;);
-        }else if(e.getActionCommand().equals(&quot;btn2&quot;)){
-            System.out.println(&quot;222222&quot;);
-        }
-    }
-这里会有两种方式，都可以
-1.是利用 e.getSource()来直接获取点击的对象名（注意是对象名，jButton1,jButton2）
-2.是利用 e.getActionCommand().equals()来直接获取点击按钮的名称，即字符串（btn1.btn2）
-</code></pre>
           
         
       
@@ -1355,7 +1582,7 @@ public class coin extends JFrame implements ActionListener{
         new coin();
     }
 }
-</code></pre><p><img src="https://i.imgur.com/gLOOtxK.png" alt></p>
+</code></pre><p><img src="/2019/03/19/2018-12-24-java-swing04/jradiobutton.png" alt></p>
 
           
         
@@ -1404,7 +1631,7 @@ public class coin extends JFrame implements ActionListener{
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/19/2019-2-9-android-fx01/">
+    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/19/android_project/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="1215ccc">
@@ -1423,7 +1650,7 @@ public class coin extends JFrame implements ActionListener{
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/19/2019-2-9-android-fx01/" itemprop="url">android工程解析</a></h1>
+                <a class="post-title-link" href="/2019/03/19/android_project/" itemprop="url">android工程解析</a></h1>
         
 
         <div class="post-meta">
@@ -1497,165 +1724,23 @@ public class coin extends JFrame implements ActionListener{
       
         
           
-            <h5 id="先看图，这张图再熟悉不过了"><a href="#先看图，这张图再熟悉不过了" class="headerlink" title="先看图，这张图再熟悉不过了"></a>先看图，这张图再熟悉不过了</h5><p><img src="https://i.imgur.com/byBtJvF.png" alt></p>
-<h5 id="下面进行一些解释"><a href="#下面进行一些解释" class="headerlink" title="下面进行一些解释"></a>下面进行一些解释</h5><pre><code>1.java：我们写Java代码的地方，业务功能都在这里实现
-
-2.res：存放我们各种资源文件的地方，有图片，字符串，动画，音频等，还有各种形式的XML文件
-
-3.drawable：存放各种位图文件，(.png，.jpg，.9png，.gif等)除此之外可能是一些其他的drawable类型的XML文件
-
-4.mipmap-hdpi：高分辨率，一般我们把图片丢这里
-  mipmap-mdpi：中等分辨率
-  mipmap-xhdpi：超高分辨率
-  mipmap-xxhdpi：超超高分辨率
-
-5.layout：该目录下存放的就是我们的布局文件
-
-6.values：该目录下存放的是一些定义的字符串资源、样式资源、颜色资源、数组资源等等
-</code></pre><h5 id="在res目录下，所有的资源文件都会在-R-java-文件下生成对应的资源-id-我们可以通过id访问到对应的资源。例如"><a href="#在res目录下，所有的资源文件都会在-R-java-文件下生成对应的资源-id-我们可以通过id访问到对应的资源。例如" class="headerlink" title="在res目录下，所有的资源文件都会在 R.java 文件下生成对应的资源 id,我们可以通过id访问到对应的资源。例如"></a>在res目录下，所有的资源文件都会在 R.java 文件下生成对应的资源 id,我们可以通过id访问到对应的资源。例如</h5><pre><code>在java代码中使用相关资源：
-布局引用：setContentView(R.layout.main);
-图片引用：imgIcon.setBackgroundDrawableResource(R.drawable.icon); 
-
-在xml文件中使用相关资源：(通过 @XXX 即可引用)
-文本引用：android:text=&quot;@string/hello_world&quot;
-图片引用：android:background = &quot;@drawable/img_back&quot;
-</code></pre><h2 id="分析几个文件"><a href="#分析几个文件" class="headerlink" title="分析几个文件"></a>分析几个文件</h2><pre><code>1.布局文件
-</code></pre><p><img src="https://i.imgur.com/4JO3OFl.png" alt>    </p>
-<p><img src="https://i.imgur.com/xb1gX33.jpg" alt></p>
+            <h5 id="先看图，这张图再熟悉不过了"><a href="#先看图，这张图再熟悉不过了" class="headerlink" title="先看图，这张图再熟悉不过了"></a>先看图，这张图再熟悉不过了</h5><p><img width="200" src="/2019/03/19/android_project/001.jpg"></p>
+<h5 id="下面进行一些解释"><a href="#下面进行一些解释" class="headerlink" title="下面进行一些解释"></a>下面进行一些解释</h5><p>1.java：我们写Java代码的地方，业务功能都在这里实现</p>
+<p>2.res：存放我们各种资源文件的地方，有图片，字符串，动画，音频等，还有各种形式的XML文件</p>
+<p>3.drawable：存放各种位图文件，(.png，.jpg，.9png，.gif等)除此之外可能是一些其他的drawable类型的XML文件</p>
+<p>4.mipmap-hdpi：高分辨率，一般我们把图片丢这里<br>mipmap-mdpi：中等分辨率<br>mipmap-xhdpi：超高分辨率<br>mipmap-xxhdpi：超超高分辨率</p>
+<p>5.layout：该目录下存放的就是我们的布局文件</p>
+<p>6.values：该目录下存放的是一些定义的字符串资源、样式资源、颜色资源、数组资源等等</p>
+<h5 id="在res目录下，所有的资源文件都会在-R-java-文件下生成对应的资源-id-我们可以通过id访问到对应的资源。例如"><a href="#在res目录下，所有的资源文件都会在-R-java-文件下生成对应的资源-id-我们可以通过id访问到对应的资源。例如" class="headerlink" title="在res目录下，所有的资源文件都会在 R.java 文件下生成对应的资源 id,我们可以通过id访问到对应的资源。例如"></a>在res目录下，所有的资源文件都会在 R.java 文件下生成对应的资源 id,我们可以通过id访问到对应的资源。例如</h5><p>在java代码中使用相关资源：<br>布局引用：setContentView(R.layout.main);<br>图片引用：imgIcon.setBackgroundDrawableResource(R.drawable.icon); </p>
+<p>在xml文件中使用相关资源：(通过 @XXX 即可引用)<br>文本引用：android:text=”@string/hello_world”<br>图片引用：android:background = “@drawable/img_back”</p>
+<h2 id="分析几个文件"><a href="#分析几个文件" class="headerlink" title="分析几个文件"></a>分析几个文件</h2><pre><code>1.布局文件
+</code></pre><p><img width="200" src="/2019/03/19/android_project/002.png"><br><img width="200" src="/2019/03/19/android_project/002-1.jpg"></p>
 <pre><code>2.MainActivity.java文件
-</code></pre><p><img src="https://i.imgur.com/XKiPddE.png" alt></p>
-<p><img src="https://i.imgur.com/GS8Wo4n.jpg" alt></p>
+</code></pre><p><img width="200" src="/2019/03/19/android_project/003.png"></p>
+<p><img width="200" src="/2019/03/19/android_project/003-1.jpg"></p>
 <pre><code>3.AndroidManifest.xml配置文件
-</code></pre><p><img src="https://i.imgur.com/fnFgrfg.png" alt></p>
-<p><img src="https://i.imgur.com/hYow6Ye.jpg" alt></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/19/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="1215ccc">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江山如画">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/19/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T21:39:07+08:00">
-                2019-03-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+</code></pre><p><img width="200" src="/2019/03/19/android_project/004.png"></p>
+<p><img width="200" src="/2019/03/19/android_project/004-1.jpg"></p>
 
           
         

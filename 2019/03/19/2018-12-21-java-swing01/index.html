@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="江山如画">
 <meta property="og:description" content="JButtonJButton btn=new JButton(&amp;quot;按钮&amp;quot;); btn.addActionListener(new ActionListener() {                 public void actionPerformed(ActionEvent e) {                 //此处添加要执行的操作             }">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-23T04:30:59.316Z">
+<meta property="og:updated_time" content="2019-03-19T15:59:02.849Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="swing 中一些控件的点击事件 (1)--JButton">
 <meta name="twitter:description" content="JButtonJButton btn=new JButton(&amp;quot;按钮&amp;quot;); btn.addActionListener(new ActionListener() {                 public void actionPerformed(ActionEvent e) {                 //此处添加要执行的操作             }">
@@ -348,35 +348,34 @@ btn.addActionListener(new ActionListener() {
                 //此处添加要执行的操作
             }
         });
-一般按钮个数比较少的情况下，直接使用匿名内部类的方式更为方便。
+</code></pre><p>一般按钮个数比较少的情况下，直接使用匿名内部类的方式更为方便。</p>
+<p>当有多个按钮的时候，需要让类继承 ActionListener 接口</p>
+<pre><code>JButton jButton1=new JButton(&quot;btn1&quot;);
+JButton jButton2=new JButton(&quot;btn2&quot;);
+jButton1.addActionListener(this);
+jButton2.addActionListener(this);
 
-当有多个按钮的时候，需要让类继承 ActionListener 接口
-    JButton jButton1=new JButton(&quot;btn1&quot;);
-    JButton jButton2=new JButton(&quot;btn2&quot;);
-    jButton1.addActionListener(this);
-    jButton2.addActionListener(this);
+//下面需要实现 ActionListener     接口的actionPerformed（）方法    
+1.
+public void actionPerformed(ActionEvent e) {
+    if(e.getSource()==jButton1) {
+        System.out.println(&quot;111111&quot;);
+    }else if(e.getSource()==jButton2){
+        System.out.println(&quot;222222&quot;);
+    }
+}
+2.
+public void actionPerformed(ActionEvent e) {
+    if(e.getActionCommand().equals(&quot;btn1&quot;)) {
+        System.out.println(&quot;111111&quot;);
+    }else if(e.getActionCommand().equals(&quot;btn2&quot;)){
+        System.out.println(&quot;222222&quot;);
+    }
+}
+</code></pre><p>这里会有两种方式，都可以</p>
+<p>1.是利用 e.getSource()来直接获取点击的对象名（注意是对象名，jButton1,jButton2）</p>
+<p>2.是利用 e.getActionCommand().equals()来直接获取点击按钮的名称，即字符串（btn1.btn2）</p>
 
-    //下面需要实现 ActionListener     接口的actionPerformed（）方法    
-    1.
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==jButton1) {
-            System.out.println(&quot;111111&quot;);
-        }else if(e.getSource()==jButton2){
-            System.out.println(&quot;222222&quot;);
-        }
-    }
-    2.
-    public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equals(&quot;btn1&quot;)) {
-            System.out.println(&quot;111111&quot;);
-        }else if(e.getActionCommand().equals(&quot;btn2&quot;)){
-            System.out.println(&quot;222222&quot;);
-        }
-    }
-这里会有两种方式，都可以
-1.是利用 e.getSource()来直接获取点击的对象名（注意是对象名，jButton1,jButton2）
-2.是利用 e.getActionCommand().equals()来直接获取点击按钮的名称，即字符串（btn1.btn2）
-</code></pre>
       
     </div>
     

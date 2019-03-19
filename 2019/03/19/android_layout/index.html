@@ -79,26 +79,23 @@
 
 
 
-<meta name="description" content="先看图，这张图再熟悉不过了 下面进行一些解释1.java：我们写Java代码的地方，业务功能都在这里实现  2.res：存放我们各种资源文件的地方，有图片，字符串，动画，音频等，还有各种形式的XML文件  3.drawable：存放各种位图文件，(.png，.jpg，.9png，.gif等)除此之外可能是一些其他的drawable类型的XML文件  4.mipmap-hdpi：高分辨率，一般我们把">
+<meta name="description" content="1.LinearLayout(线性布局)注意两个点：1.orientation 属性：布局中组件的排列方式，有horizontal(水平)，vertical(竖直，默认)两种方式。 2.weight 属性：权重属性在屏幕适配时用的比较多(有几种用法可以去百度一下，用一种当 layout_width和layout_height都为match_parent时，可能难理解) 2.RelativeLayo">
 <meta name="keywords" content="android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android工程解析">
-<meta property="og:url" content="http://haibolun.top/2019/03/19/2019-2-9-android-fx01/index.html">
+<meta property="og:title" content="几个布局的简单注意点">
+<meta property="og:url" content="http://haibolun.top/2019/03/19/android_layout/index.html">
 <meta property="og:site_name" content="江山如画">
-<meta property="og:description" content="先看图，这张图再熟悉不过了 下面进行一些解释1.java：我们写Java代码的地方，业务功能都在这里实现  2.res：存放我们各种资源文件的地方，有图片，字符串，动画，音频等，还有各种形式的XML文件  3.drawable：存放各种位图文件，(.png，.jpg，.9png，.gif等)除此之外可能是一些其他的drawable类型的XML文件  4.mipmap-hdpi：高分辨率，一般我们把">
+<meta property="og:description" content="1.LinearLayout(线性布局)注意两个点：1.orientation 属性：布局中组件的排列方式，有horizontal(水平)，vertical(竖直，默认)两种方式。 2.weight 属性：权重属性在屏幕适配时用的比较多(有几种用法可以去百度一下，用一种当 layout_width和layout_height都为match_parent时，可能难理解) 2.RelativeLayo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.imgur.com/byBtJvF.png">
-<meta property="og:image" content="https://i.imgur.com/4JO3OFl.png">
-<meta property="og:image" content="https://i.imgur.com/xb1gX33.jpg">
-<meta property="og:image" content="https://i.imgur.com/XKiPddE.png">
-<meta property="og:image" content="https://i.imgur.com/GS8Wo4n.jpg">
-<meta property="og:image" content="https://i.imgur.com/fnFgrfg.png">
-<meta property="og:image" content="https://i.imgur.com/hYow6Ye.jpg">
-<meta property="og:updated_time" content="2019-02-10T14:37:16.632Z">
+<meta property="og:image" content="http://haibolun.top/2019/03/19/android_layout/005-01.png">
+<meta property="og:image" content="http://haibolun.top/2019/03/19/android_layout/005-02.png">
+<meta property="og:image" content="http://haibolun.top/2019/03/19/android_layout/005-03.png">
+<meta property="og:image" content="http://haibolun.top/2019/03/19/android_layout/005-04.jpg">
+<meta property="og:updated_time" content="2019-03-19T16:12:54.430Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android工程解析">
-<meta name="twitter:description" content="先看图，这张图再熟悉不过了 下面进行一些解释1.java：我们写Java代码的地方，业务功能都在这里实现  2.res：存放我们各种资源文件的地方，有图片，字符串，动画，音频等，还有各种形式的XML文件  3.drawable：存放各种位图文件，(.png，.jpg，.9png，.gif等)除此之外可能是一些其他的drawable类型的XML文件  4.mipmap-hdpi：高分辨率，一般我们把">
-<meta name="twitter:image" content="https://i.imgur.com/byBtJvF.png">
+<meta name="twitter:title" content="几个布局的简单注意点">
+<meta name="twitter:description" content="1.LinearLayout(线性布局)注意两个点：1.orientation 属性：布局中组件的排列方式，有horizontal(水平)，vertical(竖直，默认)两种方式。 2.weight 属性：权重属性在屏幕适配时用的比较多(有几种用法可以去百度一下，用一种当 layout_width和layout_height都为match_parent时，可能难理解) 2.RelativeLayo">
+<meta name="twitter:image" content="http://haibolun.top/2019/03/19/android_layout/005-01.png">
 
 
 
@@ -128,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://haibolun.top/2019/03/19/2019-2-9-android-fx01/">
+  <link rel="canonical" href="http://haibolun.top/2019/03/19/android_layout/">
 
 
 
 
 
-  <title>android工程解析 | 江山如画</title>
+  <title>几个布局的简单注意点 | 江山如画</title>
   
 
 
@@ -261,7 +258,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/19/2019-2-9-android-fx01/">
+    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/19/android_layout/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="1215ccc">
@@ -278,7 +275,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">android工程解析</h1>
+          <h1 class="post-title" itemprop="name headline">几个布局的简单注意点</h1>
         
 
         <div class="post-meta">
@@ -290,7 +287,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T21:56:06+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T23:06:27+08:00">
                 2019-03-19
               </time>
             
@@ -350,38 +347,83 @@
       
 
       
-        <h5 id="先看图，这张图再熟悉不过了"><a href="#先看图，这张图再熟悉不过了" class="headerlink" title="先看图，这张图再熟悉不过了"></a>先看图，这张图再熟悉不过了</h5><p><img src="https://i.imgur.com/byBtJvF.png" alt></p>
-<h5 id="下面进行一些解释"><a href="#下面进行一些解释" class="headerlink" title="下面进行一些解释"></a>下面进行一些解释</h5><pre><code>1.java：我们写Java代码的地方，业务功能都在这里实现
+        <h5 id="1-LinearLayout-线性布局"><a href="#1-LinearLayout-线性布局" class="headerlink" title="1.LinearLayout(线性布局)"></a>1.LinearLayout(线性布局)</h5><p>注意两个点：<br>1.orientation 属性：布局中组件的排列方式，有horizontal(水平)，vertical(竖直，默认)两种方式。</p>
+<p>2.weight 属性：权重属性在屏幕适配时用的比较多(有几种用法可以去百度一下，用一种当 layout_width和layout_height都为match_parent时，可能难理解)</p>
+<h5 id="2-RelativeLayout-相对布局"><a href="#2-RelativeLayout-相对布局" class="headerlink" title="2.RelativeLayout(相对布局)"></a>2.RelativeLayout(相对布局)</h5><p>直接看图，也没啥，还有margin和padding写个简单的梅花布局练练就应该都理解了.</p>
+<p><img width="300" src="/2019/03/19/android_layout/005-01.png"></p>
+<p><img width="300" src="/2019/03/19/android_layout/005-02.png"></p>
+<h5 id="3-TableLayout-表格布局"><a href="#3-TableLayout-表格布局" class="headerlink" title="3.TableLayout(表格布局)"></a>3.TableLayout(表格布局)</h5><p>这个基本不常用，一般线性+相对布局就可以了，只需要了解一下。</p>
+<p>1.如果我们想一行上有多个组件的话,就要添加一个TableRow的容器,把组件都丢到里面.</p>
+<p>2.tablerow中的组件个数就决定了该行有多少列,而列的宽度由该列中最宽的单元格决定.</p>
+<p>3.tablerow的layout_width属性,默认是fill_parent的,我们自己设置成其他的值也不会生效， 但是layout_height默认是wrapten——content的,我们却可以自己设置大小.</p>
+<p>4.整个表格布局的宽度取决于父容器的宽度(占满父容器本身)</p>
+<p>5.</p>
+<pre><code>android:collapseColumns:设置需要被隐藏的列的序号
+android:shrinkColumns:设置允许被收缩的列的列序号
+android:stretchColumns:设置运行被拉伸的列的列序号
+</code></pre><p>以上这三个属性的列号都是从0开始算的,比如shrinkColunmns = “2”,对应的是第三列！</p>
+<p>可以设置多个,用逗号隔开比如”0,2”,如果是所有列都生效,则用”*”号即可</p>
+<p>除了这三个常用属性,还有两个属性,分别就是跳格子以及合并单元格,这和HTML中的Table类似:</p>
+<p>android:layout_column=”2”:表示的就是跳过第二个,直接显示到第三个格子处,从1开始算的!</p>
+<p>android:layout_span=”4”:表示合并4个单元格,也就说这个组件占4个单元格</p>
+<p>eg:</p>
+<pre><code> &lt;TableRow&gt;
+    &lt;TextView /&gt;
+    &lt;Button
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;登陆&quot;/&gt;
+    &lt;Button
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;退出&quot;/&gt;
+    &lt;TextView /&gt;
+&lt;/TableRow&gt;
+</code></pre><h5 id="4-FrameLayout-帧布局"><a href="#4-FrameLayout-帧布局" class="headerlink" title="4.FrameLayout(帧布局)"></a>4.FrameLayout(帧布局)</h5><p>常用属性：</p>
+<pre><code>android:foreground:设置改帧布局容器的前景图像
 
-2.res：存放我们各种资源文件的地方，有图片，字符串，动画，音频等，还有各种形式的XML文件
-
-3.drawable：存放各种位图文件，(.png，.jpg，.9png，.gif等)除此之外可能是一些其他的drawable类型的XML文件
-
-4.mipmap-hdpi：高分辨率，一般我们把图片丢这里
-  mipmap-mdpi：中等分辨率
-  mipmap-xhdpi：超高分辨率
-  mipmap-xxhdpi：超超高分辨率
-
-5.layout：该目录下存放的就是我们的布局文件
-
-6.values：该目录下存放的是一些定义的字符串资源、样式资源、颜色资源、数组资源等等
-</code></pre><h5 id="在res目录下，所有的资源文件都会在-R-java-文件下生成对应的资源-id-我们可以通过id访问到对应的资源。例如"><a href="#在res目录下，所有的资源文件都会在-R-java-文件下生成对应的资源-id-我们可以通过id访问到对应的资源。例如" class="headerlink" title="在res目录下，所有的资源文件都会在 R.java 文件下生成对应的资源 id,我们可以通过id访问到对应的资源。例如"></a>在res目录下，所有的资源文件都会在 R.java 文件下生成对应的资源 id,我们可以通过id访问到对应的资源。例如</h5><pre><code>在java代码中使用相关资源：
-布局引用：setContentView(R.layout.main);
-图片引用：imgIcon.setBackgroundDrawableResource(R.drawable.icon); 
-
-在xml文件中使用相关资源：(通过 @XXX 即可引用)
-文本引用：android:text=&quot;@string/hello_world&quot;
-图片引用：android:background = &quot;@drawable/img_back&quot;
-</code></pre><h2 id="分析几个文件"><a href="#分析几个文件" class="headerlink" title="分析几个文件"></a>分析几个文件</h2><pre><code>1.布局文件
-</code></pre><p><img src="https://i.imgur.com/4JO3OFl.png" alt>    </p>
-<p><img src="https://i.imgur.com/xb1gX33.jpg" alt></p>
-<pre><code>2.MainActivity.java文件
-</code></pre><p><img src="https://i.imgur.com/XKiPddE.png" alt></p>
-<p><img src="https://i.imgur.com/GS8Wo4n.jpg" alt></p>
-<pre><code>3.AndroidManifest.xml配置文件
-</code></pre><p><img src="https://i.imgur.com/fnFgrfg.png" alt></p>
-<p><img src="https://i.imgur.com/hYow6Ye.jpg" alt></p>
-
+android:foregroundGravity:设置前景图像显示的位置
+</code></pre><p>当我们往帧布局里面添加控件的时候,会默认把他们放到这块区域的左上角,而这种布局方式却没有任何的定位方式,所以它应用的场景并不多;帧布局的大小由控件中最大的子控件决定,如果控件的大小一样大的话,那么同一时刻就只能看到最上面的那个组件!后续添加的控件会覆盖前一个!</p>
+<p>eg:</p>
+<pre><code>&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;    
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;       
+    android:layout_width=&quot;match_parent&quot;    
+    android:layout_height=&quot;match_parent&quot;    
+    tools:context=&quot;.MainActivity&quot;     
+    android:foreground=&quot;@drawable/logo&quot;    
+    android:foregroundGravity=&quot;right|bottom&quot;&gt;      
+    &lt;TextView    
+        android:layout_width=&quot;200dp&quot;    
+        android:layout_height=&quot;200dp&quot;    
+        android:background=&quot;#FF6143&quot; /&gt;    
+    &lt;TextView    
+        android:layout_width=&quot;150dp&quot;    
+        android:layout_height=&quot;150dp&quot;    
+        android:background=&quot;#7BFE00&quot; /&gt;    
+     &lt;TextView    
+        android:layout_width=&quot;100dp&quot;    
+        android:layout_height=&quot;100dp&quot;    
+        android:background=&quot;#FFFF00&quot; /&gt;                
+&lt;/FrameLayout&gt;    
+</code></pre><p><img width="300" height="100" src="/2019/03/19/android_layout/005-03.png"></p>
+<h5 id="5-GridLayout-网格布局"><a href="#5-GridLayout-网格布局" class="headerlink" title="5.GridLayout(网格布局)"></a>5.GridLayout(网格布局)</h5><p><img width="300" src="/2019/03/19/android_layout/005-04.jpg"></p>
+<p>用法：</p>
+<p>step 1:先定义组件的对其方式 android:orientation 水平或者竖直,设置多少行与多少列</p>
+<p>step 2:设置组件所在的行或者列,记得是从0开始算的,不设置默认每个组件占一行一列</p>
+<p>step 3:设置组件横跨几行或者几列;设置完毕后,需要在设置一个填充:android:layout_gravity = “fill”</p>
+<p>eg:计算器的清除键占2格</p>
+<pre><code>&lt;Button
+   android:layout_columnSpan=&quot;2&quot;
+   android:layout_gravity=&quot;fill&quot;
+   android:text=&quot;清空&quot; /&gt;
+</code></pre><h5 id="6-AbsoluteLayout-绝对布局"><a href="#6-AbsoluteLayout-绝对布局" class="headerlink" title="6.AbsoluteLayout(绝对布局)"></a>6.AbsoluteLayout(绝对布局)</h5><p>这个没啥好说的，基本不用，学java swing时就强调过了</p>
+<p>控制大小: </p>
+<pre><code>android:layout_width:组件宽度
+ android:layout_height:组件高度
+</code></pre><p>控制位置:</p>
+<pre><code>android:layout_x:设置组件的X坐标 
+android:layout_y:设置组件的Y坐标
+</code></pre>
       
     </div>
     
@@ -411,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/19/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/03/19/2018-12-21-java-swing02/" rel="next" title="swing 中一些控件的点击事件 (2)--JComboBox">
+                <i class="fa fa-chevron-left"></i> swing 中一些控件的点击事件 (2)--JComboBox
               </a>
             
           </div>
@@ -421,8 +463,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/19/2018-12-24-java-swing04/" rel="prev" title="swing 中一些控件的点击事件 (4)--JRadioButton及简单用法">
-                swing 中一些控件的点击事件 (4)--JRadioButton及简单用法 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/19/begin/" rel="prev" title="阿里巴巴矢量图标库">
+                阿里巴巴矢量图标库 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -555,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#先看图，这张图再熟悉不过了"><span class="nav-number">1.</span> <span class="nav-text">先看图，这张图再熟悉不过了</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#下面进行一些解释"><span class="nav-number">2.</span> <span class="nav-text">下面进行一些解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在res目录下，所有的资源文件都会在-R-java-文件下生成对应的资源-id-我们可以通过id访问到对应的资源。例如"><span class="nav-number">3.</span> <span class="nav-text">在res目录下，所有的资源文件都会在 R.java 文件下生成对应的资源 id,我们可以通过id访问到对应的资源。例如</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#分析几个文件"><span class="nav-number"></span> <span class="nav-text">分析几个文件</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-LinearLayout-线性布局"><span class="nav-number">1.</span> <span class="nav-text">1.LinearLayout(线性布局)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-RelativeLayout-相对布局"><span class="nav-number">2.</span> <span class="nav-text">2.RelativeLayout(相对布局)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-TableLayout-表格布局"><span class="nav-number">3.</span> <span class="nav-text">3.TableLayout(表格布局)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-FrameLayout-帧布局"><span class="nav-number">4.</span> <span class="nav-text">4.FrameLayout(帧布局)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-GridLayout-网格布局"><span class="nav-number">5.</span> <span class="nav-text">5.GridLayout(网格布局)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-AbsoluteLayout-绝对布局"><span class="nav-number">6.</span> <span class="nav-text">6.AbsoluteLayout(绝对布局)</span></a></li></ol></div>
             
 
           </div>
