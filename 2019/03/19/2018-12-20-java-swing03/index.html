@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="JListString province[]= {&amp;quot;省份&amp;quot;,&amp;quot;北京&amp;quot;,&amp;quot;天津&amp;quot;,&amp;quot;上海&amp;quot;,&amp;quot;重庆&amp;quot;}; JList&amp;lt;String&amp;gt; jList=new JList&amp;lt;&amp;gt;(province); jList.addListSelectionListener(new ListSele">
+<meta name="description" content="JList1234567String province[]= &amp;#123;&quot;省份&quot;,&quot;北京&quot;,&quot;天津&quot;,&quot;上海&quot;,&quot;重庆&quot;&amp;#125;;JList&amp;lt;String&amp;gt; jList=new JList&amp;lt;&amp;gt;(province);jList.addListSelectionListener(new ListSelectionListener() &amp;#123;	public void">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="swing 中一些控件的点击事件 (3)--JList">
 <meta property="og:url" content="http://haibolun.top/2019/03/19/2018-12-20-java-swing03/index.html">
 <meta property="og:site_name" content="江山如画">
-<meta property="og:description" content="JListString province[]= {&amp;quot;省份&amp;quot;,&amp;quot;北京&amp;quot;,&amp;quot;天津&amp;quot;,&amp;quot;上海&amp;quot;,&amp;quot;重庆&amp;quot;}; JList&amp;lt;String&amp;gt; jList=new JList&amp;lt;&amp;gt;(province); jList.addListSelectionListener(new ListSele">
+<meta property="og:description" content="JList1234567String province[]= &amp;#123;&quot;省份&quot;,&quot;北京&quot;,&quot;天津&quot;,&quot;上海&quot;,&quot;重庆&quot;&amp;#125;;JList&amp;lt;String&amp;gt; jList=new JList&amp;lt;&amp;gt;(province);jList.addListSelectionListener(new ListSelectionListener() &amp;#123;	public void">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-23T04:30:59.308Z">
+<meta property="og:updated_time" content="2019-03-20T09:30:30.978Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="swing 中一些控件的点击事件 (3)--JList">
-<meta name="twitter:description" content="JListString province[]= {&amp;quot;省份&amp;quot;,&amp;quot;北京&amp;quot;,&amp;quot;天津&amp;quot;,&amp;quot;上海&amp;quot;,&amp;quot;重庆&amp;quot;}; JList&amp;lt;String&amp;gt; jList=new JList&amp;lt;&amp;gt;(province); jList.addListSelectionListener(new ListSele">
+<meta name="twitter:description" content="JList1234567String province[]= &amp;#123;&quot;省份&quot;,&quot;北京&quot;,&quot;天津&quot;,&quot;上海&quot;,&quot;重庆&quot;&amp;#125;;JList&amp;lt;String&amp;gt; jList=new JList&amp;lt;&amp;gt;(province);jList.addListSelectionListener(new ListSelectionListener() &amp;#123;	public void">
 
 
 
@@ -380,7 +380,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  97 word
+                  93 word
                 </span>
               
 
@@ -417,16 +417,9 @@
       
 
       
-        <h2 id="JList"><a href="#JList" class="headerlink" title="JList"></a>JList</h2><pre><code>String province[]= {&quot;省份&quot;,&quot;北京&quot;,&quot;天津&quot;,&quot;上海&quot;,&quot;重庆&quot;};
-JList&lt;String&gt; jList=new JList&lt;&gt;(province);
-jList.addListSelectionListener(new ListSelectionListener() {
-        public void valueChanged(ListSelectionEvent e) {
-            System.out.println(jList.getSelectedValue().toString());
-        }
-    });
-JList 通过 getSelectedValue() 方法即可获取选中项
-当然 用 getSelectedIndex() 方法可以获取到点击的项的下标 如此示例中 北京项 下标为1，天津项 下标为2.
-</code></pre>
+        <h2 id="JList"><a href="#JList" class="headerlink" title="JList"></a>JList</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String</span> province[]= &#123;<span class="string">"省份"</span>,<span class="string">"北京"</span>,<span class="string">"天津"</span>,<span class="string">"上海"</span>,<span class="string">"重庆"</span>&#125;;</span><br><span class="line">JList&lt;<span class="keyword">String</span>&gt; jList=<span class="keyword">new</span> JList&lt;&gt;(province);</span><br><span class="line">jList.addListSelectionListener(<span class="keyword">new</span> ListSelectionListener() &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> valueChanged(ListSelectionEvent e) &#123;</span><br><span class="line">		System.out.<span class="built_in">println</span>(jList.getSelectedValue().toString());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>JList 通过 getSelectedValue() 方法即可获取选中项<br>当然 用 getSelectedIndex() 方法可以获取到点击的项的下标 如此示例中 北京项 下标为1，天津项 下标为2.</p>
+
       
     </div>
     
@@ -707,6 +700,8 @@ JList 通过 getSelectedValue() 方法即可获取选中项
   
 
 
+  
+
 
 
 
@@ -745,6 +740,11 @@ JList 通过 getSelectedValue() 方法即可获取选中项
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -1144,7 +1144,80 @@ JList 通过 getSelectedValue() 方法即可获取选中项
 
   
 
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
 </body>
 </html>
+
 <!-- 页面点击小红心 -->
 <script type="text/javascript" src="/js/src/clicklove.js"></script>

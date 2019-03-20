@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="江山如画">
 <meta property="og:description" content="JComboBoxInteger Month[]= {1,2,3,4,5,6,7,8,9,10,11,12}; JComboBox jComboBox1=new JComboBox(Month); jComboBox1.addItemListener(new ItemListener() {     public void itemStateChanged(ItemEvent event)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-19T15:59:17.825Z">
+<meta property="og:updated_time" content="2019-03-20T09:31:58.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="swing 中一些控件的点击事件 (2)--JComboBox">
 <meta name="twitter:description" content="JComboBoxInteger Month[]= {1,2,3,4,5,6,7,8,9,10,11,12}; JComboBox jComboBox1=new JComboBox(Month); jComboBox1.addItemListener(new ItemListener() {     public void itemStateChanged(ItemEvent event)">
@@ -716,6 +716,8 @@ jComboBox1.addItemListener(new ItemListener()
   
 
 
+  
+
 
 
 
@@ -754,6 +756,11 @@ jComboBox1.addItemListener(new ItemListener()
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -1153,7 +1160,80 @@ jComboBox1.addItemListener(new ItemListener()
 
   
 
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
 </body>
 </html>
+
 <!-- 页面点击小红心 -->
 <script type="text/javascript" src="/js/src/clicklove.js"></script>

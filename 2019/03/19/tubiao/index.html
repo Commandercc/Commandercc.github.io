@@ -84,16 +84,16 @@
 <meta name="keywords" content="随心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里巴巴矢量图标库">
-<meta property="og:url" content="http://haibolun.top/2019/03/19/begin/index.html">
+<meta property="og:url" content="http://haibolun.top/2019/03/19/tubiao/index.html">
 <meta property="og:site_name" content="江山如画">
 <meta property="og:description" content="分享一个很棒的图标网站点击下面的链接即可查看Iconfont–阿里巴巴矢量图标库">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://haibolun.top/2019/03/19/begin/alibabatubiao.jpg">
+<meta property="og:image" content="http://haibolun.top/2019/03/19/tubiao/alibabatubiao.jpg">
 <meta property="og:updated_time" content="2019-03-19T16:13:48.403Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里巴巴矢量图标库">
 <meta name="twitter:description" content="分享一个很棒的图标网站点击下面的链接即可查看Iconfont–阿里巴巴矢量图标库">
-<meta name="twitter:image" content="http://haibolun.top/2019/03/19/begin/alibabatubiao.jpg">
+<meta name="twitter:image" content="http://haibolun.top/2019/03/19/tubiao/alibabatubiao.jpg">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://haibolun.top/2019/03/19/begin/">
+  <link rel="canonical" href="http://haibolun.top/2019/03/19/tubiao/">
 
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/19/begin/">
+    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/19/tubiao/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="1215ccc">
@@ -398,7 +398,7 @@
 
       
         <h4 id="分享一个很棒的图标网站"><a href="#分享一个很棒的图标网站" class="headerlink" title="分享一个很棒的图标网站"></a>分享一个很棒的图标网站</h4><h4 id="点击下面的链接即可查看"><a href="#点击下面的链接即可查看" class="headerlink" title="点击下面的链接即可查看"></a>点击下面的链接即可查看</h4><p><a href="https://www.iconfont.cn/" target="_blank" rel="noopener">Iconfont–阿里巴巴矢量图标库</a></p>
-<p><img width="300" src="/2019/03/19/begin/alibabatubiao.jpg"></p>
+<p><img width="300" src="/2019/03/19/tubiao/alibabatubiao.jpg"></p>
 
       
     </div>
@@ -429,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/19/test/" rel="next" title="测试用">
-                <i class="fa fa-chevron-left"></i> 测试用
+              <a href="/2019/03/19/android_layout/" rel="next" title="几个布局的简单注意点">
+                <i class="fa fa-chevron-left"></i> 几个布局的简单注意点
               </a>
             
           </div>
@@ -439,8 +439,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/20/2018-12-25-java-io01/" rel="prev" title="java文件读写操作的一个简单事例">
-                java文件读写操作的一个简单事例 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/19/test/" rel="prev" title="测试用">
+                测试用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -680,6 +680,8 @@
   
 
 
+  
+
 
 
 
@@ -718,6 +720,11 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -1117,7 +1124,80 @@
 
   
 
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
 </body>
 </html>
+
 <!-- 页面点击小红心 -->
 <script type="text/javascript" src="/js/src/clicklove.js"></script>
