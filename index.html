@@ -95,7 +95,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -146,7 +146,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta custom-logo">
     
 
     <div class="custom-logo-site-title">
@@ -197,6 +197,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
@@ -218,9 +228,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -342,100 +384,19 @@
       
         
           
-            <h5 id="java文件读写操作的一个简单事例"><a href="#java文件读写操作的一个简单事例" class="headerlink" title="java文件读写操作的一个简单事例"></a>java文件读写操作的一个简单事例</h5><pre><code>package Number;
+          java文件读写操作的一个简单事例package Number;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
-
-public class coin extends JFrame implements ActionListener{
-
-    //代码中涉及的异常处理自己看情况添加即可  包名更换成自己的  创建的 ceshi.txt 在自己的java项目中的scr文件夹，点击刷新即可看见
-
-    private JTextArea jTextArea=new JTextArea(15,15);
-    private JButton jButton=new JButton(&quot;读取&quot;);
-    private JButton jButton2=new JButton(&quot;写入&quot;);
-    public coin() {
-        JFrame jFrame=new JFrame(&quot;文件读写&quot;);
-        jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        jFrame.setLayout(new FlowLayout());
-        jFrame.setSize(300,200);
-
-        jButton.addActionListener(this);
-        jButton2.addActionListener(this);
-        jFrame.add(jTextArea);
-        jFrame.add(jButton);
-        jFrame.add(jButton2);
-        jFrame.setVisible(true);
-    }
-    //读取文件
-    public void readfile() throws IOException {
-        File file=new File(&quot;ceshi.txt&quot;);//创建文件
-        try {
-            InputStream is=new FileInputStream(file);//创建输入流
-            byte[] buffer=new byte[200];
-            while(is.read(buffer)!=-1) {
-                String string=new String(buffer);
-                jTextArea.setText(string);
-            }
-            is.close();
-        } catch (FileNotFoundException e) {
-            // TODO 自动生成的 catch 块
-            e.printStackTrace();
-        }
-    }
-    //写入文件
-    public void writefile() throws IOException {
-        File file=new File(&quot;ceshi.txt&quot;);
-        try {
-            OutputStream os=new FileOutputStream(file,true);//true是追加写入 默认不追加
-            String string=jTextArea.getText().toString();
-            byte[] buffer=string.getBytes();//将字符串 转换成byte数组
-            os.write(buffer);
-            os.close();
-        } catch (FileNotFoundException e) {
-            // TODO 自动生成的 catch 块
-            e.printStackTrace();
-        }//
-    }
-
-    //按钮点击事件实现
-    public void actionPerformed(ActionEvent e) {
-        // TODO 自动生成的方法存根
-        if(e.getSource()==jButton) {
-            try {
-                readfile();
-            } catch (IOException e1) {
-                // TODO 自动生成的 catch 块
-                e1.printStackTrace();
-            }
-        }else if(e.getSource()==jButton2) {
-            try {
-                writefile();
-            } catch (IOException e1) {
-                // TODO 自动生成的 catch 块
-                e1.printStackTrace();
-            }
-        }
-    }
-    public static void main(String args[])  {
-        new coin();
-    }
-}
-</code></pre><p><img width="300" src="/2019/03/20/2018-12-25-java-io01/io01.png"></p>
-
-          
+import java.io.F
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/20/2018-12-25-java-io01/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -553,10 +514,17 @@ public class coin extends JFrame implements ActionListener{
       
         
           
-            <h4 id="分享一个很棒的图标网站"><a href="#分享一个很棒的图标网站" class="headerlink" title="分享一个很棒的图标网站"></a>分享一个很棒的图标网站</h4><h4 id="点击下面的链接即可查看"><a href="#点击下面的链接即可查看" class="headerlink" title="点击下面的链接即可查看"></a>点击下面的链接即可查看</h4><p><a href="https://www.iconfont.cn/" target="_blank" rel="noopener">Iconfont–阿里巴巴矢量图标库</a></p>
-<p><img width="300" src="/2019/03/19/begin/alibabatubiao.jpg"></p>
+          分享一个很棒的图标网站点击下面的链接即可查看Iconfont–阿里巴巴矢量图标库
+
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/19/begin/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -696,84 +664,16 @@ public class coin extends JFrame implements ActionListener{
       
         
           
-            <h5 id="1-LinearLayout-线性布局"><a href="#1-LinearLayout-线性布局" class="headerlink" title="1.LinearLayout(线性布局)"></a>1.LinearLayout(线性布局)</h5><p>注意两个点：<br>1.orientation 属性：布局中组件的排列方式，有horizontal(水平)，vertical(竖直，默认)两种方式。</p>
-<p>2.weight 属性：权重属性在屏幕适配时用的比较多(有几种用法可以去百度一下，用一种当 layout_width和layout_height都为match_parent时，可能难理解)</p>
-<h5 id="2-RelativeLayout-相对布局"><a href="#2-RelativeLayout-相对布局" class="headerlink" title="2.RelativeLayout(相对布局)"></a>2.RelativeLayout(相对布局)</h5><p>直接看图，也没啥，还有margin和padding写个简单的梅花布局练练就应该都理解了.</p>
-<p><img width="300" src="/2019/03/19/android_layout/005-01.png"></p>
-<p><img width="300" src="/2019/03/19/android_layout/005-02.png"></p>
-<h5 id="3-TableLayout-表格布局"><a href="#3-TableLayout-表格布局" class="headerlink" title="3.TableLayout(表格布局)"></a>3.TableLayout(表格布局)</h5><p>这个基本不常用，一般线性+相对布局就可以了，只需要了解一下。</p>
-<p>1.如果我们想一行上有多个组件的话,就要添加一个TableRow的容器,把组件都丢到里面.</p>
-<p>2.tablerow中的组件个数就决定了该行有多少列,而列的宽度由该列中最宽的单元格决定.</p>
-<p>3.tablerow的layout_width属性,默认是fill_parent的,我们自己设置成其他的值也不会生效， 但是layout_height默认是wrapten——content的,我们却可以自己设置大小.</p>
-<p>4.整个表格布局的宽度取决于父容器的宽度(占满父容器本身)</p>
-<p>5.</p>
-<pre><code>android:collapseColumns:设置需要被隐藏的列的序号
-android:shrinkColumns:设置允许被收缩的列的列序号
-android:stretchColumns:设置运行被拉伸的列的列序号
-</code></pre><p>以上这三个属性的列号都是从0开始算的,比如shrinkColunmns = “2”,对应的是第三列！</p>
-<p>可以设置多个,用逗号隔开比如”0,2”,如果是所有列都生效,则用”*”号即可</p>
-<p>除了这三个常用属性,还有两个属性,分别就是跳格子以及合并单元格,这和HTML中的Table类似:</p>
-<p>android:layout_column=”2”:表示的就是跳过第二个,直接显示到第三个格子处,从1开始算的!</p>
-<p>android:layout_span=”4”:表示合并4个单元格,也就说这个组件占4个单元格</p>
-<p>eg:</p>
-<pre><code> &lt;TableRow&gt;
-    &lt;TextView /&gt;
-    &lt;Button
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:text=&quot;登陆&quot;/&gt;
-    &lt;Button
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:text=&quot;退出&quot;/&gt;
-    &lt;TextView /&gt;
-&lt;/TableRow&gt;
-</code></pre><h5 id="4-FrameLayout-帧布局"><a href="#4-FrameLayout-帧布局" class="headerlink" title="4.FrameLayout(帧布局)"></a>4.FrameLayout(帧布局)</h5><p>常用属性：</p>
-<pre><code>android:foreground:设置改帧布局容器的前景图像
-
-android:foregroundGravity:设置前景图像显示的位置
-</code></pre><p>当我们往帧布局里面添加控件的时候,会默认把他们放到这块区域的左上角,而这种布局方式却没有任何的定位方式,所以它应用的场景并不多;帧布局的大小由控件中最大的子控件决定,如果控件的大小一样大的话,那么同一时刻就只能看到最上面的那个组件!后续添加的控件会覆盖前一个!</p>
-<p>eg:</p>
-<pre><code>&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;    
-    xmlns:tools=&quot;http://schemas.android.com/tools&quot;       
-    android:layout_width=&quot;match_parent&quot;    
-    android:layout_height=&quot;match_parent&quot;    
-    tools:context=&quot;.MainActivity&quot;     
-    android:foreground=&quot;@drawable/logo&quot;    
-    android:foregroundGravity=&quot;right|bottom&quot;&gt;      
-    &lt;TextView    
-        android:layout_width=&quot;200dp&quot;    
-        android:layout_height=&quot;200dp&quot;    
-        android:background=&quot;#FF6143&quot; /&gt;    
-    &lt;TextView    
-        android:layout_width=&quot;150dp&quot;    
-        android:layout_height=&quot;150dp&quot;    
-        android:background=&quot;#7BFE00&quot; /&gt;    
-     &lt;TextView    
-        android:layout_width=&quot;100dp&quot;    
-        android:layout_height=&quot;100dp&quot;    
-        android:background=&quot;#FFFF00&quot; /&gt;                
-&lt;/FrameLayout&gt;    
-</code></pre><p><img width="300" height="100" src="/2019/03/19/android_layout/005-03.png"></p>
-<h5 id="5-GridLayout-网格布局"><a href="#5-GridLayout-网格布局" class="headerlink" title="5.GridLayout(网格布局)"></a>5.GridLayout(网格布局)</h5><p><img width="300" src="/2019/03/19/android_layout/005-04.jpg"></p>
-<p>用法：</p>
-<p>step 1:先定义组件的对其方式 android:orientation 水平或者竖直,设置多少行与多少列</p>
-<p>step 2:设置组件所在的行或者列,记得是从0开始算的,不设置默认每个组件占一行一列</p>
-<p>step 3:设置组件横跨几行或者几列;设置完毕后,需要在设置一个填充:android:layout_gravity = “fill”</p>
-<p>eg:计算器的清除键占2格</p>
-<pre><code>&lt;Button
-   android:layout_columnSpan=&quot;2&quot;
-   android:layout_gravity=&quot;fill&quot;
-   android:text=&quot;清空&quot; /&gt;
-</code></pre><h5 id="6-AbsoluteLayout-绝对布局"><a href="#6-AbsoluteLayout-绝对布局" class="headerlink" title="6.AbsoluteLayout(绝对布局)"></a>6.AbsoluteLayout(绝对布局)</h5><p>这个没啥好说的，基本不用，学java swing时就强调过了</p>
-<p>控制大小: </p>
-<pre><code>android:layout_width:组件宽度
- android:layout_height:组件高度
-</code></pre><p>控制位置:</p>
-<pre><code>android:layout_x:设置组件的X坐标 
-android:layout_y:设置组件的Y坐标
-</code></pre>
-          
+          1.LinearLayout(线性布局)注意两个点：1.orientation 属性：布局中组件的排列方式，有horizontal(水平)，vertical(竖直，默认)两种方式。
+2.weight 属性：权重属性在屏幕适配时用的比较多(有几种用法可以去百度一下，用一种当 layout_width和
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/19/android_layout/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -913,26 +813,19 @@ android:layout_y:设置组件的Y坐标
       
         
           
-            <h2 id="JComboBox"><a href="#JComboBox" class="headerlink" title="JComboBox"></a>JComboBox</h2><pre><code>Integer Month[]= {1,2,3,4,5,6,7,8,9,10,11,12};
+          JComboBoxInteger Month[]= {1,2,3,4,5,6,7,8,9,10,11,12};
 JComboBox jComboBox1=new JComboBox(Month);
 jComboBox1.addItemListener(new ItemListener()
 {
-    public void itemStateChanged(ItemEvent event)
-    {
-        switch (event.getStateChange())
-        {
-        case ItemEvent.SELECTED: 
-            System.out.println(&quot;选中&quot; + event.getItem());
-            break;
-        case ItemEvent.DESELECTED:
-            System.out.println(&quot;取消选中&quot;+event.getItem());
-            break;
-        }
-    }
-});
-</code></pre><p>JComboBox的监听事件，通过 event.getStateChange() 方法来获取是否处于选中某一项的状态，若处于选中状态,则再通过 event。getItem()即可获取选中项。</p>
-
-          
+   
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/19/2018-12-21-java-swing02/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1072,41 +965,17 @@ jComboBox1.addItemListener(new ItemListener()
       
         
           
-            <h2 id="JButton"><a href="#JButton" class="headerlink" title="JButton"></a>JButton</h2><pre><code>JButton btn=new JButton(&quot;按钮&quot;);
+          JButtonJButton btn=new JButton(&quot;按钮&quot;);
 btn.addActionListener(new ActionListener() {    
-            public void actionPerformed(ActionEvent e) {
-                //此处添加要执行的操作
-            }
-        });
-</code></pre><p>一般按钮个数比较少的情况下，直接使用匿名内部类的方式更为方便。</p>
-<p>当有多个按钮的时候，需要让类继承 ActionListener 接口</p>
-<pre><code>JButton jButton1=new JButton(&quot;btn1&quot;);
-JButton jButton2=new JButton(&quot;btn2&quot;);
-jButton1.addActionListener(this);
-jButton2.addActionListener(this);
-
-//下面需要实现 ActionListener     接口的actionPerformed（）方法    
-1.
-public void actionPerformed(ActionEvent e) {
-    if(e.getSource()==jButton1) {
-        System.out.println(&quot;111111&quot;);
-    }else if(e.getSource()==jButton2){
-        System.out.println(&quot;222222&quot;);
-    }
-}
-2.
-public void actionPerformed(ActionEvent e) {
-    if(e.getActionCommand().equals(&quot;btn1&quot;)) {
-        System.out.println(&quot;111111&quot;);
-    }else if(e.getActionCommand().equals(&quot;btn2&quot;)){
-        System.out.println(&quot;222222&quot;);
-    }
-}
-</code></pre><p>这里会有两种方式，都可以</p>
-<p>1.是利用 e.getSource()来直接获取点击的对象名（注意是对象名，jButton1,jButton2）</p>
-<p>2.是利用 e.getActionCommand().equals()来直接获取点击按钮的名称，即字符串（btn1.btn2）</p>
-
-          
+            public void actionPerformed(ActionEvent e
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/19/2018-12-21-java-swing01/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1246,17 +1115,16 @@ public void actionPerformed(ActionEvent e) {
       
         
           
-            <h2 id="JList"><a href="#JList" class="headerlink" title="JList"></a>JList</h2><pre><code>String province[]= {&quot;省份&quot;,&quot;北京&quot;,&quot;天津&quot;,&quot;上海&quot;,&quot;重庆&quot;};
-JList&lt;String&gt; jList=new JList&lt;&gt;(province);
-jList.addListSelectionListener(new ListSelectionListener() {
-        public void valueChanged(ListSelectionEvent e) {
-            System.out.println(jList.getSelectedValue().toString());
-        }
-    });
-JList 通过 getSelectedValue() 方法即可获取选中项
-当然 用 getSelectedIndex() 方法可以获取到点击的项的下标 如此示例中 北京项 下标为1，天津项 下标为2.
-</code></pre>
-          
+          JListString province[]= {&quot;省份&quot;,&quot;北京&quot;,&quot;天津&quot;,&quot;上海&quot;,&quot;重庆&quot;};
+JList&lt;String&gt; jList=new JList&lt;&gt;(prov
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/19/2018-12-20-java-swing03/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1396,13 +1264,19 @@ JList 通过 getSelectedValue() 方法即可获取选中项
       
         
           
-            <h2 id="Java-9-及以上-eclipse-链接-SQL数据库-抛出-java-lang-NoClassDefFoundError-javax-xml-bind-DatatypeConverter-异常"><a href="#Java-9-及以上-eclipse-链接-SQL数据库-抛出-java-lang-NoClassDefFoundError-javax-xml-bind-DatatypeConverter-异常" class="headerlink" title="Java 9 及以上 eclipse 链接 SQL数据库 抛出 java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter 异常"></a>Java 9 及以上 eclipse 链接 SQL数据库 抛出 java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter 异常</h2><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><pre><code>需要导入 javax.xml.bind.jar   
+          Java 9 及以上 eclipse 链接 SQL数据库 抛出 java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter 异常方法需要导入 javax.xml.bind.jar   
 
 去下载一个即可  
-</code></pre><p>网址：</p>
-<p><a href="http://www.java2s.com/Code/Jar/j/Downloadjavaxxmlbindjar.htm" target="_blank" rel="noopener">http://www.java2s.com/Code/Jar/j/Downloadjavaxxmlbindjar.htm</a></p>
-
-          
+网址：
+http://
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/19/2018-12-19-javasql01/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1542,49 +1416,16 @@ JList 通过 getSelectedValue() 方法即可获取选中项
       
         
           
-            <h4 id="多个JRadioButton必须放到-ButtonGroup-中能起到单选的作用，这里需要注意-ButtonGroup-并不是组件，所以只需把每一个单选按钮添加到-容器内-即可，不需要把-ButtonGroup-添加到容器内，下面演示一下"><a href="#多个JRadioButton必须放到-ButtonGroup-中能起到单选的作用，这里需要注意-ButtonGroup-并不是组件，所以只需把每一个单选按钮添加到-容器内-即可，不需要把-ButtonGroup-添加到容器内，下面演示一下" class="headerlink" title="多个JRadioButton必须放到 ButtonGroup 中能起到单选的作用，这里需要注意 ButtonGroup 并不是组件，所以只需把每一个单选按钮添加到 容器内 即可，不需要把 ButtonGroup 添加到容器内，下面演示一下"></a>多个JRadioButton必须放到 ButtonGroup 中能起到单选的作用，这里需要注意 ButtonGroup 并不是组件，所以只需把每一个单选按钮添加到 容器内 即可，不需要把 ButtonGroup 添加到容器内，下面演示一下</h4><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>package Number;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.ButtonGroup;
-import javax.swing.JFrame;
-import javax.swing.JRadioButton;
-
-public class coin extends JFrame implements ActionListener{
-    private ButtonGroup buttonGroup=new ButtonGroup();
-    private JRadioButton jRadioButton=new JRadioButton(&quot;男&quot;);
-    private JRadioButton jRadioButton2=new JRadioButton(&quot;女&quot;);
-    public coin() {
-        JFrame jFrame=new JFrame(&quot;单选按钮&quot;);
-        jFrame.setSize(200, 150);
-        jFrame.setLayout(new FlowLayout());
-        jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //将单选按钮添加到按钮组中
-        buttonGroup.add(jRadioButton);
-        buttonGroup.add(jRadioButton2);
-        //设置单选按钮的点击事件
-        jRadioButton.addActionListener(this);
-        jRadioButton2.addActionListener(this);
-        //只需将单选按钮添加进入容器
-        jFrame.add(jRadioButton);
-        jFrame.add(jRadioButton2);
-        jFrame.setVisible(true);
-    }
-    //点击事件实现方法，同前面的 JButton 的方式，具体可以去看前面的JButton的用法
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==jRadioButton) {
-            System.out.println(&quot;boy&quot;);
-        }else if(e.getSource()==jRadioButton2) {
-            System.out.println(&quot;girl&quot;);
-        }
-    }
-    public static void main(String args[])  {
-        new coin();
-    }
-}
-</code></pre><p><img src="/2019/03/19/2018-12-24-java-swing04/jradiobutton.png" alt></p>
-
-          
+          多个JRadioButton必须放到 ButtonGroup 中能起到单选的作用，这里需要注意 ButtonGroup 并不是组件，所以只需把每一个单选按钮添加到 容器内 即可，不需要把 ButtonGroup 添加到容器内，下面演示一下代码package Number;
+import java.a
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/19/2018-12-24-java-swing04/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1724,25 +1565,18 @@ public class coin extends JFrame implements ActionListener{
       
         
           
-            <h5 id="先看图，这张图再熟悉不过了"><a href="#先看图，这张图再熟悉不过了" class="headerlink" title="先看图，这张图再熟悉不过了"></a>先看图，这张图再熟悉不过了</h5><p><img width="200" src="/2019/03/19/android_project/001.jpg"></p>
-<h5 id="下面进行一些解释"><a href="#下面进行一些解释" class="headerlink" title="下面进行一些解释"></a>下面进行一些解释</h5><p>1.java：我们写Java代码的地方，业务功能都在这里实现</p>
-<p>2.res：存放我们各种资源文件的地方，有图片，字符串，动画，音频等，还有各种形式的XML文件</p>
-<p>3.drawable：存放各种位图文件，(.png，.jpg，.9png，.gif等)除此之外可能是一些其他的drawable类型的XML文件</p>
-<p>4.mipmap-hdpi：高分辨率，一般我们把图片丢这里<br>mipmap-mdpi：中等分辨率<br>mipmap-xhdpi：超高分辨率<br>mipmap-xxhdpi：超超高分辨率</p>
-<p>5.layout：该目录下存放的就是我们的布局文件</p>
-<p>6.values：该目录下存放的是一些定义的字符串资源、样式资源、颜色资源、数组资源等等</p>
-<h5 id="在res目录下，所有的资源文件都会在-R-java-文件下生成对应的资源-id-我们可以通过id访问到对应的资源。例如"><a href="#在res目录下，所有的资源文件都会在-R-java-文件下生成对应的资源-id-我们可以通过id访问到对应的资源。例如" class="headerlink" title="在res目录下，所有的资源文件都会在 R.java 文件下生成对应的资源 id,我们可以通过id访问到对应的资源。例如"></a>在res目录下，所有的资源文件都会在 R.java 文件下生成对应的资源 id,我们可以通过id访问到对应的资源。例如</h5><p>在java代码中使用相关资源：<br>布局引用：setContentView(R.layout.main);<br>图片引用：imgIcon.setBackgroundDrawableResource(R.drawable.icon); </p>
-<p>在xml文件中使用相关资源：(通过 @XXX 即可引用)<br>文本引用：android:text=”@string/hello_world”<br>图片引用：android:background = “@drawable/img_back”</p>
-<h2 id="分析几个文件"><a href="#分析几个文件" class="headerlink" title="分析几个文件"></a>分析几个文件</h2><pre><code>1.布局文件
-</code></pre><p><img width="200" src="/2019/03/19/android_project/002.png"><br><img width="200" src="/2019/03/19/android_project/002-1.jpg"></p>
-<pre><code>2.MainActivity.java文件
-</code></pre><p><img width="200" src="/2019/03/19/android_project/003.png"></p>
-<p><img width="200" src="/2019/03/19/android_project/003-1.jpg"></p>
-<pre><code>3.AndroidManifest.xml配置文件
-</code></pre><p><img width="200" src="/2019/03/19/android_project/004.png"></p>
-<p><img width="200" src="/2019/03/19/android_project/004-1.jpg"></p>
-
-          
+          先看图，这张图再熟悉不过了
+下面进行一些解释1.java：我们写Java代码的地方，业务功能都在这里实现
+2.res：存放我们各种资源文件的地方，有图片，字符串，动画，音频等，还有各种形式的XML文件
+3.drawable：存放各种位图文件，(.png，.jpg，.9png，.gif等)除此之外可能
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/19/android_project/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1855,6 +1689,22 @@ public class coin extends JFrame implements ActionListener{
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Commandercc" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1502149172@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
 
           
           
@@ -1889,7 +1739,7 @@ public class coin extends JFrame implements ActionListener{
 
   
 </div>
-
+<!--
 
   <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
@@ -1901,7 +1751,7 @@ public class coin extends JFrame implements ActionListener{
 
   <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
-
+-->
 
 
         
@@ -1919,6 +1769,8 @@ public class coin extends JFrame implements ActionListener{
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
@@ -1945,6 +1797,8 @@ public class coin extends JFrame implements ActionListener{
 
   
 
+
+  
 
 
 
@@ -1984,6 +1838,11 @@ public class coin extends JFrame implements ActionListener{
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -2042,6 +1901,323 @@ public class coin extends JFrame implements ActionListener{
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
