@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="android,百度LBS,百度地图,">
+  <meta name="keywords" content="数据结构,排序,算法,">
 
 
 
@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="说一下百度LBS的SDk版本肯定以后会更新，或许更新后刚才的小例子就gg了，不能跑了，所以官方的才是最新的，最好的">
-<meta name="keywords" content="android,百度LBS,百度地图">
+<meta name="description" content="归并排序归并排序的基本思想是首先将 a[0···n-1] 看成n个长度为1的有序表，将相邻的k(k&amp;gt;=2)个有序子表成对归并，得到n/k个长度为k的有序子表；然后再将这些有序子表继续归并，得到n/k^2个长度为k^2的有序子表，如此反复进行下去，最后得到一个长度为n的有序表。若k=2，即归并是在相邻的两个有序子表中进行的，称为二路归并排序。若k&amp;gt;2，即归并操作在相邻的多个有序子表中进行">
+<meta name="keywords" content="数据结构,排序,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="百度地图定位LBS使用(3)">
-<meta property="og:url" content="http://haibolun.top/2019/03/22/baidulbs3/index.html">
+<meta property="og:title" content="归并排序分析与实现">
+<meta property="og:url" content="http://haibolun.top/2019/03/22/归并排序/index.html">
 <meta property="og:site_name" content="江山如画">
-<meta property="og:description" content="说一下百度LBS的SDk版本肯定以后会更新，或许更新后刚才的小例子就gg了，不能跑了，所以官方的才是最新的，最好的">
+<meta property="og:description" content="归并排序归并排序的基本思想是首先将 a[0···n-1] 看成n个长度为1的有序表，将相邻的k(k&amp;gt;=2)个有序子表成对归并，得到n/k个长度为k的有序子表；然后再将这些有序子表继续归并，得到n/k^2个长度为k^2的有序子表，如此反复进行下去，最后得到一个长度为n的有序表。若k=2，即归并是在相邻的两个有序子表中进行的，称为二路归并排序。若k&amp;gt;2，即归并操作在相邻的多个有序子表中进行">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-22T04:34:26.268Z">
+<meta property="og:updated_time" content="2019-03-22T13:37:58.266Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="百度地图定位LBS使用(3)">
-<meta name="twitter:description" content="说一下百度LBS的SDk版本肯定以后会更新，或许更新后刚才的小例子就gg了，不能跑了，所以官方的才是最新的，最好的">
+<meta name="twitter:title" content="归并排序分析与实现">
+<meta name="twitter:description" content="归并排序归并排序的基本思想是首先将 a[0···n-1] 看成n个长度为1的有序表，将相邻的k(k&amp;gt;=2)个有序子表成对归并，得到n/k个长度为k的有序子表；然后再将这些有序子表继续归并，得到n/k^2个长度为k^2的有序子表，如此反复进行下去，最后得到一个长度为n的有序表。若k=2，即归并是在相邻的两个有序子表中进行的，称为二路归并排序。若k&amp;gt;2，即归并操作在相邻的多个有序子表中进行">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://haibolun.top/2019/03/22/baidulbs3/">
+  <link rel="canonical" href="http://haibolun.top/2019/03/22/归并排序/">
 
 
 
 
 
-  <title>百度地图定位LBS使用(3) | 江山如画</title>
+  <title>归并排序分析与实现 | 江山如画</title>
   
 
 
@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/22/baidulbs3/">
+    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/22/归并排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="1215ccc">
@@ -324,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">百度地图定位LBS使用(3)</h1>
+          <h1 class="post-title" itemprop="name headline">归并排序分析与实现</h1>
         
 
         <div class="post-meta">
@@ -336,7 +336,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T00:46:59+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T20:58:59+08:00">
                 2019-03-22
               </time>
             
@@ -359,8 +359,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
                   </a>
                 </span>
 
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  56 word
+                  648 word
                 </span>
               
 
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 min
+                  2 min
                 </span>
               
             </div>
@@ -427,9 +427,8 @@
       
 
       
-        <h5 id="说一下"><a href="#说一下" class="headerlink" title="说一下"></a>说一下</h5><p>百度LBS的SDk版本肯定以后会更新，或许更新后刚才的小例子就gg了，不能跑了，所以官方的才是最新的，最好的<br><a id="more"></a></p>
-<h5 id="官网学习"><a href="#官网学习" class="headerlink" title="官网学习"></a>官网学习</h5><p><a href="http://lbsyun.baidu.com/index.php?title=androidsdk" target="_blank" rel="noopener">Android地图SDK指南</a></p>
-
+        <h5 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h5><p>归并排序的基本思想是首先将 a[0···n-1] 看成n个长度为1的有序表，将相邻的k(k&gt;=2)个有序子表成对归并，得到n/k个长度为k的有序子表；然后再将这些有序子表继续归并，得到n/k^2个长度为k^2的有序子表，如此反复进行下去，最后得到一个长度为n的有序表。若k=2，即归并是在相邻的两个有序子表中进行的，称为二路归并排序。若k&gt;2，即归并操作在相邻的多个有序子表中进行，则叫多路归并排序。我们仅讨论二路归并排序。<br><a id="more"></a><br>分解—&gt;子问题求解—&gt;合并</p>
+<h5 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> n)</span></span>&#123;    <span class="comment">//输出数组元素</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//合并</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> left, <span class="keyword">int</span> mid, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> *temp = <span class="keyword">new</span> <span class="keyword">int</span>[right - left + <span class="number">1</span>]; <span class="comment">//定义并初始化临时数组</span></span><br><span class="line">	<span class="keyword">int</span> i = left;       <span class="comment">//左边序列指针</span></span><br><span class="line">	<span class="keyword">int</span> j = mid + <span class="number">1</span>;    <span class="comment">//右边序列指针</span></span><br><span class="line">	<span class="keyword">int</span> t = <span class="number">0</span>;          <span class="comment">//临时数组指针</span></span><br><span class="line">	<span class="keyword">while</span> (i &lt;= mid&amp;&amp;j &lt;= right)&#123; <span class="comment">//第一个子表（左）和第二个子表（右）均没有扫描完时循环，左边子表和右边子表均从自己的第1个元素开始向右扫描</span></span><br><span class="line">		<span class="keyword">if</span> (a[i] &lt;= a[j])&#123;		  </span><br><span class="line">			temp[t++] = a[i++];	  <span class="comment">//如果第一个子表的当前元素值小，放入temp中</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			temp[t++] = a[j++];	  <span class="comment">//如果第二个子表的当前元素值小，放入temp中</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (i &lt;= mid)&#123;             <span class="comment">//如果第一个子表有剩余元素，则直接将剩余的元素填入temp中</span></span><br><span class="line">		temp[t++] = a[i++];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (j &lt;= right)&#123;			  <span class="comment">//如果第二个子表有剩余元素，则直接将剩余的元素填入temp中</span></span><br><span class="line">		temp[t++] = a[j++];</span><br><span class="line">	&#125;</span><br><span class="line">	t = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (left &lt;= right)&#123;		  <span class="comment">//将temp中的元素全部复制到原数组中</span></span><br><span class="line">		a[left++] = temp[t++];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">delete</span>[]temp;				  <span class="comment">//释放临时空间</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//归并排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MergeSort</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (left &lt; right)&#123;                 <span class="comment">//子序列有两个或两个以上元素</span></span><br><span class="line">		<span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">		MergeSort(a, left, mid);	   <span class="comment">//左边归并排序，使得左子序列有序</span></span><br><span class="line">		MergeSort(a, mid + <span class="number">1</span>, right);  <span class="comment">//右边归并排序，使得右子序列有序</span></span><br><span class="line">		Merge(a, left, mid, right);	   <span class="comment">//将两个有序子序列合并</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">9</span>] = &#123; <span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span> &#125;;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"排序前： "</span>;</span><br><span class="line">	display(a,<span class="number">9</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt;<span class="string">"排序后： "</span>;</span><br><span class="line">	MergeSort(a,<span class="number">0</span>,<span class="number">8</span>);</span><br><span class="line">	display(a, <span class="number">9</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -446,11 +445,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/android/" rel="tag"><i class="fa fa-tag"></i> android</a>
+            <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
           
-            <a href="/tags/百度LBS/" rel="tag"><i class="fa fa-tag"></i> 百度LBS</a>
+            <a href="/tags/排序/" rel="tag"><i class="fa fa-tag"></i> 排序</a>
           
-            <a href="/tags/百度地图/" rel="tag"><i class="fa fa-tag"></i> 百度地图</a>
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           
         </div>
       
@@ -463,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/21/baidulbs2/" rel="next" title="百度地图定位LBS使用(2)">
-                <i class="fa fa-chevron-left"></i> 百度地图定位LBS使用(2)
+              <a href="/2019/03/22/快速排序/" rel="next" title="快速排序分析与实现">
+                <i class="fa fa-chevron-left"></i> 快速排序分析与实现
               </a>
             
           </div>
@@ -473,8 +472,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/22/快速排序/" rel="prev" title="快速排序分析与实现">
-                快速排序分析与实现 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/22/折半查找/" rel="prev" title="折半查找的分析与实现">
+                折半查找的分析与实现 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -625,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#说一下"><span class="nav-number">1.</span> <span class="nav-text">说一下</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#官网学习"><span class="nav-number">2.</span> <span class="nav-text">官网学习</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#归并排序"><span class="nav-number">1.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
             
 
           </div>

@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[折半查找的分析与实现]]></title>
+    <url>%2F2019%2F03%2F22%2F%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%2F</url>
+    <content type="text"><![CDATA[折半查找折半查找又称二分查找，它是一种效率较高的查找方法。但是折半查找要求查找序列中的元素是有序的，为了简单，假设序列是递增有序的。折半查找的基本思路：设 a[low···high] 是当前的查找区间，首先确定该区间的中点位置mid=(low+high)/2 (取下界);然后将待查的 k值 与 a[mid].key 比较： （1）若k==a[mid].key,则查找成功并返回该元素的物理下标 （2）若k&lt;a[mid],则由表的有序性可知 a[mid···high] 均大于k，因此表中若存在值 等于k的元素，则该元素必定位于 左子表 a[low···mid-1] 中，故新的查找区间 是左子表a[low···mid-1]。 （3）若k&gt;a[mid],则要查找的元素必定位于 右子表 a[mid+1···high] 中，故新的查找区间 是右子表a[mid+1···high]。 下一次查找是针对新的查找区间进行的。 因此可以从最初的查找区间a[0···n-1]开始，每经过一次与当前查找区间中点位置上的关键字比较就可以确定查找是否成功，不成功则当前的查找区间缩小一半。重复这一过程，直到找到关键字为K的元素，或者直到当前的查找区间为空（即查找失败）时为止。 代码实现12345678910111213141516171819202122232425262728293031 #include&lt;iostream&gt;using namespace std;//折半查找int BinSearch(int a[], int low, int high, int k)&#123; int mid; if (low &lt;= high)&#123; //当前区间存在元素时 mid = (low + high) / 2; //求查找区间的中间位置 if (a[mid] == k)&#123; //找到了，直接返回其物理下标 mid return mid; &#125; if (a[mid] &gt; k)&#123; //当a[mid]&gt;k 时在a[low···mid-1]中递归查找 return BinSearch(a, low, mid - 1, k); &#125; else&#123; //当a[mid]&lt;k 时在a[mid+1···high]中递归查找 return BinSearch(a, mid + 1, high, k); &#125; &#125; else&#123; return -1; //找不到，错误处理 &#125;&#125;int main()&#123; int n = 10, i; int k = 6; //要找的值 int a[] = &#123; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 &#125;; i = BinSearch(a, 0, n - 1, k); if (i &gt;= 0)&#123; cout &lt;&lt; "第" &lt;&lt; i &lt;&lt; "个元素值为k"; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>排序</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[归并排序分析与实现]]></title>
+    <url>%2F2019%2F03%2F22%2F%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[归并排序归并排序的基本思想是首先将 a[0···n-1] 看成n个长度为1的有序表，将相邻的k(k&gt;=2)个有序子表成对归并，得到n/k个长度为k的有序子表；然后再将这些有序子表继续归并，得到n/k^2个长度为k^2的有序子表，如此反复进行下去，最后得到一个长度为n的有序表。若k=2，即归并是在相邻的两个有序子表中进行的，称为二路归并排序。若k&gt;2，即归并操作在相邻的多个有序子表中进行，则叫多路归并排序。我们仅讨论二路归并排序。分解—&gt;子问题求解—&gt;合并 代码实现123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051 #include&lt;iostream&gt;using namespace std;void display(int a[],int n)&#123; //输出数组元素 for (int i = 0; i &lt; n; i++)&#123; cout &lt;&lt; a[i] &lt;&lt; " "; &#125;&#125;//合并void Merge(int a[], int left, int mid, int right)&#123; int *temp = new int[right - left + 1]; //定义并初始化临时数组 int i = left; //左边序列指针 int j = mid + 1; //右边序列指针 int t = 0; //临时数组指针 while (i &lt;= mid&amp;&amp;j &lt;= right)&#123; //第一个子表（左）和第二个子表（右）均没有扫描完时循环，左边子表和右边子表均从自己的第1个元素开始向右扫描 if (a[i] &lt;= a[j])&#123; temp[t++] = a[i++]; //如果第一个子表的当前元素值小，放入temp中 &#125; else&#123; temp[t++] = a[j++]; //如果第二个子表的当前元素值小，放入temp中 &#125; &#125; while (i &lt;= mid)&#123; //如果第一个子表有剩余元素，则直接将剩余的元素填入temp中 temp[t++] = a[i++]; &#125; while (j &lt;= right)&#123; //如果第二个子表有剩余元素，则直接将剩余的元素填入temp中 temp[t++] = a[j++]; &#125; t = 0; while (left &lt;= right)&#123; //将temp中的元素全部复制到原数组中 a[left++] = temp[t++]; &#125; delete[]temp; //释放临时空间&#125;//归并排序void MergeSort(int a[],int left,int right)&#123; if (left &lt; right)&#123; //子序列有两个或两个以上元素 int mid = (left + right) / 2; MergeSort(a, left, mid); //左边归并排序，使得左子序列有序 MergeSort(a, mid + 1, right); //右边归并排序，使得右子序列有序 Merge(a, left, mid, right); //将两个有序子序列合并 &#125;&#125;int main()&#123; int a[9] = &#123; 9, 8, 7, 6, 5, 4, 3, 2, 1 &#125;; cout &lt;&lt; "排序前： "; display(a,9); cout &lt;&lt; endl; cout &lt;&lt;"排序后： "; MergeSort(a,0,8); display(a, 9);&#125;]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>排序</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[快速排序分析与实现]]></title>
+    <url>%2F2019%2F03%2F22%2F%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[快速排序快速排序的基本思想是在待排序的n个元素中任取一个元素（通常取第一个元素）作为基准，把该元素放入最终位置后整个数据序列被基准分割成两个子序列，所有小于基准的元素放置在前子序列中，所有大于基准的元素放置在后子序列中，并把基准排在这两个子序列的中间，这个过程称为划分，然后对子序列分别重复上述过程，直到每个子序列内只有一个元素或为空为止。 代码实现1234567891011121314151617181920212223242526272829303132333435363738394041using namespace std;//输出a中所有元素void display(int a[],int n)&#123; for (int i = 0; i &lt; n; i++)&#123; cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; &#125;&#125;//划分int Partition(int a[], int s, int t)&#123; int i = s, j = t; int tem = a[s]; //用序列的第1个记录作为基准 while (i != j)&#123; //从序列两端交替向中间扫描，直到 i=j 为止 while (j&gt;i&amp;&amp;a[j] &gt;= tem)&#123; j--; //从右向左扫描，找到第一个关键字小于tem的a[j] &#125; a[i] = a[j]; //将a[j]前移到a[i]的位置 while (i &lt; j&amp;&amp;a[i] &lt;= tem)&#123; i++; //从左向右扫描，找到第一个关键字大于tem的a[i] &#125; a[j] = a[i]; //将a[i]后移到a[j]的位置 &#125; a[i] = tem; //将基准插到中间 return i;&#125;void QuickSort(int a[], int s, int t)&#123; //对 a[s···t]元素序列进行递增排序 if (s &lt; t)&#123; int i = Partition(a, s, t); //基准的位置 QuickSort(a, s, i - 1); //对基准左边的序列递归排序 QuickSort(a, i+1, t); //对基准右边的序列递归排序 &#125;&#125;int main()&#123; int n = 10; int a[] = &#123; 2, 5, 1, 7, 10, 6, 9, 4, 3, 8 &#125;; cout &lt;&lt; &quot;排序前：&quot;; display(a,n); cout &lt;&lt; endl; cout &lt;&lt; &quot;排序后：&quot;; QuickSort(a, 0, n - 1); display(a, n);&#125;]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>排序</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[百度地图定位LBS使用(3)]]></title>
     <url>%2F2019%2F03%2F22%2Fbaidulbs3%2F</url>
     <content type="text"><![CDATA[说一下百度LBS的SDk版本肯定以后会更新，或许更新后刚才的小例子就gg了，不能跑了，所以官方的才是最新的，最好的 官网学习Android地图SDK指南]]></content>
@@ -51,17 +90,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[阿里巴巴矢量图标库]]></title>
-    <url>%2F2019%2F03%2F19%2Ftubiao%2F</url>
-    <content type="text"><![CDATA[分享一个很棒的图标网站点击下面的链接即可查看 Iconfont–阿里巴巴矢量图标库]]></content>
+    <title><![CDATA[测试用]]></title>
+    <url>%2F2019%2F03%2F19%2Ftest%2F</url>
+    <content type="text"><![CDATA[12 34]]></content>
       <tags>
         <tag>随心</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[测试用]]></title>
-    <url>%2F2019%2F03%2F19%2Ftest%2F</url>
-    <content type="text"><![CDATA[12 34]]></content>
+    <title><![CDATA[阿里巴巴矢量图标库]]></title>
+    <url>%2F2019%2F03%2F19%2Ftubiao%2F</url>
+    <content type="text"><![CDATA[分享一个很棒的图标网站点击下面的链接即可查看 Iconfont–阿里巴巴矢量图标库]]></content>
       <tags>
         <tag>随心</tag>
       </tags>

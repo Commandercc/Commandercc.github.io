@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="android,百度LBS,百度地图,">
+  <meta name="keywords" content="数据结构,排序,算法,">
 
 
 
@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="说一下百度LBS的SDk版本肯定以后会更新，或许更新后刚才的小例子就gg了，不能跑了，所以官方的才是最新的，最好的">
-<meta name="keywords" content="android,百度LBS,百度地图">
+<meta name="description" content="折半查找折半查找又称二分查找，它是一种效率较高的查找方法。但是折半查找要求查找序列中的元素是有序的，为了简单，假设序列是递增有序的。折半查找的基本思路：设 a[low···high] 是当前的查找区间，首先确定该区间的中点位置mid=(low+high)/2 (取下界);然后将待查的 k值 与 a[mid].key 比较：">
+<meta name="keywords" content="数据结构,排序,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="百度地图定位LBS使用(3)">
-<meta property="og:url" content="http://haibolun.top/2019/03/22/baidulbs3/index.html">
+<meta property="og:title" content="折半查找的分析与实现">
+<meta property="og:url" content="http://haibolun.top/2019/03/22/折半查找/index.html">
 <meta property="og:site_name" content="江山如画">
-<meta property="og:description" content="说一下百度LBS的SDk版本肯定以后会更新，或许更新后刚才的小例子就gg了，不能跑了，所以官方的才是最新的，最好的">
+<meta property="og:description" content="折半查找折半查找又称二分查找，它是一种效率较高的查找方法。但是折半查找要求查找序列中的元素是有序的，为了简单，假设序列是递增有序的。折半查找的基本思路：设 a[low···high] 是当前的查找区间，首先确定该区间的中点位置mid=(low+high)/2 (取下界);然后将待查的 k值 与 a[mid].key 比较：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-22T04:34:26.268Z">
+<meta property="og:updated_time" content="2019-03-22T13:39:36.369Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="百度地图定位LBS使用(3)">
-<meta name="twitter:description" content="说一下百度LBS的SDk版本肯定以后会更新，或许更新后刚才的小例子就gg了，不能跑了，所以官方的才是最新的，最好的">
+<meta name="twitter:title" content="折半查找的分析与实现">
+<meta name="twitter:description" content="折半查找折半查找又称二分查找，它是一种效率较高的查找方法。但是折半查找要求查找序列中的元素是有序的，为了简单，假设序列是递增有序的。折半查找的基本思路：设 a[low···high] 是当前的查找区间，首先确定该区间的中点位置mid=(low+high)/2 (取下界);然后将待查的 k值 与 a[mid].key 比较：">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://haibolun.top/2019/03/22/baidulbs3/">
+  <link rel="canonical" href="http://haibolun.top/2019/03/22/折半查找/">
 
 
 
 
 
-  <title>百度地图定位LBS使用(3) | 江山如画</title>
+  <title>折半查找的分析与实现 | 江山如画</title>
   
 
 
@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/22/baidulbs3/">
+    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/22/折半查找/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="1215ccc">
@@ -324,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">百度地图定位LBS使用(3)</h1>
+          <h1 class="post-title" itemprop="name headline">折半查找的分析与实现</h1>
         
 
         <div class="post-meta">
@@ -336,7 +336,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T00:46:59+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T21:35:59+08:00">
                 2019-03-22
               </time>
             
@@ -359,8 +359,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
                   </a>
                 </span>
 
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  56 word
+                  574 word
                 </span>
               
 
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 min
+                  2 min
                 </span>
               
             </div>
@@ -427,9 +427,8 @@
       
 
       
-        <h5 id="说一下"><a href="#说一下" class="headerlink" title="说一下"></a>说一下</h5><p>百度LBS的SDk版本肯定以后会更新，或许更新后刚才的小例子就gg了，不能跑了，所以官方的才是最新的，最好的<br><a id="more"></a></p>
-<h5 id="官网学习"><a href="#官网学习" class="headerlink" title="官网学习"></a>官网学习</h5><p><a href="http://lbsyun.baidu.com/index.php?title=androidsdk" target="_blank" rel="noopener">Android地图SDK指南</a></p>
-
+        <h5 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h5><p>折半查找又称二分查找，它是一种效率较高的查找方法。但是折半查找要求查找序列中的元素是有序的，为了简单，假设序列是递增有序的。<br>折半查找的基本思路：设 a[low···high] 是当前的查找区间，首先确定该区间的中点位置mid=(low+high)/2 (取下界);然后将待查的 k值 与 a[mid].key 比较：<br><a id="more"></a><br>    （1）若k==a[mid].key,则查找成功并返回该元素的物理下标<br>    （2）若k&lt;a[mid],则由表的有序性可知 a[mid···high] 均大于k，因此表中若存在值<br>         等于k的元素，则该元素必定位于 左子表 a[low···mid-1] 中，故新的查找区间<br>         是左子表a[low···mid-1]。<br>    （3）若k&gt;a[mid],则要查找的元素必定位于 右子表 a[mid+1···high] 中，故新的查找区间<br>         是右子表a[mid+1···high]。<br>    下一次查找是针对新的查找区间进行的。<br>    因此可以从最初的查找区间a[0···n-1]开始，每经过一次与当前查找区间中点位置上的关键字比较就可以确定查找是否成功，不成功则当前的查找区间缩小一半。重复这一过程，直到找到关键字为K的元素，或者直到当前的查找区间为空（即查找失败）时为止。</p>
+<h5 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">//折半查找</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BinSearch</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> low, <span class="keyword">int</span> high, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mid;</span><br><span class="line">	<span class="keyword">if</span> (low &lt;= high)&#123;			<span class="comment">//当前区间存在元素时</span></span><br><span class="line">		mid = (low + high) / <span class="number">2</span>;	<span class="comment">//求查找区间的中间位置</span></span><br><span class="line">		<span class="keyword">if</span> (a[mid] == k)&#123;		<span class="comment">//找到了，直接返回其物理下标 mid</span></span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (a[mid] &gt; k)&#123;		<span class="comment">//当a[mid]&gt;k 时在a[low···mid-1]中递归查找</span></span><br><span class="line">			<span class="keyword">return</span> BinSearch(a, low, mid - <span class="number">1</span>, k);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;					<span class="comment">//当a[mid]&lt;k 时在a[mid+1···high]中递归查找</span></span><br><span class="line">			<span class="keyword">return</span> BinSearch(a, mid + <span class="number">1</span>, high, k);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;				<span class="comment">//找不到，错误处理</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n = <span class="number">10</span>, i;</span><br><span class="line">	<span class="keyword">int</span> k = <span class="number">6</span>;				    <span class="comment">//要找的值</span></span><br><span class="line">	<span class="keyword">int</span> a[] = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span> &#125;;</span><br><span class="line">	i = BinSearch(a, <span class="number">0</span>, n - <span class="number">1</span>, k);</span><br><span class="line">	<span class="keyword">if</span> (i &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"第"</span> &lt;&lt; i &lt;&lt; <span class="string">"个元素值为k"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -446,11 +445,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/android/" rel="tag"><i class="fa fa-tag"></i> android</a>
+            <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
           
-            <a href="/tags/百度LBS/" rel="tag"><i class="fa fa-tag"></i> 百度LBS</a>
+            <a href="/tags/排序/" rel="tag"><i class="fa fa-tag"></i> 排序</a>
           
-            <a href="/tags/百度地图/" rel="tag"><i class="fa fa-tag"></i> 百度地图</a>
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           
         </div>
       
@@ -463,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/21/baidulbs2/" rel="next" title="百度地图定位LBS使用(2)">
-                <i class="fa fa-chevron-left"></i> 百度地图定位LBS使用(2)
+              <a href="/2019/03/22/归并排序/" rel="next" title="归并排序分析与实现">
+                <i class="fa fa-chevron-left"></i> 归并排序分析与实现
               </a>
             
           </div>
@@ -472,10 +471,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/22/快速排序/" rel="prev" title="快速排序分析与实现">
-                快速排序分析与实现 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -625,7 +620,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#说一下"><span class="nav-number">1.</span> <span class="nav-text">说一下</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#官网学习"><span class="nav-number">2.</span> <span class="nav-text">官网学习</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#折半查找"><span class="nav-number">1.</span> <span class="nav-text">折半查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
             
 
           </div>
