@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://haibolun.top/2019/03/21/baidulbs/9.png">
 <meta property="og:image" content="http://haibolun.top/2019/03/21/baidulbs/8.png">
 <meta property="og:image" content="http://haibolun.top/2019/03/21/baidulbs/10.png">
-<meta property="og:updated_time" content="2019-03-21T14:53:13.276Z">
+<meta property="og:updated_time" content="2019-03-22T04:36:14.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="百度地图定位LBS使用(1)">
 <meta name="twitter:description" content="这篇主要搞一下写代码前的一些准备LBS是啥？？？">
@@ -144,6 +144,16 @@
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?96ffaa007139b092545b7495dd112319";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -391,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  623 word
+                  627 word
                 </span>
               
 
@@ -433,7 +443,7 @@
 <h5 id="定位方式？？？"><a href="#定位方式？？？" class="headerlink" title="定位方式？？？"></a>定位方式？？？</h5><p>通常有两种，一种是通过GPS定位，主要原理是基于手机内置的GPS硬件直接和卫星交互来获取当前的经纬度信息，这种方式精确度非常高，但是缺点是只能在室外使用，室内基本无法接收到卫星的信号。另外一种是网络定位，主要原理是根据手机当前网络附近的三个基站进行测速，以此计算出手机和每个基站之间的距离，再通过三角定位确定出一个大概的位置，精确度一般，但优点是在室内外都可用。</p>
 <h5 id="百度LBS"><a href="#百度LBS" class="headerlink" title="百度LBS"></a>百度LBS</h5><p>上面的两种定位方式android都提供了相应的API支持，但Google被墙，网络定位的API失效，GPS定位室内不能用，比较蛋疼。相比之下，国内的也有非常好用的LBS–百度LBS服务。</p>
 <h5 id="正片开始"><a href="#正片开始" class="headerlink" title="正片开始"></a>正片开始</h5><p>1.<a href="http://lbsyun.baidu.com" target="_blank" rel="noopener">百度地图开放平台</a> 先进这个网址，有账号的登录，没有的注册一个，很简单，把一些基本信息填完整即可。</p>
-<p>2.<a href="http://lbsyun.baidu.com/apiconsole/key" target="_blank" rel="noopener"></a>再点开这个网址，点击创建应用，如下图</p>
+<p>2.<a href="http://lbsyun.baidu.com/apiconsole/key" target="_blank" rel="noopener">创建应用</a> 再点开这个网址，点击创建应用，如下图</p>
 <p><img width="200" src="/2019/03/21/baidulbs/4.png"></p>
 <p>其中SHA1和包名，在androidstudio项目中如图：</p>
 <p><img width="200" src="/2019/03/21/baidulbs/1.png"></p>
@@ -499,8 +509,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/21/baidulbs3/" rel="prev" title="百度地图定位LBS使用(3)">
-                百度地图定位LBS使用(3) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/21/baidulbs2/" rel="prev" title="百度地图定位LBS使用(2)">
+                百度地图定位LBS使用(2) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
