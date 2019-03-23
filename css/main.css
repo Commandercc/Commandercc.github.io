@@ -1112,7 +1112,6 @@ pre .javascript .function {
   position: relative;
   display: inline-block;
   padding: 0 40px;
-  color: #1e90ff !important;
   background: #222;
   border-bottom: none;
 }
@@ -1200,7 +1199,6 @@ pre .javascript .function {
   }
 }
 .menu .menu-item a {
-  color: #1e90ff !important;
   display: block;
   font-size: 13px;
   line-height: inherit;
@@ -1832,7 +1830,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #cdcdff;
+  background: #a4ffff;
 }
 .links-of-blogroll {
   font-size: 13px;

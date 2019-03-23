@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[STL常用容器归纳总结(1)]]></title>
+    <url>%2F2019%2F03%2F23%2Fc%2B%2BSTL%2F</url>
+    <content type="text"><![CDATA[这篇大题介绍一下STL相关内容STL简介C++中已经实现了数据结构中的很多容器和算法，它们构成标准C++库的子集，即标准模板类库 (Standard Template Library).STL是一个功能强大的基于模板的容器库，通过直接使用这些现成的标准化组件可以大大提高算法设计的效率和可靠性。 STL概述STL主要由container(容器)、algorithm(算法)和iterator(迭代器)三大部分构成，容器用于存放数据对象(元素)，算法用于操作容器中的数据对象，算法和容器之间的中介就是迭代器。 container(容器):简单的说一个stl容器就是一种数据结构，例如链表、栈和队列等，STL中都已经实现好了，在算法设计中可以直接使用它们。这篇下面会详细讲各个容器，另外一些哈希表容器hash_set,hash_map等，它们属于非标准STL容器，其功能可以用set,map代替。 algorithm(算法):stl的算法部分主要由头文件、和组成。stl提供了大约100个实现算法的模板函数。 iterator(迭代器):stl迭代器用于访问容器中的数据对象。每个容器都有自己的迭代器，只有容器自己知道如何访问自己的元素。迭代器像c/c++中的指针，算法通过迭代器来定位和操作容器中的元素。 常用STL容器STL容器很多，每一个容器就是一个类模板，大致分为顺序容器、适配器容器和关联容器3种类型。]]></content>
+      <categories>
+        <category>c/c++</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>STL</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[STL常用容器归纳总结(2)]]></title>
+    <url>%2F2019%2F03%2F23%2F%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A81%2F</url>
+    <content type="text"><![CDATA[这篇主要讲一下顺序容器1.vector(向量容器)实现头文件：&lt; vector&gt;定义方式：1234vector&lt;int&gt; v1; //定义元素为int的向量v1vector&lt;int&gt; v2(10); //指定向量v2的初始大小为10个int元素vector&lt;double&gt; v3(10,1.23); //指定v3的10个初始元素的初值为1.23vector&lt;int&gt; v4(a,a+5); //用数组a[0···4]共5个元素初始化v4 主要成员函数： empty(): 判断当前向量是否为空。 size(): 返回当前向量容器中的实际元素个数。 : 返回指定下标的元素。 reserve(n): 为当前向量容器预分配n个元素的存储空间。 capacity(): 返回当前向量容器在重新进行内存分配以前所能容纳的元素个数。 resize(n): 调整当前向量容器的大小，使其能容纳n个元素。 push_back(): 在当前向量容器尾部添加一个元素。 insert(pos,elem): 在pos位置插入元素elem，即将元素elem插入到迭代器指定的元素之前。 front(): 获取当前向量容器的第一个元素。 back(): 获取当前向量容器的最后一个元素。 erase(): 删除当前向量容器中某个迭代器或者迭代器区间指定的元素。 clear(): 删除当前向量容器中的所有元素。 begin(): 该函数的两个版本返回iterator或const_iterator,引用容器的第一个元素。 end(): 该函数的两个版本返回返回iterator或const_iterator,引用容器的最后一个元素后面的一个位置。 rbegin(): 该函数的两个版本返回reverse_iterator或const_reverse_iterator,引用容器的最后一个元素。 rend(): 该函数的两个版本返回reverse_iterator或const_reverse_iterator,引用容器的第一个元素的前面一个位置。 最后两个是反向迭代。 演示代码： #include&lt;iostream&gt; #include&lt; vector&gt; using namespace std; int main(){ vector&lt;int&gt; myv; //定义vector容器myv vector&lt;int&gt;::iterator it;//定义myv的正向迭代器 it myv.push_back(1); //在myv的末尾添加元素 1 it = myv.begin(); //it迭代器指向开头元素 1 myv.insert(it, 2); //在it指向的元素之前插入元素 2 myv.push_back(3); //在myv的末尾添加元素 3 myv.push_back(4); //在myv的末尾添加元素 4 it = myv.end(); //it 迭代器指向元素4的后面 it--; //it 迭代器指向元素 4 myv.erase(it); //删除元素4 for (it = myv.begin(); it != myv.end(); it++){ cout &lt;&lt; *it &lt;&lt; &quot; &quot;; } return 0; }]]></content>
+      <categories>
+        <category>c/c++</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>STL</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[折半查找的分析与实现]]></title>
     <url>%2F2019%2F03%2F22%2F%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%2F</url>
     <content type="text"><![CDATA[折半查找折半查找又称二分查找，它是一种效率较高的查找方法。但是折半查找要求查找序列中的元素是有序的，为了简单，假设序列是递增有序的。折半查找的基本思路：设 a[low···high] 是当前的查找区间，首先确定该区间的中点位置mid=(low+high)/2 (取下界);然后将待查的 k值 与 a[mid].key 比较： （1）若k==a[mid].key,则查找成功并返回该元素的物理下标 （2）若k&lt;a[mid],则由表的有序性可知 a[mid···high] 均大于k，因此表中若存在值 等于k的元素，则该元素必定位于 左子表 a[low···mid-1] 中，故新的查找区间 是左子表a[low···mid-1]。 （3）若k&gt;a[mid],则要查找的元素必定位于 右子表 a[mid+1···high] 中，故新的查找区间 是右子表a[mid+1···high]。 下一次查找是针对新的查找区间进行的。 因此可以从最初的查找区间a[0···n-1]开始，每经过一次与当前查找区间中点位置上的关键字比较就可以确定查找是否成功，不成功则当前的查找区间缩小一半。重复这一过程，直到找到关键字为K的元素，或者直到当前的查找区间为空（即查找失败）时为止。 代码实现12345678910111213141516171819202122232425262728293031 #include&lt;iostream&gt;using namespace std;//折半查找int BinSearch(int a[], int low, int high, int k)&#123; int mid; if (low &lt;= high)&#123; //当前区间存在元素时 mid = (low + high) / 2; //求查找区间的中间位置 if (a[mid] == k)&#123; //找到了，直接返回其物理下标 mid return mid; &#125; if (a[mid] &gt; k)&#123; //当a[mid]&gt;k 时在a[low···mid-1]中递归查找 return BinSearch(a, low, mid - 1, k); &#125; else&#123; //当a[mid]&lt;k 时在a[mid+1···high]中递归查找 return BinSearch(a, mid + 1, high, k); &#125; &#125; else&#123; return -1; //找不到，错误处理 &#125;&#125;int main()&#123; int n = 10, i; int k = 6; //要找的值 int a[] = &#123; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 &#125;; i = BinSearch(a, 0, n - 1, k); if (i &gt;= 0)&#123; cout &lt;&lt; "第" &lt;&lt; i &lt;&lt; "个元素值为k"; &#125; return 0;&#125;]]></content>
@@ -8,9 +34,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>数据结构</tag>
         <tag>排序</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -21,9 +47,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>数据结构</tag>
         <tag>排序</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -34,9 +60,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>数据结构</tag>
         <tag>排序</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
