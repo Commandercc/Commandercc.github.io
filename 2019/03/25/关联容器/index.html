@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="c++,STL,算法,">
 
 
 
@@ -80,13 +80,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="江山如画">
-<meta property="og:url" content="http://haibolun.top/categories/java/index.html">
+<meta name="description" content="这篇主要讲一下关联容器1.set（集合容器）/ multiset（多重集容器）实现头文件：&amp;lt; set&amp;gt;">
+<meta name="keywords" content="c++,STL,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STL常用容器归纳总结(3)">
+<meta property="og:url" content="http://haibolun.top/2019/03/25/关联容器/index.html">
 <meta property="og:site_name" content="江山如画">
+<meta property="og:description" content="这篇主要讲一下关联容器1.set（集合容器）/ multiset（多重集容器）实现头文件：&amp;lt; set&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-25T11:27:35.190Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="江山如画">
+<meta name="twitter:title" content="STL常用容器归纳总结(3)">
+<meta name="twitter:description" content="这篇主要讲一下关联容器1.set（集合容器）/ multiset（多重集容器）实现头文件：&amp;lt; set&amp;gt;">
 
 
 
@@ -116,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://haibolun.top/categories/java/">
+  <link rel="canonical" href="http://haibolun.top/2019/03/25/关联容器/">
 
 
 
 
 
-  <title>分类: java | 江山如画</title>
+  <title>STL常用容器归纳总结(3) | 江山如画</title>
   
 
 
@@ -152,7 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -288,183 +293,289 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>java<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/25/关联容器/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="1215ccc">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Commandercc/smallthings/master/peitu03.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江山如画">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/20/java-io/" itemprop="url">
-              
-                <span itemprop="name">java文件读写操作的一个简单例子</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">STL常用容器归纳总结(3)</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-20T17:38:48+08:00" content="2019-03-20">
-          03-20
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T18:35:59+08:00">
+                2019-03-25
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/c-c/" itemprop="url" rel="index">
+                    <span itemprop="name">c/c++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  929 word
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/19/2018-12-21-java-swing02/" itemprop="url">
-              
-                <span itemprop="name">swing 中一些控件的点击事件 (2)--JComboBox</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-19T23:06:10+08:00" content="2019-03-19">
-          03-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/19/2018-12-21-java-swing01/" itemprop="url">
-              
-                <span itemprop="name">swing 中一些控件的点击事件 (1)--JButton</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-19T23:06:10+08:00" content="2019-03-19">
-          03-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/19/2018-12-20-java-swing03/" itemprop="url">
-              
-                <span itemprop="name">swing 中一些控件的点击事件 (3)--JList</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-19T23:06:10+08:00" content="2019-03-19">
-          03-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/19/2018-12-19-javasql01/" itemprop="url">
-              
-                <span itemprop="name">javax/xml/bind/DatatypeConverter 异常 </span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-19T23:06:10+08:00" content="2019-03-19">
-          03-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/19/2018-12-24-java-swing04/" itemprop="url">
-              
-                <span itemprop="name">swing 中一些控件的点击事件 (4)--JRadioButton及简单用法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-19T21:56:06+08:00" content="2019-03-19">
-          03-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h5 id="这篇主要讲一下关联容器"><a href="#这篇主要讲一下关联容器" class="headerlink" title="这篇主要讲一下关联容器"></a>这篇主要讲一下关联容器</h5><h5 id="1-set（集合容器）-multiset（多重集容器）"><a href="#1-set（集合容器）-multiset（多重集容器）" class="headerlink" title="1.set（集合容器）/ multiset（多重集容器）"></a>1.set（集合容器）/ multiset（多重集容器）</h5><p>实现头文件：&lt; set&gt;<br><a id="more"></a><br>概述：</p>
+<p>set和multiset都是集合类模板，其元素值称为关键字。set中元素的关键字是唯一的，multiset中元素的关键字可以不唯一，而且默认情况下会对元素按关键字自动进行升序排列。<br>查找速度比较快，同时支持集合的交、差和并等一些集合上的运算，如果需要集合中的元素允许重复那么可以使用multiset。</p>
+<p>主要成员函数：</p>
+<ul>
+<li>empty()：判断容器是否为空</li>
+<li>size()：返回容器中实际元素个数</li>
+<li>insert()：插入元素</li>
+<li>erase()：从容器删除一个或几个元素</li>
+<li>clear()：删除所有元素</li>
+<li>count(k)：返回容器中关键字k出现的次数</li>
+<li>find(k)：如果容器中存在关键字为k的元素，返回该元素的迭代器，否则返回end()值</li>
+<li>upper_bound()：返回一个迭代器，指向关键字大于k的第一个元素</li>
+<li>lower_bound()：返回一个迭代器，指向关键字不小于k的第一个元素</li>
+<li>迭代器函数：begin()、end()、rbegin()、rend()</li>
+</ul>
+<p>演示代码：</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include &lt;set&gt;
+using namespace std;
+int main()
+{
+    set&lt;int&gt; s;            //定义set容器s
+    set&lt;int&gt;::iterator it;    //定义set容器迭代器it
+    s.insert(1);
+    s.insert(3);
+    s.insert(2);
+    s.insert(4);
+    s.insert(2);
+    printf(&quot; s: &quot;);
+    for (it = s.begin(); it != s.end(); it++)
+        printf(&quot;%d &quot;, *it);
+    printf(&quot;\n&quot;);
+    multiset&lt;int&gt; ms;    //定义multiset容器ms
+    multiset&lt;int&gt;::iterator mit; //定义multiset容器迭代器mit
+    ms.insert(1);
+    ms.insert(3);
+    ms.insert(2);
+    ms.insert(4);
+    ms.insert(2);
+    printf(&quot;ms: &quot;);
+    for (mit = ms.begin(); mit != ms.end(); mit++)
+        printf(&quot;%d &quot;, *mit);
+    printf(&quot;\n&quot;);
+    return 0;
+}
+</code></pre><p>输出：<br>     s: 1 2 3 4<br>     ms: 1 2 2 3 4</p>
+<h5 id="2-map（映射容器）-multimap（多重映射容器）"><a href="#2-map（映射容器）-multimap（多重映射容器）" class="headerlink" title="2.map（映射容器）/ multimap（多重映射容器）"></a>2.map（映射容器）/ multimap（多重映射容器）</h5><p>实现头文件：&lt; set&gt;</p>
+<p>概述：</p>
+<p>map和multimap都是映射类模板。映射是实现关键字与值关系的存储结构，可以使用一个关键字key来访问相应的数据值value。<br>在map和multimap 中的key和value是一个pair类结构。<br>pair类结构的声明形如：</p>
+<figure class="highlight capnproto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pair</span></span></span><br><span class="line"><span class="class"></span>&#123;   T first;</span><br><span class="line">    T second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>map/multimap利用pair的&lt;运算符将所有元素即key-value对按key的升序排列，以红黑树的形式存储，可以根据key快速地找到与之对应的value（查找时间为O(log2n)）。<br>map中不允许关键字重复出现，支持[]运算符；而multimap中允许关键字重复出现，但不支持[]运算符。</p>
+<p>主要成员函数：</p>
+<ul>
+<li>empty()：判断容器是否为空</li>
+<li>size()：返回容器中实际元素个数</li>
+<li>map[key]：返回关键字为key的元素的引用，如果不存在这样的关键字，则以key作为关键字插入一个元素（不适合multimap)</li>
+<li>insert(elem)：插入一个元素elem并返回该元素的位置</li>
+<li>clear()：删除所有元素</li>
+<li>find()：在容器中查找元素</li>
+<li>count()：容器中指定关键字的元素个数（map中只有1或者0）</li>
+<li>迭代器函数：begin()、end()、rbegin()、rend()</li>
+</ul>
+<p>演示代码：</p>
+<p>1.<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt; mymap; <span class="comment">//定义map容器mymap，其元素类型为pair&lt;char,int&gt;</span></span><br><span class="line">mymap[<span class="string">'a'</span>] = <span class="number">1</span>;   <span class="comment">//或者mymap.insert(pair&lt;char，int&gt;('a',1) );</span></span><br></pre></td></tr></table></figure></p>
+<p>2.</p>
+<pre><code>#include&lt;iostream&gt;
+#include &lt;map&gt;
+using namespace std;
+int main()
+{
+    map&lt;char, int&gt; mymap;                     //定义map容器mymap
+    mymap.insert(pair&lt;char, int&gt;(&apos;a&apos;, 1));   //插入方式1    
+    mymap.insert(map&lt;char, int&gt;::value_type(&apos;b&apos;, 2));   //插入方式2    
+    mymap[&apos;c&apos;] = 3;        //插入方式3
+    map&lt;char, int&gt;::iterator it;
+    for (it = mymap.begin(); it != mymap.end(); it++)
+        printf(&quot;[%c,%d] &quot;, it-&gt;first, it-&gt;second);
+    printf(&quot;\n&quot;);
+    return 0;
+}
+</code></pre><p>输出：<br>    [a,1] [b,2] [c,3]</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"><i class="fa fa-tag"></i> c++</a>
+          
+            <a href="/tags/STL/" rel="tag"><i class="fa fa-tag"></i> STL</a>
+          
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/23/顺序容器1/" rel="next" title="STL常用容器归纳总结(2)">
+                <i class="fa fa-chevron-left"></i> STL常用容器归纳总结(2)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/25/适配器容器/" rel="prev" title="STL常用容器归纳总结(4)">
+                STL常用容器归纳总结(4) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -472,6 +583,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -492,8 +607,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -571,6 +695,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#这篇主要讲一下关联容器"><span class="nav-number">1.</span> <span class="nav-text">这篇主要讲一下关联容器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-set（集合容器）-multiset（多重集容器）"><span class="nav-number">2.</span> <span class="nav-text">1.set（集合容器）/ multiset（多重集容器）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-map（映射容器）-multimap（多重映射容器）"><span class="nav-number">3.</span> <span class="nav-text">2.map（映射容器）/ multimap（多重映射容器）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -715,6 +855,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
