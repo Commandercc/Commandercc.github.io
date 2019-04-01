@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[二叉树的同构]]></title>
+    <url>%2F2019%2F04%2F01%2F%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8C%E6%9E%84%2F</url>
+    <content type="text"><![CDATA[附上题目链接：二叉树的同构 理解：只要确保每个节点和其左右孩子的结点相等，或者孩子交换之后相等就可以。只要每个结点都符合，那么整棵树自然从上到下就都符合。 code：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778 #include&lt;iostream&gt; #include&lt;cstdio&gt;using namespace std;const int maxn = 20;struct node&#123; char key; int left, right;&#125;tree1[maxn], tree2[maxn]; //构建一个结构体用来构建两个二叉树int n1, n2;void build_tree(struct node * tree, int n)&#123; int i; char s[2]; for (i = 0; i &lt; n; i++)&#123; cin &gt;&gt; s; tree[i].key = s[0]; cin &gt;&gt; s; if (s[0] == '-')&#123; tree[i].left = 11; //如果输入为 - 则置为一个非0到10的数 &#125; else&#123; tree[i].left = s[0] - '0'; //字符向数字转换 &#125; cin &gt;&gt; s; if (s[0] == '-')&#123; tree[i].right = 11; &#125; else&#123; tree[i].right = s[0] - '0'; &#125; &#125;&#125;bool checkc(int i, int j)&#123; //检测key相同的两个结点的左右孩子是否相同或者交换后是否相同 if (tree1[tree1[i].left].key == tree2[tree2[j].left].key&amp;&amp;tree1[tree1[i].right].key == tree2[tree2[j].right].key) &#123; return 1; &#125; if (tree1[tree1[i].left].key == tree2[tree2[j].right].key&amp;&amp;tree1[tree1[i].right].key == tree2[tree2[j].left].key) &#123; return 1; &#125; return 0;&#125;bool check()&#123; int i, j; //找到key相同的结点 for (i = 0; i &lt; n1; i++)&#123; for (j = 0; j &lt; n2; j++)&#123; if (tree1[i].key == tree2[j].key)&#123; if (checkc(i, j))&#123; break; //孩子相同或者交换后相同继续下一个结点 &#125; else&#123; return 0; &#125; &#125; &#125; if (j == n2)&#123; return 0; //没找到 &#125; &#125; return 1; //整棵二叉树都符合条件&#125;int main()&#123; while (cin&gt;&gt;n1)&#123; build_tree(tree1, n1); cin&gt;&gt;n2; build_tree(tree2, n2); if (n2!=n1)&#123; cout &lt;&lt; "No"&lt;&lt;endl; &#125; else if (check())&#123; cout &lt;&lt; "Yes"&lt;&lt;endl; &#125; else&#123; cout &lt;&lt; "No"&lt;&lt;endl; &#125; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>树</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[求二叉树的深度，递归和非递归]]></title>
+    <url>%2F2019%2F03%2F31%2F%E6%B1%82%E4%BA%8C%E5%8F%89%E6%A0%91%E9%AB%98%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[递归： 123456789101112131415int high(Tree t)//求二叉树的高度&#123; int n,m; if(t==NULL) return 0; else &#123; n=high(t-&gt;lchild); //对左子树求高度 m=high(t-&gt;rchild); //对右子树求高度 if(n&gt;m) //高度为取两者中大的值+1 return n+1; else return m+1; &#125;&#125; 非递归（队列）：12345678910111213141516171819202122int high(Tree t)//求二叉树的高度&#123; int depth = 0; Tree p=NULL; queue&lt;Tree&gt; q; q.push(t); //根节点入队 while (!q.empty())&#123; depth++; //每到新的一层 高度+1 int width = q.size(); //求出本层的结点数 while (width--)&#123; //本层结点全部出队 p = q.front(); q.pop(); if (p-&gt;left)&#123; q.push(p-&gt;left); &#125; if (p-&gt;right)&#123; q.push(p-&gt;right); &#125; &#125; &#125; return depth;&#125;]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>树</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[给定先序和中序序列,求后序序列]]></title>
+    <url>%2F2019%2F03%2F30%2F%E5%85%88%E5%BA%8F%E4%B8%AD%E5%BA%8F%E6%B1%82%E5%90%8E%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[要求：输入二叉树的先序遍历序列和中序遍历序列，输出该二叉树的后序遍历序列。 代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445 #include&lt;iostream&gt; #include&lt;string&gt;using namespace std;int i;char s1[100],s2[100];typedef struct Node&#123; char value; Node *lchild; Node *rchild;&#125;*Tree;//由先序序列s1[0···n-1]和中序序列s2[0···n-1]建立二叉链存储结构的二叉树//s1:先序遍历字符串 s2:中序遍历字符串 n:结点个数Tree creattree(char s1[],char s2[],int n)&#123; int k; if (n &lt;= 0)&#123; return NULL; &#125; char root = s1[0]; //根节点的值 Tree bt = (Tree)malloc(sizeof(Node)); bt-&gt;value = root; for (k = 0; k &lt; n; k++)&#123; if (s2[k] == root)&#123; //在s2中查找 根节点 break; &#125; &#125; bt-&gt;lchild = creattree(s1 + 1, s2, k); //递归创建左子树 bt-&gt;rchild = creattree(s1 + k + 1, s2 + k + 1, n - k - 1); //递归创建右子树 return bt;&#125;//后序遍历void traveltree2(Tree t)&#123; if (t != NULL)&#123; traveltree2(t-&gt;lchild); traveltree2(t-&gt;rchild); cout &lt;&lt; t-&gt;value; &#125; &#125;int main()&#123; Tree t = NULL; cin &gt;&gt; s1&gt;&gt;s2; string s = s1; t = creattree(s1, s2, s.size()); traveltree2(t); return 0;&#125; 输入： ABDCEF BDAECF 输出： DBEFCA 附：已知中序后序求先序代码：12345678910111213141516171819202122232425262728293031323334353637383940414243 #include&lt;iostream&gt; #include&lt;string&gt;using namespace std;int i;char s1[100],s2[100];typedef struct Node&#123; char value; Node *lchild; Node *rchild;&#125;*Tree;Tree creattree(char s1[],char s2[],int n)&#123; int k; if (n &lt;= 0)&#123; return NULL; &#125; char root = s2[n-1]; //这里和上面的不一样 后序遍历的最后一个元素才是 根节点 Tree bt = (Tree)malloc(sizeof(Node)); bt-&gt;value = root; for (k = 0; k &lt; n; k++)&#123; if (s1[k] == root)&#123; //在中序序列中查找根节点 break; &#125; &#125; bt-&gt;lchild = creattree(s1, s2, k); bt-&gt;rchild = creattree(s1 + k + 1, s2 + k, n - k - 1); //注意这里的范围 s2+k 画一画就明白了 return bt;&#125;//先序遍历void traveltree2(Tree t)&#123; if (t != NULL)&#123; cout &lt;&lt; t-&gt;value; traveltree2(t-&gt;lchild); traveltree2(t-&gt;rchild); &#125; &#125;int main()&#123; Tree t = NULL; cin &gt;&gt; s1&gt;&gt;s2; string s = s1; t = creattree(s1, s2, s.size()); traveltree2(t); return 0;&#125; 输入： dbgeafc dgebfca 输出： abdegcf]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>树</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[STL常用容器归纳总结(4)]]></title>
     <url>%2F2019%2F03%2F25%2F%E9%80%82%E9%85%8D%E5%99%A8%E5%AE%B9%E5%99%A8%2F</url>
     <content type="text"><![CDATA[这篇主要讲一下适配器容器1.stack（栈容器）实现头文件：&lt; stack&gt; 概述： 它是一个栈类模板，和数据结构中的栈一样，具有后进先出的特点。栈容器默认的底层容器是deque。也可以指定其他底层容器。例如，以下语句指定myst栈的底层容器为vector： 1stack&lt;string,vector&lt;string&gt; &gt; myst; //第2个参数指定底层容器为vector 主要成员函数： empty()：判断栈容器是否为空 size()：返回栈容器中实际元素个数 push(elem)：元素elem进栈 top()：返回栈顶元素 pop()：元素出栈 注意：stack容器没有begin()/end()和rbegin()/rend()这样的用于迭代器的成员函数。 演示代码： #include&lt;iostream&gt; #include &lt;stack&gt; using namespace std; int main() { stack&lt;int&gt; st; st.push(1); st.push(2); st.push(3); printf(&quot;栈顶元素: %d\n&quot;, st.top()); printf(&quot;出栈顺序: &quot;); while (!st.empty()) //栈不空时出栈所有元素 { printf(&quot;%d &quot;, st.top()); st.pop(); } printf(&quot;\n&quot;); return 0; } 输出： 栈顶元素: 3 出栈顺序: 3 2 1 2.queue（队列容器）实现头文件：&lt; queue&gt; 概述： 它是一个队列类模板，和数据结构中的队列一样，具有先进先出的特点。不允许顺序遍历，没有begin()/end()和rbegin()/rend()这样的用于迭代器的成员函数。 主要成员函数： empty()：判断队列容器是否为空。 size()：返回队列容器中实际元素个数。 front()：返回队头元素。 back()：返回队尾元素。 push(elem)：元素elem进队。 pop()：元素出队。 代码演示： #include&lt;iostream&gt; #include &lt;queue&gt; using namespace std; int main() { queue&lt;int&gt; qu; qu.push(1); qu.push(2); qu.push(3); printf(&quot;队头元素: %d\n&quot;, qu.front()); printf(&quot;队尾元素: %d\n&quot;, qu.back()); printf(&quot;出队顺序: &quot;); while (!qu.empty()) //出队所有元素 { printf(&quot;%d &quot;, qu.front()); qu.pop(); } printf(&quot;\n&quot;); return 0; } 输出： 队头元素: 1 队尾元素: 3 出队顺序: 1 2 3 3.priority_queue（优先队列容器）实现头文件：&lt; queue&gt; 概述： 它是一个优先队列类模板。优先队列是一种具有受限访问操作的存储结构，元素可以以任意顺序进入优先队列。一旦元素在优先队列容器中，出队操作将出队列最高优先级元素。比如：对于 int 类型的元素，priority_queue 默认元素值越大越优先。 主要成员函数： empty()：判断优先队列容器是否为空。 size()：返回优先队列容器中实际元素个数。 push(elem)：元素elem进队。 top()：获取队头元素。 pop()：元素出队。 代码演示： #include&lt;iostream&gt; #include &lt;queue&gt; using namespace std; int main() { priority_queue&lt;int&gt; qu; qu.push(3); qu.push(1); qu.push(2); printf(&quot;队头元素: %d\n&quot;, qu.top()); printf(&quot;出队顺序: &quot;); while (!qu.empty()) //出队所有元素 { printf(&quot;%d &quot;, qu.top()); qu.pop(); } printf(&quot;\n&quot;); return 0; } 输出： 队头元素: 3 出队顺序: 3 2 1 (可见是按照值的大小出队)]]></content>
@@ -55,7 +94,7 @@
   <entry>
     <title><![CDATA[折半查找的分析与实现]]></title>
     <url>%2F2019%2F03%2F22%2F%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%2F</url>
-    <content type="text"><![CDATA[折半查找折半查找又称二分查找，它是一种效率较高的查找方法。但是折半查找要求查找序列中的元素是有序的，为了简单，假设序列是递增有序的。折半查找的基本思路：设 a[low···high] 是当前的查找区间，首先确定该区间的中点位置mid=(low+high)/2 (取下界);然后将待查的 k值 与 a[mid].key 比较： （1）若k==a[mid].key,则查找成功并返回该元素的物理下标 （2）若k&lt;a[mid],则由表的有序性可知 a[mid···high] 均大于k，因此表中若存在值 等于k的元素，则该元素必定位于 左子表 a[low···mid-1] 中，故新的查找区间 是左子表a[low···mid-1]。 （3）若k&gt;a[mid],则要查找的元素必定位于 右子表 a[mid+1···high] 中，故新的查找区间 是右子表a[mid+1···high]。 下一次查找是针对新的查找区间进行的。 因此可以从最初的查找区间a[0···n-1]开始，每经过一次与当前查找区间中点位置上的关键字比较就可以确定查找是否成功，不成功则当前的查找区间缩小一半。重复这一过程，直到找到关键字为K的元素，或者直到当前的查找区间为空（即查找失败）时为止。 代码实现12345678910111213141516171819202122232425262728293031 #include&lt;iostream&gt;using namespace std;//折半查找int BinSearch(int a[], int low, int high, int k)&#123; int mid; if (low &lt;= high)&#123; //当前区间存在元素时 mid = (low + high) / 2; //求查找区间的中间位置 if (a[mid] == k)&#123; //找到了，直接返回其物理下标 mid return mid; &#125; if (a[mid] &gt; k)&#123; //当a[mid]&gt;k 时在a[low···mid-1]中递归查找 return BinSearch(a, low, mid - 1, k); &#125; else&#123; //当a[mid]&lt;k 时在a[mid+1···high]中递归查找 return BinSearch(a, mid + 1, high, k); &#125; &#125; else&#123; return -1; //找不到，错误处理 &#125;&#125;int main()&#123; int n = 10, i; int k = 6; //要找的值 int a[] = &#123; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 &#125;; i = BinSearch(a, 0, n - 1, k); if (i &gt;= 0)&#123; cout &lt;&lt; "第" &lt;&lt; i &lt;&lt; "个元素值为k"; &#125; return 0;&#125;]]></content>
+    <content type="text"><![CDATA[折半查找折半查找又称二分查找，它是一种效率较高的查找方法。但是折半查找要求查找序列中的元素是有序的，为了简单，假设序列是递增有序的。折半查找的基本思路：设 a[low···high] 是当前的查找区间，首先确定该区间的中点位置mid=(low+high)/2 (取下界);然后将待查的 k值 与 a[mid].key 比较： （1）若k==a[mid].key,则查找成功并返回该元素的物理下标 （2）若k&lt;a[mid],则由表的有序性可知 a[mid···high] 均大于k，因此表中若存在值 等于k的元素，则该元素必定位于 左子表 a[low···mid-1] 中，故新的查找区间 是左子表a[low···mid-1]。 （3）若k&gt;a[mid],则要查找的元素必定位于 右子表 a[mid+1···high] 中，故新的查找区间 是右子表a[mid+1···high]。 下一次查找是针对新的查找区间进行的。 因此可以从最初的查找区间a[0···n-1]开始，每经过一次与当前查找区间中点位置上的关键字比较就可以确定查找是否成功，不成功则当前的查找区间缩小一半。重复这一过程，直到找到关键字为K的元素，或者直到当前的查找区间为空（即查找失败）时为止。 代码实现12345678910111213141516171819202122232425262728293031 #include&lt;iostream&gt;using namespace std;//折半查找int BinSearch(int a[], int low, int high, int k)&#123; int mid; if (low &lt;= high)&#123; //当前区间存在元素时 mid = (low + high) / 2; //求查找区间的中间位置 if (a[mid] == k)&#123; //找到了，直接返回其物理下标 mid return mid; &#125; if (a[mid] &gt; k)&#123; //当a[mid]&gt;k 时在a[low···mid-1]中递归查找 return BinSearch(a, low, mid - 1, k); &#125; else&#123; //当a[mid]&lt;k 时在a[mid+1···high]中递归查找 return BinSearch(a, mid + 1, high, k); &#125; &#125; else&#123; return -1; //找不到，错误处理 &#125;&#125;int main()&#123; int n = 10, i; int k = 6; //要找的值 int a[] = &#123; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 &#125;; i = BinSearch(a, 0, n - 1, k); if (i &gt;= 0)&#123; cout &lt;&lt; "第" &lt;&lt; i &lt;&lt; "个元素值为k"; &#125; return 0;&#125; 附：(非递归实现)12345678910111213141516int BinSearch(int a[], int n, int k)&#123; //在含有n个元素的数组a中查找 是否有值为K的元素 int low = 0, high = n - 1, mid; while (low &lt;= high)&#123; mid = (low + high) / 2; if (a[mid] == k)&#123; return mid; &#125; if (a[mid] &gt; k)&#123; high = mid - 1; &#125; else&#123; low = mid + 1; &#125; &#125; return -1;&#125;]]></content>
       <categories>
         <category>数据结构</category>
       </categories>
@@ -142,17 +181,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[测试用]]></title>
-    <url>%2F2019%2F03%2F19%2Ftest%2F</url>
-    <content type="text"><![CDATA[12 34]]></content>
+    <title><![CDATA[阿里巴巴矢量图标库]]></title>
+    <url>%2F2019%2F03%2F19%2Ftubiao%2F</url>
+    <content type="text"><![CDATA[分享一个很棒的图标网站点击下面的链接即可查看 Iconfont–阿里巴巴矢量图标库]]></content>
       <tags>
         <tag>随心</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[阿里巴巴矢量图标库]]></title>
-    <url>%2F2019%2F03%2F19%2Ftubiao%2F</url>
-    <content type="text"><![CDATA[分享一个很棒的图标网站点击下面的链接即可查看 Iconfont–阿里巴巴矢量图标库]]></content>
+    <title><![CDATA[测试用]]></title>
+    <url>%2F2019%2F03%2F19%2Ftest%2F</url>
+    <content type="text"><![CDATA[12 34]]></content>
       <tags>
         <tag>随心</tag>
       </tags>
