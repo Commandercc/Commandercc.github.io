@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[二叉排序树 SDUTOJ 2482]]></title>
+    <url>%2F2019%2F04%2F01%2F%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91SDUTOJ2482%2F</url>
+    <content type="text"><![CDATA[problem:点击跳转到题目 understand:学了二叉树，得知先序和中序遍历或者后序和中序遍历都可以唯一确定一颗二叉树，所以这里我们采用求先序序列进行比较的方法。因为二叉排序树的中序遍历一定是递增序列都一样，所以此题只需比较每棵树的先序序列即可。 code:123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108 #include&lt;iostream&gt; #include&lt;algorithm&gt; #include&lt;string&gt;using namespace std;typedef struct node&#123; int data; struct node* left; struct node* right;&#125;*tree;int z[11];int ccount;void Inserttree(tree &amp;t, int key)&#123; tree f, p = t; //寻找待插入的节点的位置，用f记录待插入节点的父结点 while (p)&#123; if (p-&gt;data == key)&#123; return; &#125; else&#123; f = p; if (p-&gt;data &gt; key)&#123; p = p-&gt;left; &#125; else&#123; p = p-&gt;right; &#125; &#125; &#125; //创建新结点，插入 p = (tree)malloc(sizeof(node)); p-&gt;data = key; p-&gt;left = p-&gt;right = NULL; if (t == NULL)&#123; t = p; &#125; else&#123; if (f-&gt;data &gt; key)&#123; f-&gt;left = p; &#125; else&#123; f-&gt;right = p; &#125; &#125;&#125;//创建二叉排序树tree CreateTree(int a[])&#123; tree t = NULL; int key; for (int i = 0; i &lt; 9; i++)&#123; Inserttree(t, a[i]); &#125; return t;&#125;//先序遍历void traveltree(tree t)&#123; if (t != NULL)&#123; z[ccount++] = t-&gt;data; traveltree(t-&gt;left); traveltree(t-&gt;right); &#125;&#125;int main()&#123; tree t = NULL; int n; while (cin &gt;&gt; n&amp;&amp;n != 0)&#123; ccount = 0; string s = ""; cin &gt;&gt; s; int b[11],c[11],d[11]; //下面是 输入的第一串字符 构建二叉排序树并先序遍历后 得到的数组 c for (int i = 0; i &lt;s.length();i++)&#123; b[i] = s[i] - '0'; &#125; t=CreateTree(b); traveltree(t); for (int i = 0; i &lt; s.length(); i++)&#123; c[i] = z[i]; //前序遍历 &#125; // for (int i = 0; i &lt; n; i++)&#123; t = NULL; ccount = 0; cin &gt;&gt; s; //下面是 输入的要进行比较的字符串 构建二叉排序树并先序遍历后 得到的数组 d for (int i = 0; i &lt;s.length(); i++)&#123; b[i] = s[i] - '0'; &#125; t = CreateTree(b); traveltree(t); for (int i = 0; i &lt; s.length(); i++)&#123; d[i] = z[i]; //前序遍历 &#125; //下面是比较两个树 先序遍历的结果 c和d ，相同则YES ，不同则NO int flag = 0; for (int i = 0; i &lt; s.length(); i++)&#123; if (c[i] != d[i])&#123; cout &lt;&lt; "NO" &lt;&lt; endl; flag = 1; break; &#125; &#125; if (!flag)&#123; cout &lt;&lt; "YES" &lt;&lt; endl; &#125; &#125; &#125; cout &lt;&lt; endl;&#125;]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+        <tag>二叉树</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[二叉排序树]]></title>
+    <url>%2F2019%2F04%2F01%2F%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%2F</url>
+    <content type="text"><![CDATA[理解：二叉排序树或者是一颗空树，或者是具有下列性质的二叉树：(1):若它的左子树不空，则左子树上所有结点的值均小于它的根节点的值 (2):若它的右子树不空，则右子树上所有结点的值均大于它的根节点的值 (3):它的左、右子树也分别为二叉排序树 code：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768 #include&lt;iostream&gt; #include&lt;algorithm&gt;using namespace std;typedef struct node&#123; int data; struct node* left; struct node* right;&#125;*tree;int n; //含有n个结点//插入void Inserttree(tree &amp;t, int key)&#123; tree f, p = t; //寻找待插入的节点的位置，用f记录待插入节点的父结点 while (p)&#123; if (p-&gt;data == key)&#123; return; &#125; else&#123; f = p; if (p-&gt;data &gt; key)&#123; p = p-&gt;left; &#125; else&#123; p = p-&gt;right; &#125; &#125; &#125; //创建新结点，插入 p = (tree)malloc(sizeof(node)); p-&gt;data = key; p-&gt;left = p-&gt;right = NULL; if (t == NULL)&#123; t = p; &#125; else&#123; if (f-&gt;data &gt; key)&#123; f-&gt;left = p; &#125; else&#123; f-&gt;right = p; &#125; &#125;&#125;//创建二叉排序树tree CreateTree()&#123; tree t = NULL; int key; for (int i = 0; i &lt; n; i++)&#123; cin &gt;&gt; key; Inserttree(t, key); &#125; return t;&#125;//中序遍历void traveltree(tree t)&#123; if (t != NULL)&#123; traveltree(t-&gt;left); cout &lt;&lt; t-&gt;data &lt;&lt; " "; traveltree(t-&gt;right); &#125;&#125;int main()&#123; tree t = NULL; cin &gt;&gt; n; t = CreateTree(); traveltree(t); cout &lt;&lt; endl;&#125;]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+        <tag>二叉树</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[二叉树的同构]]></title>
     <url>%2F2019%2F04%2F01%2F%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8C%E6%9E%84%2F</url>
     <content type="text"><![CDATA[附上题目链接：二叉树的同构 理解：只要确保每个节点和其左右孩子的结点相等，或者孩子交换之后相等就可以。只要每个结点都符合，那么整棵树自然从上到下就都符合。 code：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778 #include&lt;iostream&gt; #include&lt;cstdio&gt;using namespace std;const int maxn = 20;struct node&#123; char key; int left, right;&#125;tree1[maxn], tree2[maxn]; //构建一个结构体用来构建两个二叉树int n1, n2;void build_tree(struct node * tree, int n)&#123; int i; char s[2]; for (i = 0; i &lt; n; i++)&#123; cin &gt;&gt; s; tree[i].key = s[0]; cin &gt;&gt; s; if (s[0] == '-')&#123; tree[i].left = 11; //如果输入为 - 则置为一个非0到10的数 &#125; else&#123; tree[i].left = s[0] - '0'; //字符向数字转换 &#125; cin &gt;&gt; s; if (s[0] == '-')&#123; tree[i].right = 11; &#125; else&#123; tree[i].right = s[0] - '0'; &#125; &#125;&#125;bool checkc(int i, int j)&#123; //检测key相同的两个结点的左右孩子是否相同或者交换后是否相同 if (tree1[tree1[i].left].key == tree2[tree2[j].left].key&amp;&amp;tree1[tree1[i].right].key == tree2[tree2[j].right].key) &#123; return 1; &#125; if (tree1[tree1[i].left].key == tree2[tree2[j].right].key&amp;&amp;tree1[tree1[i].right].key == tree2[tree2[j].left].key) &#123; return 1; &#125; return 0;&#125;bool check()&#123; int i, j; //找到key相同的结点 for (i = 0; i &lt; n1; i++)&#123; for (j = 0; j &lt; n2; j++)&#123; if (tree1[i].key == tree2[j].key)&#123; if (checkc(i, j))&#123; break; //孩子相同或者交换后相同继续下一个结点 &#125; else&#123; return 0; &#125; &#125; &#125; if (j == n2)&#123; return 0; //没找到 &#125; &#125; return 1; //整棵二叉树都符合条件&#125;int main()&#123; while (cin&gt;&gt;n1)&#123; build_tree(tree1, n1); cin&gt;&gt;n2; build_tree(tree2, n2); if (n2!=n1)&#123; cout &lt;&lt; "No"&lt;&lt;endl; &#125; else if (check())&#123; cout &lt;&lt; "Yes"&lt;&lt;endl; &#125; else&#123; cout &lt;&lt; "No"&lt;&lt;endl; &#125; &#125; return 0;&#125;]]></content>
@@ -8,9 +34,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -21,9 +47,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -34,9 +60,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -47,9 +73,9 @@
         <category>c/c++</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>c++</tag>
         <tag>STL</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -60,9 +86,9 @@
         <category>c/c++</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>c++</tag>
         <tag>STL</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -73,9 +99,9 @@
         <category>c/c++</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>c++</tag>
         <tag>STL</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -86,9 +112,9 @@
         <category>c/c++</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>c++</tag>
         <tag>STL</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -181,17 +207,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[阿里巴巴矢量图标库]]></title>
-    <url>%2F2019%2F03%2F19%2Ftubiao%2F</url>
-    <content type="text"><![CDATA[分享一个很棒的图标网站点击下面的链接即可查看 Iconfont–阿里巴巴矢量图标库]]></content>
+    <title><![CDATA[测试用]]></title>
+    <url>%2F2019%2F03%2F19%2Ftest%2F</url>
+    <content type="text"><![CDATA[12 34]]></content>
       <tags>
         <tag>随心</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[测试用]]></title>
-    <url>%2F2019%2F03%2F19%2Ftest%2F</url>
-    <content type="text"><![CDATA[12 34]]></content>
+    <title><![CDATA[阿里巴巴矢量图标库]]></title>
+    <url>%2F2019%2F03%2F19%2Ftubiao%2F</url>
+    <content type="text"><![CDATA[分享一个很棒的图标网站点击下面的链接即可查看 Iconfont–阿里巴巴矢量图标库]]></content>
       <tags>
         <tag>随心</tag>
       </tags>

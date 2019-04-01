@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="java,">
+  <meta name="keywords" content="树,二叉树,算法,">
 
 
 
@@ -80,20 +80,18 @@
 
 
 
-<meta name="description" content="java文件读写操作的一个简单事例一些简单的读写操作">
-<meta name="keywords" content="java">
+<meta name="description" content="problem:点击跳转到题目">
+<meta name="keywords" content="树,二叉树,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java文件读写操作的一个简单例子">
-<meta property="og:url" content="http://haibolun.top/2019/03/20/java-io/index.html">
+<meta property="og:title" content="二叉排序树 SDUTOJ 2482">
+<meta property="og:url" content="http://haibolun.top/2019/04/01/二叉排序树SDUTOJ2482/index.html">
 <meta property="og:site_name" content="江山如画">
-<meta property="og:description" content="java文件读写操作的一个简单事例一些简单的读写操作">
+<meta property="og:description" content="problem:点击跳转到题目">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://haibolun.top/2019/03/20/java-io/io01.png">
-<meta property="og:updated_time" content="2019-03-20T11:05:57.065Z">
+<meta property="og:updated_time" content="2019-04-01T15:57:40.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java文件读写操作的一个简单例子">
-<meta name="twitter:description" content="java文件读写操作的一个简单事例一些简单的读写操作">
-<meta name="twitter:image" content="http://haibolun.top/2019/03/20/java-io/io01.png">
+<meta name="twitter:title" content="二叉排序树 SDUTOJ 2482">
+<meta name="twitter:description" content="problem:点击跳转到题目">
 
 
 
@@ -123,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://haibolun.top/2019/03/20/java-io/">
+  <link rel="canonical" href="http://haibolun.top/2019/04/01/二叉排序树SDUTOJ2482/">
 
 
 
 
 
-  <title>java文件读写操作的一个简单例子 | 江山如画</title>
+  <title>二叉排序树 SDUTOJ 2482 | 江山如画</title>
   
 
 
@@ -309,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/03/20/java-io/">
+    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2019/04/01/二叉排序树SDUTOJ2482/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="1215ccc">
@@ -326,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java文件读写操作的一个简单例子</h1>
+          <h1 class="post-title" itemprop="name headline">二叉排序树 SDUTOJ 2482</h1>
         
 
         <div class="post-meta">
@@ -338,8 +336,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-20T17:38:48+08:00">
-                2019-03-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-01T22:00:00+08:00">
+                2019-04-01
               </time>
             
 
@@ -361,8 +359,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
                   </a>
                 </span>
 
@@ -392,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  379 word
+                  595 word
                 </span>
               
 
@@ -408,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 min
+                  3 min
                 </span>
               
             </div>
@@ -429,10 +427,9 @@
       
 
       
-        <h5 id="java文件读写操作的一个简单事例"><a href="#java文件读写操作的一个简单事例" class="headerlink" title="java文件读写操作的一个简单事例"></a>java文件读写操作的一个简单事例</h5><h5 id="一些简单的读写操作"><a href="#一些简单的读写操作" class="headerlink" title="一些简单的读写操作"></a>一些简单的读写操作</h5><a id="more"></a>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class coin extends JFrame implements ActionListener &#123;</span><br><span class="line">	<span class="comment">// 代码中涉及的异常处理自己看情况添加即可 包名更换成自己的 创建的 ceshi.txt 在自己的java项目中的scr文件夹，点击刷新即可看见</span></span><br><span class="line">	<span class="keyword">private</span> JTextArea jTextArea = <span class="keyword">new</span> JTextArea(<span class="number">15</span>, <span class="number">15</span>);</span><br><span class="line">	<span class="keyword">private</span> JButton jButton = <span class="keyword">new</span> JButton(<span class="string">"读取"</span>);</span><br><span class="line">	<span class="keyword">private</span> JButton jButton2 = <span class="keyword">new</span> JButton(<span class="string">"写入"</span>);</span><br><span class="line">	<span class="keyword">public</span> coin() &#123;</span><br><span class="line">		JFrame jFrame = <span class="keyword">new</span> JFrame(<span class="string">"文件读写"</span>);</span><br><span class="line">		jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);</span><br><span class="line">		jFrame.setLayout(<span class="keyword">new</span> FlowLayout());</span><br><span class="line">		jFrame.setSize(<span class="number">300</span>, <span class="number">200</span>);</span><br><span class="line">		jButton.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">		jButton2.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">		jFrame.add(jTextArea);</span><br><span class="line">		jFrame.add(jButton);</span><br><span class="line">		jFrame.add(jButton2);</span><br><span class="line">		jFrame.setVisible(true);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 读取文件</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> readfile() throws IOException &#123;</span><br><span class="line">		<span class="built_in">File</span> file = <span class="keyword">new</span> <span class="built_in">File</span>(<span class="string">"ceshi.txt"</span>);<span class="comment">// 创建文件</span></span><br><span class="line">		<span class="built_in">try</span> &#123;</span><br><span class="line">			InputStream is = <span class="keyword">new</span> FileInputStream(file);<span class="comment">// 创建输入流</span></span><br><span class="line">			<span class="keyword">byte</span>[] <span class="built_in">buffer</span> = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">200</span>];</span><br><span class="line">			<span class="built_in">while</span> (is.<span class="built_in">read</span>(<span class="built_in">buffer</span>) != <span class="number">-1</span>) &#123;</span><br><span class="line">				<span class="keyword">String</span> <span class="keyword">string</span> = <span class="keyword">new</span> <span class="keyword">String</span>(<span class="built_in">buffer</span>);</span><br><span class="line">				jTextArea.setText(<span class="keyword">string</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			is.<span class="built_in">close</span>();</span><br><span class="line">		&#125; <span class="built_in">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">			<span class="comment">// TODO 自动生成的 catch 块</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 写入文件</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> writefile() throws IOException &#123;</span><br><span class="line">		<span class="built_in">File</span> file = <span class="keyword">new</span> <span class="built_in">File</span>(<span class="string">"ceshi.txt"</span>);</span><br><span class="line">		<span class="built_in">try</span> &#123;</span><br><span class="line">			OutputStream os = <span class="keyword">new</span> FileOutputStream(file, true);<span class="comment">// true是追加写入 默认不追加</span></span><br><span class="line">			<span class="keyword">String</span> <span class="keyword">string</span> = jTextArea.getText().toString();</span><br><span class="line">			<span class="keyword">byte</span>[] <span class="built_in">buffer</span> = <span class="keyword">string</span>.getBytes();<span class="comment">// 将字符串 转换成byte数组</span></span><br><span class="line">			os.<span class="built_in">write</span>(<span class="built_in">buffer</span>);</span><br><span class="line">			os.<span class="built_in">close</span>();</span><br><span class="line">		&#125; <span class="built_in">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">			<span class="comment">// TODO 自动生成的 catch 块</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="comment">//</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 按钮点击事件实现</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> actionPerformed(ActionEvent e) &#123;</span><br><span class="line">		<span class="comment">// TODO 自动生成的方法存根</span></span><br><span class="line">		<span class="built_in">if</span> (e.getSource() == jButton) &#123;</span><br><span class="line">			<span class="built_in">try</span> &#123;</span><br><span class="line">				readfile();</span><br><span class="line">			&#125; <span class="built_in">catch</span> (IOException e1) &#123;</span><br><span class="line">				<span class="comment">// TODO 自动生成的 catch 块</span></span><br><span class="line">				e1.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="built_in">else</span> <span class="built_in">if</span> (e.getSource() == jButton2) &#123;</span><br><span class="line">			<span class="built_in">try</span> &#123;</span><br><span class="line">				writefile();</span><br><span class="line">			&#125; <span class="built_in">catch</span> (IOException e1) &#123;</span><br><span class="line">				<span class="comment">// TODO 自动生成的 catch 块</span></span><br><span class="line">				e1.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span> args[]) &#123;</span><br><span class="line">		<span class="keyword">new</span> coin();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img width="300" src="/2019/03/20/java-io/io01.png"></p>
-
+        <h5 id="problem"><a href="#problem" class="headerlink" title="problem:"></a>problem:</h5><p><a href="https://acm.sdut.edu.cn/onlinejudge2/index.php/Home/Index/problemdetail/pid/2482.html" target="_blank" rel="noopener">点击跳转到题目</a><br><a id="more"></a></p>
+<h5 id="understand"><a href="#understand" class="headerlink" title="understand:"></a>understand:</h5><p>学了二叉树，得知先序和中序遍历或者后序和中序遍历都可以唯一确定一颗二叉树，所以这里我们采用求先序序列进行比较的方法。因为二叉排序树的中序遍历一定是递增序列都一样，所以此题只需比较每棵树的先序序列即可。</p>
+<h5 id="code"><a href="#code" class="headerlink" title="code:"></a>code:</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node</span>* <span class="title">left</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node</span>* <span class="title">right</span>;</span></span><br><span class="line">&#125;*tree;</span><br><span class="line"><span class="keyword">int</span> z[<span class="number">11</span>];</span><br><span class="line"><span class="keyword">int</span> ccount;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Inserttree</span><span class="params">(tree &amp;t, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">	tree f, p = t;</span><br><span class="line">	<span class="comment">//寻找待插入的节点的位置，用f记录待插入节点的父结点</span></span><br><span class="line">	<span class="keyword">while</span> (p)&#123;</span><br><span class="line">		<span class="keyword">if</span> (p-&gt;data == key)&#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			f = p;</span><br><span class="line">			<span class="keyword">if</span> (p-&gt;data &gt; key)&#123;</span><br><span class="line">				p = p-&gt;left;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				p = p-&gt;right;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//创建新结点，插入</span></span><br><span class="line">	p = (tree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(node));</span><br><span class="line">	p-&gt;data = key;</span><br><span class="line">	p-&gt;left = p-&gt;right = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">if</span> (t == <span class="literal">NULL</span>)&#123;</span><br><span class="line">		t = p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (f-&gt;data &gt; key)&#123;</span><br><span class="line">			f-&gt;left = p;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			f-&gt;right = p;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建二叉排序树</span></span><br><span class="line"><span class="function">tree <span class="title">CreateTree</span><span class="params">(<span class="keyword">int</span> a[])</span></span>&#123;</span><br><span class="line">	tree t = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">int</span> key;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++)&#123;</span><br><span class="line">		Inserttree(t, a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//先序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">traveltree</span><span class="params">(tree t)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (t != <span class="literal">NULL</span>)&#123;</span><br><span class="line">		z[ccount++] = t-&gt;data;</span><br><span class="line">		traveltree(t-&gt;left);</span><br><span class="line">		traveltree(t-&gt;right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	tree t = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; n&amp;&amp;n != <span class="number">0</span>)&#123;</span><br><span class="line">		ccount = <span class="number">0</span>;</span><br><span class="line">		<span class="built_in">string</span> s = <span class="string">""</span>;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">		<span class="keyword">int</span> b[<span class="number">11</span>],c[<span class="number">11</span>],d[<span class="number">11</span>];</span><br><span class="line">		<span class="comment">//下面是 输入的第一串字符 构建二叉排序树并先序遍历后 得到的数组 c</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;s.length();i++)&#123;</span><br><span class="line">			b[i] = s[i] - <span class="string">'0'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		t=CreateTree(b);</span><br><span class="line">		traveltree(t);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">			c[i] = z[i];   <span class="comment">//前序遍历</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">			t = <span class="literal">NULL</span>;</span><br><span class="line">			ccount = <span class="number">0</span>;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">			<span class="comment">//下面是 输入的要进行比较的字符串 构建二叉排序树并先序遍历后 得到的数组 d</span></span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;s.length(); i++)&#123;</span><br><span class="line">				b[i] = s[i] - <span class="string">'0'</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			t = CreateTree(b);</span><br><span class="line">			traveltree(t);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">				d[i] = z[i];   <span class="comment">//前序遍历</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//下面是比较两个树 先序遍历的结果 c和d ，相同则YES ，不同则NO</span></span><br><span class="line">			<span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">				<span class="keyword">if</span> (c[i] != d[i])&#123;</span><br><span class="line">					<span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">					flag = <span class="number">1</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (!flag)&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -449,7 +446,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+            <a href="/tags/树/" rel="tag"><i class="fa fa-tag"></i> 树</a>
+          
+            <a href="/tags/二叉树/" rel="tag"><i class="fa fa-tag"></i> 二叉树</a>
+          
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           
         </div>
       
@@ -462,8 +463,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/19/test/" rel="next" title="测试用">
-                <i class="fa fa-chevron-left"></i> 测试用
+              <a href="/2019/04/01/二叉排序树/" rel="next" title="二叉排序树">
+                <i class="fa fa-chevron-left"></i> 二叉排序树
               </a>
             
           </div>
@@ -471,10 +472,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/21/baidulbs/" rel="prev" title="百度地图定位LBS使用(1)">
-                百度地图定位LBS使用(1) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -624,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#java文件读写操作的一个简单事例"><span class="nav-number">1.</span> <span class="nav-text">java文件读写操作的一个简单事例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一些简单的读写操作"><span class="nav-number">2.</span> <span class="nav-text">一些简单的读写操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text">problem:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#understand"><span class="nav-number">2.</span> <span class="nav-text">understand:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">code:</span></a></li></ol></div>
             
 
           </div>
