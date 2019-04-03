@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[在eclipse中集成maven]]></title>
-    <url>%2F2019%2F04%2F02%2Feclipse%E4%B8%AD%E9%9B%86%E6%88%90maven%2F</url>
-    <content type="text"><![CDATA[1.集成mavenEclipse EE版本是已经集成好MAVEN的了，无需额外手动集成可以去官网下一个 eclipse ee 2.设置maven路径菜单-&gt;Window-&gt;Preferences-&gt;Maven-&gt;Installations-&gt;add-&gt;Directory…选择你的maven安装后的文件夹 把原来的那个低版本maven删除掉，如果有的话 3.设置仓库路径菜单-&gt;Window-&gt;Preferences-&gt;Maven-&gt;User Settings-&gt;Global Settings 和 User Settings都使用我们在上篇文章中自己设置的仓库下的 setting.xml 文件。 点击一下Reindex,确保 local Repository为我们设置的本地仓库位置 1D:\maven-repository]]></content>
+    <title><![CDATA[用maven在eclipse中创建java web项目]]></title>
+    <url>%2F2019%2F04%2F02%2Fmaven%E5%88%9B%E5%BB%BAjavaweb%E9%A1%B9%E7%9B%AE%2F</url>
+    <content type="text"><![CDATA[1.菜单-&gt;File-&gt;New-&gt;Other-&gt;Maven-&gt;Maven Project 点击next 2. 点击next 3.这个界面，选择 maven-archetype-webapp 。 点击next 4.这个界面，填写自己项目的信息。 5.现在得到的项目会出现红叉，即报错原因有两个： 没有java源代码目录 index.jsp报错 6.创建java源代码目录在上一步的截图中可以发现，没有地方存放java源文件，这个时候就需要按照如下步骤做：右键项目-&gt;属性-&gt;Java Build Path-&gt;Libraries-&gt;Edit-&gt;Workspace defaultJRE(jdk8)-&gt;Finish如图： 会出现下图效果： 7.通过pom.xml添加servlet jar包这个时候，还存在index.jsp会 报错的问题。 这个问题的解决办法是添加servlet.jar包。 双击pom.xml，出现pom专有的编辑页面。点击OverView右边的Dependencies可以看到里面有一个默认存在的junit然后点击Add，弹出选择窗口在中间 Enter GroupId, artifactId or sha1 prefix or pattern(*)…. 这个地方输入servlet，下面就会出来被搜索到的servlet jar包选中它，并点击ok 注: Scope要选择compile，表示编译期间要用到。 如下图：(前两个带星号的自己随便填个东西就行) 8.保存更改，项目报错消除了 9.运行 输出 helloworld！接下来只需像一般的javaweb项目那样，将这个项目添加到Tomcat里运行即可。 在浏览器输入： 1http://localhost:8080/j2ee 关于在pom.xml文件中添加依赖包时搜索不到servlet包的问题1.菜单-&gt;Window-&gt;preferences-&gt;maven 选中Download respository…… 那一项 2.菜单-&gt;Window-&gt;Show View-&gt;Other-&gt;Maven-&gt;Maven Repositories选中 Global Repositories 下的 alimaven 点击右键选择 Full Index Enabled (如果maven仓库已修改为阿里云仓库，就会有alimaven),点击后 eclipse 会自动开始下载所有的 jar 包，下载完成后，再右键 Local Respositories 选择 Rebuild Index 即可。]]></content>
       <categories>
         <category>java</category>
       </categories>
@@ -13,9 +13,21 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[用maven在eclipse中创建java web项目]]></title>
-    <url>%2F2019%2F04%2F02%2Fmaven%E5%88%9B%E5%BB%BAjavaweb%E9%A1%B9%E7%9B%AE%2F</url>
-    <content type="text"><![CDATA[1.菜单-&gt;File-&gt;New-&gt;Other-&gt;Maven-&gt;Maven Project 点击next 2. 点击next 3.这个界面，选择 maven-archetype-webapp 。 点击next 4.这个界面，填写自己项目的信息。 5.现在得到的项目会出现红叉，即报错原因有两个： 没有java源代码目录 index.jsp报错 6.创建java源代码目录在上一步的截图中可以发现，没有地方存放java源文件，这个时候就需要按照如下步骤做：右键项目-&gt;属性-&gt;Java Build Path-&gt;Libraries-&gt;Edit-&gt;Workspace defaultJRE(jdk8)-&gt;Finish如图： 会出现下图效果： 7.通过pom.xml添加servlet jar包这个时候，还存在index.jsp会 报错的问题。 这个问题的解决办法是添加servlet.jar包。 双击pom.xml，出现pom专有的编辑页面。点击OverView右边的Dependencies可以看到里面有一个默认存在的junit然后点击Add，弹出选择窗口在中间 Enter GroupId, artifactId or sha1 prefix or pattern(*)…. 这个地方输入servlet，下面就会出来被搜索到的servlet jar包选中它，并点击ok 注: Scope要选择compile，表示编译期间要用到。 如下图：(前两个带星号的自己随便填个东西就行) 8.保存更改，项目报错消除了 9.运行 输出 helloworld！接下来只需像一般的javaweb项目那样，将这个项目添加到Tomcat里运行即可。 在浏览器输入： 1http://localhost:8080/j2ee 关于在pom.xml文件中添加依赖包时搜索不到servlet包的问题1.菜单-&gt;Window-&gt;preferences-&gt;maven 选中Download respository…… 那一项 2.菜单-&gt;Window-&gt;Show View-&gt;Other-&gt;Maven-&gt;Maven Repositories选中 Global Repositories 下的 alimaven 点击右键选择 Full Index Enabled (如果maven仓库已修改为阿里云仓库，就会有alimaven),点击后 eclipse 会自动开始下载所有的 jar 包，下载完成后，再右键 Local Respositories 选择 Rebuild Index 即可。]]></content>
+    <title><![CDATA[在eclipse中集成maven]]></title>
+    <url>%2F2019%2F04%2F02%2Feclipse%E4%B8%AD%E9%9B%86%E6%88%90maven%2F</url>
+    <content type="text"><![CDATA[1.集成mavenEclipse EE版本是已经集成好MAVEN的了，无需额外手动集成可以去官网下一个eclipse ee 2.设置maven路径菜单-&gt;Window-&gt;Preferences-&gt;Maven-&gt;Installations-&gt;add-&gt;Directory…选择你的maven安装后的文件夹 把原来的那个低版本maven删除掉，如果有的话 3.设置仓库路径菜单-&gt;Window-&gt;Preferences-&gt;Maven-&gt;User Settings-&gt;Global Settings 和 User Settings都使用我们在上篇文章中自己设置的仓库下的 setting.xml 文件。 点击一下Reindex,确保 local Repository为我们设置的本地仓库位置 1D:\maven-repository]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Maven]]></title>
+    <url>%2F2019%2F04%2F01%2Fmaven%E4%B8%8B%E8%BD%BD%E5%92%8C%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[记录一下Maven的下载和环境变量的配置 下载官方下载地址 我下载的时候最新版本如下，去上面的官网点击即可下载。 配置环境变量1.右键我的电脑-属性-高级系统设置-环境变量-系统变量-Path-编辑-新建。 这里填入你下载的 maven 目录下 bin 目录的地址。 2.使用win+r(或右键开始菜单，选择运行), 然后输入cmd 打开命令行，输入 1mvn -v 若出现下图所示的，则配置成功。 maven仓库的相关修改仓库，顾名思义是用来存放项目需要的jar包的，maven采用一个仓库，多个项目的方式，让多个项目共享一个仓库里的相同jar包。maven仓库的默认位置是在 C:\Users\你的用户名.m2\repository 因为刚下载和配置好并没有运行过，所以C盘中会看不到这个目录。因为我们需要的各种jar包都是放在这的，所以放在c盘感觉并不好，接下来就更改一下仓库的位置，放到D盘中。 在D盘中新建一个文件夹叫 maven-repository ，在你的maven安装目录下的conf文件夹下找到 setting.xml 文件，参考我的 D:\apache-maven-3.6.0\conf\setting.xml,打开找到下图的内容将 localRepository 这对标签内填上刚才创建的maven-repository文件夹的地址。 然后将这个 setting.xml 文件复制一个，粘贴到刚才的maven-repository文件夹下，以后新建项目maven自动将下载的依赖包放到该文件夹下。 使用阿里云仓库maven 会默认从maven官方提供的服务器下载jar包。而官方服务器在国外，被墙了，下的贼慢。 为了快速下载相关jar包，可以使用国内maven 阿里云的下载地址 打开刚才创建的 maven-repository文件夹下的 setting.xml 文件 找到 mirrors 这对标签，在里面添加如下代码即可。123456&lt;mirror&gt; &lt;id&gt;alimaven&lt;/id&gt; &lt;name&gt;aliyun maven&lt;/name&gt; &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt; &lt;mirrorOf&gt;central&lt;/mirrorOf&gt; &lt;/mirror&gt; 如下图：]]></content>
       <categories>
         <category>java</category>
       </categories>
@@ -32,9 +44,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -45,21 +57,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Maven]]></title>
-    <url>%2F2019%2F04%2F01%2Fmaven%E4%B8%8B%E8%BD%BD%E5%92%8C%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[记录一下Maven的下载和环境变量的配置 下载官方下载地址 我下载的时候最新版本如下，去上面的官网点击即可下载。 配置环境变量1.右键我的电脑-属性-高级系统设置-环境变量-系统变量-Path-编辑-新建。 这里填入你下载的 maven 目录下 bin 目录的地址。 2.使用win+r(或右键开始菜单，选择运行), 然后输入cmd 打开命令行，输入 1mvn -v 若出现下图所示的，则配置成功。 maven仓库的相关修改仓库，顾名思义是用来存放项目需要的jar包的，maven采用一个仓库，多个项目的方式，让多个项目共享一个仓库里的相同jar包。maven仓库的默认位置是在 C:\Users\你的用户名.m2\repository 因为刚下载和配置好并没有运行过，所以C盘中会看不到这个目录。因为我们需要的各种jar包都是放在这的，所以放在c盘感觉并不好，接下来就更改一下仓库的位置，放到D盘中。 在D盘中新建一个文件夹叫 maven-repository ，在你的maven安装目录下的conf文件夹下找到 setting.xml 文件，参考我的 D:\apache-maven-3.6.0\conf\setting.xml,打开找到下图的内容将 localRepository 这对标签内填上刚才创建的maven-repository文件夹的地址。 然后将这个 setting.xml 文件复制一个，粘贴到刚才的maven-repository文件夹下，以后新建项目maven自动将下载的依赖包放到该文件夹下。 使用阿里云仓库maven 会默认从maven官方提供的服务器下载jar包。而官方服务器在国外，被墙了，下的贼慢。 为了快速下载相关jar包，可以使用国内maven 阿里云的下载地址 打开刚才创建的 maven-repository文件夹下的 setting.xml 文件 找到 mirrors 这对标签，在里面添加如下代码即可。123456&lt;mirror&gt; &lt;id&gt;alimaven&lt;/id&gt; &lt;name&gt;aliyun maven&lt;/name&gt; &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt; &lt;mirrorOf&gt;central&lt;/mirrorOf&gt; &lt;/mirror&gt; 如下图：]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>maven</tag>
       </tags>
   </entry>
   <entry>
@@ -70,9 +70,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -83,9 +83,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -96,9 +96,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -109,9 +109,9 @@
         <category>c/c++</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>c++</tag>
         <tag>STL</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -122,9 +122,9 @@
         <category>c/c++</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>c++</tag>
         <tag>STL</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -135,9 +135,9 @@
         <category>c/c++</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>c++</tag>
         <tag>STL</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -148,9 +148,9 @@
         <category>c/c++</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>c++</tag>
         <tag>STL</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -243,17 +243,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[测试用]]></title>
-    <url>%2F2019%2F03%2F19%2Ftest%2F</url>
-    <content type="text"><![CDATA[12 34]]></content>
+    <title><![CDATA[阿里巴巴矢量图标库]]></title>
+    <url>%2F2019%2F03%2F19%2Ftubiao%2F</url>
+    <content type="text"><![CDATA[分享一个很棒的图标网站点击下面的链接即可查看 Iconfont–阿里巴巴矢量图标库]]></content>
       <tags>
         <tag>随心</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[阿里巴巴矢量图标库]]></title>
-    <url>%2F2019%2F03%2F19%2Ftubiao%2F</url>
-    <content type="text"><![CDATA[分享一个很棒的图标网站点击下面的链接即可查看 Iconfont–阿里巴巴矢量图标库]]></content>
+    <title><![CDATA[测试用]]></title>
+    <url>%2F2019%2F03%2F19%2Ftest%2F</url>
+    <content type="text"><![CDATA[12 34]]></content>
       <tags>
         <tag>随心</tag>
       </tags>
