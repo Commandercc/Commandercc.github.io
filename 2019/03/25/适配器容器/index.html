@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="江山如画">
 <meta property="og:description" content="这篇主要讲一下适配器容器1.stack（栈容器）实现头文件：&amp;lt; stack&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-25T11:27:39.150Z">
+<meta property="og:updated_time" content="2019-04-05T08:26:50.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL常用容器归纳总结(4)">
 <meta name="twitter:description" content="这篇主要讲一下适配器容器1.stack（栈容器）实现头文件：&amp;lt; stack&amp;gt;">
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  770 word
+                  842 word
                 </span>
               
 
@@ -527,6 +527,8 @@ int main()
     return 0;
 }
 </code></pre><p>输出：<br>    队头元素: 3<br>    出队顺序: 3 2 1 (可见是按照值的大小出队)</p>
+<p>注： 优先队列默认是自动的从大到小排列，想要让它从小到大排列，可以包含头文件 &lt; functional&gt;,再如下形式声明即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="keyword">int</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;, greater&lt;<span class="keyword">int</span>&gt; &gt;q; <span class="comment">//会对入队的元素从小到大排列</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -652,7 +654,7 @@ int main()
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -674,7 +676,7 @@ int main()
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
