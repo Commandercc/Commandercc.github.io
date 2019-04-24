@@ -89,7 +89,7 @@
 <meta property="og:description" content="Exception大体类似于下面这种报错">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haibolun.top/2019/04/24/MyBatis链接MySql出现异常/001.png">
-<meta property="og:updated_time" content="2019-04-24T01:25:47.481Z">
+<meta property="og:updated_time" content="2019-04-24T02:25:47.759Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MyBatis链接MySQL出现异常，URL报错">
 <meta name="twitter:description" content="Exception大体类似于下面这种报错">
@@ -430,7 +430,7 @@
 
       
         <h5 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h5><p>大体类似于下面这种报错</p>
-<p><img width="200" src="/2019/04/24/MyBatis链接MySql出现异常/001.png"><br><a id="more"></a></p>
+<p><img width="700" src="/2019/04/24/MyBatis链接MySql出现异常/001.png"><br><a id="more"></a></p>
 <h5 id="answer"><a href="#answer" class="headerlink" title="answer"></a>answer</h5><p>原来是这样写：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;property <span class="attribute">name</span>=<span class="string">"url"</span> <span class="attribute">value</span>=<span class="string">"jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone = GMT"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
 <p>改成如下形式就对了(即将上面那种写法的 ； 分号  改成 &amp; amp ; )<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;property <span class="attribute">name</span>=<span class="string">"url"</span> <span class="attribute">value</span>=<span class="string">"jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;useSSL=false&amp;amp;serverTimezone = GMT"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
 
