@@ -1,9 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MyBatis和spring整合]]></title>
+    <url>%2F2019%2F05%2F03%2Fmybatis-spring%E6%95%B4%E5%90%88%2F</url>
+    <content type="text"><![CDATA[简述Mybatis将一些琐碎的事交给Spring来处理（像数据库链接，配置等），自身更加注重sql语句本身 整合思路 需要spring来管理数据源信息。 需要spring通过单例方式管理SqlSessionFactory。 使用SqlSessionFactory创建SqlSession。（spring和mybatis整合自动完成） 持久层的mapper都需要由spring进行管理，spring和mybatis整合生成mapper代理对象。 集成的对象1.jar包集成(主要导入Mybatis的jar包、spring的jar包、Mybatis-spring整合包、mysql的相关jar包，c3p0数据库连接池相关jar包，如果使用Junit测试的话，还要导入Junit的jar包，我用了)。 2.配置文件集成(两大配置文件，mybatis的全局配置文件SqlMapConfig.xml和spring的核心配置文件applicationContext.xml)。 3.SqlSessionFactory集成。 4.Mapper接口集成。 结构图 编写applicationContext.xml1234567891011121314151617181920212223242526272829&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"&gt; &lt;!-- 加载 db.properties 中的参数设置，要引用db.properties中的参数，这句必须要有--&gt; &lt;context:property-placeholder location="classpath:db.properties"/&gt; &lt;!-- 将数据库连接的操作交给spring，这里用的是c3p0连接池，需要导入c3p0的相关jar包--&gt; &lt;bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"&gt; &lt;property name="driverClass" value="$&#123;jdbc.driver&#125;"&gt;&lt;/property&gt; &lt;property name="jdbcUrl" value="$&#123;jdbc.url&#125;"&gt;&lt;/property&gt; &lt;property name="user" value="$&#123;jdbc.username&#125;"&gt;&lt;/property&gt; &lt;property name="password" value="$&#123;jdbc.password&#125;"&gt;&lt;/property&gt; &lt;/bean&gt; &lt;!-- 配置mybatis的SqlSessionFactory，需要注入全局配置文件和连接池 --&gt; &lt;bean id="sqlSessionFactoryId" class="org.mybatis.spring.SqlSessionFactoryBean"&gt; &lt;property name="configLocation" value="SqlMapConfig.xml"&gt;&lt;/property&gt; &lt;property name="dataSource" ref="dataSource"&gt;&lt;/property&gt; &lt;/bean&gt; &lt;!-- 配置批量mapper代理开发模式，这里就不能指定id了,而是通过引用具体的 mapper类名来获取mapper对象，进而操作函数--&gt; &lt;bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"&gt; &lt;property name="basePackage" value="com.qqq.dao"&gt;&lt;/property&gt; &lt;property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryId"&gt;&lt;/property&gt; &lt;/bean&gt;&lt;/beans&gt; dao设计–UserMapper.xml12345678910111213&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE mapperPUBLIC "-//mybatis.org//DTD Mapper 3.0//EN""http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;&lt;mapper namespace="com.qqq.dao.UserMapper"&gt; &lt;!-- 这里只是举例了查询的例子 --&gt; &lt;select id="findUserById" parameterType="int" resultType="com.qqq.domain.User"&gt; select * from user where id=#&#123;id&#125; &lt;/select&gt; &lt;select id="findUserAll" resultType="com.qqq.domain.User"&gt; select * from user &lt;/select&gt;&lt;/mapper&gt; dao设计–UserMapper.java 接口123456789package com.qqq.dao;import java.util.List;import com.qqq.domain.User;public interface UserMapper &#123; public User findUserById(int id); public List&lt;User&gt; findUserAll();&#125; 在SqlMapconfig.xml中加载UserMapper.xml12345678910&lt;?xml version="1.0" encoding="UTF-8" ?&gt;&lt;!DOCTYPE configurationPUBLIC "-//mybatis.org//DTD Config 3.0//EN""http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;&lt;configuration&gt; &lt;!-- 如果mapper.xml和mapper.java接口在同一个目录，此处也可不用定义mappers --&gt; &lt;mappers&gt; &lt;mapper resource="com/qqq/dao/UserMapper.xml"/&gt; &lt;/mappers&gt;&lt;/configuration&gt; 主体类–User.java123456789101112131415161718192021222324252627282930package com.qqq.domain;import javax.swing.Spring;public class User &#123; private int id; private String username; private int userage; public int getId() &#123; return id; &#125; public void setId(int id) &#123; this.id = id; &#125; public String toString() &#123; return "User [id=" + id + ", username=" + username + ", userage=" + userage + "]"; &#125; public String getUsername() &#123; return username; &#125; public void setUsername(String username) &#123; this.username = username; &#125; public int getUserage() &#123; return userage; &#125; public void setUserage(int userage) &#123; this.userage = userage; &#125;&#125; db.properties1234jdbc.driver=com.mysql.cj.jdbc.Driverjdbc.url=jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMTjdbc.username=rootjdbc.password=123 log4j.properties123456# Global logging configurationlog4j.rootLogger=DEBUG, stdout# Console output...log4j.appender.stdout=org.apache.log4j.ConsoleAppenderlog4j.appender.stdout.layout=org.apache.log4j.PatternLayoutlog4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n 测试类 Test1.java1234567891011121314151617181920212223package com.qqq.test;import org.junit.Test;import org.springframework.context.ApplicationContext;import org.springframework.context.support.ClassPathXmlApplicationContext;import com.qqq.dao.UserMapper;import com.qqq.domain.User;public class Test1 &#123; //这里用了Junit 所以不能忘记加 @Test @Test public void testMultiMapper()&#123; String springxml="applicationContext.xml"; ApplicationContext context=new ClassPathXmlApplicationContext(springxml); UserMapper userMapper=(UserMapper) context.getBean("userMapper"); //查找id号为2的用户信息 User user=userMapper.findUserById(2); System.out.println(user); &#125;&#125; 数据库表 测试结果]]></content>
+      <categories>
+        <category>MyBatis</category>
+      </categories>
+      <tags>
+        <tag>框架</tag>
+        <tag>MyBatis，spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[HTML特殊字符编码对照表]]></title>
+    <url>%2F2019%2F04%2F24%2FHTML%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E5%AF%B9%E7%85%A7%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[HTML特殊字符编码对照表]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java中限定类名和非限定类名]]></title>
+    <url>%2F2019%2F04%2F24%2FJava%E4%B8%AD%E9%99%90%E5%AE%9A%E7%B1%BB%E5%90%8D%E5%92%8C%E9%9D%9E%E9%99%90%E5%AE%9A%E7%B1%BB%E5%90%8D%2F</url>
+    <content type="text"><![CDATA[限定类名，就是类名全称，带包路径的用点隔开，例如: java.lang.String。 非限定(non-qualified)类名也叫短名，就是我们平时说的类名，不带包的，例如：String。]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[MyBatis链接MySQL出现异常，URL报错]]></title>
     <url>%2F2019%2F04%2F24%2FMyBatis%E9%93%BE%E6%8E%A5MySql%E5%87%BA%E7%8E%B0%E5%BC%82%E5%B8%B8%2F</url>
-    <content type="text"><![CDATA[Exception大体类似于下面这种报错 answer原来是这样写：1&lt;property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone = GMT"/&gt; 改成如下形式就对了(即将上面那种写法的 ； 分号 改成 &amp; amp ; )1&lt;property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;useSSL=false&amp;amp;serverTimezone = GMT"/&gt;]]></content>
+    <content type="text"><![CDATA[Exception大体类似于下面这种报错 answer原来是这样写：1&lt;property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone = GMT"/&gt; 改成如下形式就对了(即将上面那种写法的 ； 分号 改成 &amp; amp ; )1&lt;property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;useSSL=false&amp;amp;serverTimezone = GMT"/&gt; analysis&amp;amp；只是&amp;在xml下的形式 HTML中常用的特殊字符： &lt; 小于 &amp;lt; &amp;#60; &gt; 大于 &amp;gt; &amp;#62; &amp; &amp;符号 &amp;amp; &amp;#38; &quot; 双引号 &amp;quot; &amp;#34; 更多的可以点击链接去查看： HTML特殊字符编码对照表]]></content>
       <categories>
         <category>MyBatis</category>
       </categories>
@@ -297,14 +331,6 @@
     <title><![CDATA[阿里巴巴矢量图标库]]></title>
     <url>%2F2019%2F03%2F19%2Ftubiao%2F</url>
     <content type="text"><![CDATA[分享一个很棒的图标网站点击下面的链接即可查看 Iconfont–阿里巴巴矢量图标库]]></content>
-      <tags>
-        <tag>随心</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[测试用]]></title>
-    <url>%2F2019%2F03%2F19%2Ftest%2F</url>
-    <content type="text"><![CDATA[12 34]]></content>
       <tags>
         <tag>随心</tag>
       </tags>

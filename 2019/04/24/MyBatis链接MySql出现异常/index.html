@@ -89,7 +89,7 @@
 <meta property="og:description" content="Exception大体类似于下面这种报错">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haibolun.top/2019/04/24/MyBatis链接MySql出现异常/001.png">
-<meta property="og:updated_time" content="2019-04-24T02:25:47.759Z">
+<meta property="og:updated_time" content="2019-04-27T02:29:22.262Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MyBatis链接MySQL出现异常，URL报错">
 <meta name="twitter:description" content="Exception大体类似于下面这种报错">
@@ -392,7 +392,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  94 word
+                  167 word
                 </span>
               
 
@@ -433,6 +433,17 @@
 <p><img width="700" src="/2019/04/24/MyBatis链接MySql出现异常/001.png"><br><a id="more"></a></p>
 <h5 id="answer"><a href="#answer" class="headerlink" title="answer"></a>answer</h5><p>原来是这样写：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;property <span class="attribute">name</span>=<span class="string">"url"</span> <span class="attribute">value</span>=<span class="string">"jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone = GMT"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
 <p>改成如下形式就对了(即将上面那种写法的 ； 分号  改成 &amp; amp ; )<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;property <span class="attribute">name</span>=<span class="string">"url"</span> <span class="attribute">value</span>=<span class="string">"jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;useSSL=false&amp;amp;serverTimezone = GMT"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
+<h5 id="analysis"><a href="#analysis" class="headerlink" title="analysis"></a>analysis</h5><p>&amp;amp；只是&amp;在xml下的形式</p>
+<p>HTML中常用的特殊字符：</p>
+<pre><code>&lt; 小于 &amp;lt; &amp;#60;
+
+&gt; 大于 &amp;gt; &amp;#62;
+
+&amp; &amp;符号 &amp;amp; &amp;#38;
+
+&quot; 双引号 &amp;quot; &amp;#34;
+</code></pre><p>更多的可以点击链接去查看：</p>
+<p><a href="https://www.jb51.net/onlineread/htmlchar.htm" target="_blank" rel="noopener">HTML特殊字符编码对照表</a></p>
 
       
     </div>
@@ -476,6 +487,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/24/Java中限定类名和非限定类名/" rel="prev" title="Java中限定类名和非限定类名">
+                Java中限定类名和非限定类名 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -554,7 +569,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -565,7 +580,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -576,7 +591,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -625,7 +640,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Exception"><span class="nav-number">1.</span> <span class="nav-text">Exception</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#answer"><span class="nav-number">2.</span> <span class="nav-text">answer</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Exception"><span class="nav-number">1.</span> <span class="nav-text">Exception</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#answer"><span class="nav-number">2.</span> <span class="nav-text">answer</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#analysis"><span class="nav-number">3.</span> <span class="nav-text">analysis</span></a></li></ol></div>
             
 
           </div>
