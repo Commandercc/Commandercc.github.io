@@ -2,17 +2,6 @@
 <search>
   <entry>
     <title><![CDATA[5月份的一些零散点]]></title>
-    <url>%2F2019%2F06%2F11%2F%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8%E5%92%8C%E9%81%8D%E5%8E%86%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>随心</category>
-      </categories>
-      <tags>
-        <tag>随心</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[5月份的一些零散点]]></title>
     <url>%2F2019%2F06%2F11%2F2019-6-11-5%E6%9C%88%E4%BB%BD%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[ai,这个五月份来来回回搞了数据库和软工的项目，这两个都用Javaweb的一些知识写的，就当练手了，中间还参加准备了一个比赛，感觉没写多少东西，就简单的记录一下吧。 jsp 按钮点击跳转到servlet并传递变量值传递常量 id &lt;input type=&quot;submit&quot; name=&quot;Submit1&quot; value=&quot;选座&quot; onclick=&quot;window.location.href=&apos;test1?id=1&apos;&quot;/&gt; 传递变量 id &lt;input type=&quot;submit&quot; name=&quot;Submit2&quot; value=&quot;取消预约&quot; onclick=&quot;window.location.href=&apos;CancelyyServlet?h_id=&lt;%=h_id%&gt;&apos;&quot;/&gt; 在servlet页面 通过正常的 String id=request.getParameter(&quot;id&quot;); 接收即可 传递多个参数 用 &amp; 符号 eg:&lt;input type=&quot;submit&quot; name=&quot;Submit1&quot; value=&quot;预约&quot; onclick=&quot;window.location.href=&apos;ChangeHouseStateServlet?h_id=&lt;%=house.getH_id()%&gt;&amp;seat_id=&lt;%=house.getSeat_id()%&gt;&apos;&quot;/&gt; okttp请求时 response.body.string与toString 的区别1.toString(): This returns your object in string format.（以字符串的格式返回你的对象） 2. .string(): This returns your response。（返回你的response） 3. 正确写法： String responseText=response.body().string(); 网络权限 android.permission.INTERNET 不是危险权限 不需要动态申请阿里云服务器配置很蛋疼的问题配置阿里云服务器 按照步骤来 结果就是远程桌面连接不上 最后将端口号3389 改成了3399 连上了 MySQL修改登录密码先cmd打开命令行窗口，输入 mysql 进入mysql指令状态 ，然后 输入 SET PASSWORD FOR &apos;dbadmin&apos;@&apos;localhost&apos; = &apos;newpasswd2&apos;; 使用SET PASSWORD语句更改dbadmin用户帐户的密码。 推荐一个在线 java 反编译工具将 .class 反编译成 .java java在线反编译工具 jsp中 session简单用法传递time HttpSession session=request.getSession(); session.setAttribute(&quot;time&quot;, time); javaweb项目中文件的路径问题（蛋疼）参照index.jsp 在webContent文件夹下的就是主路径 localhost:8080/yysystem/index.jsp 像访问index.jsp就直接项目名+index.jsp 如果在webContent 下建立了一个 jsp文件夹 里面有home.jsp 那么访问的时候就是 localhost:8080/yysystem/jsp/home.jsp 此时，若想从home.jsp中跳转到 index.jsp ，要注意，这里index.jsp位于目前位置home.jsp的上一级路径，所以写路径时要写 ../ 例如：&lt;input type=&quot;button&quot; value=&quot;退出系统&quot; name=&quot;exit&quot; onclick=&quot;window.location.href=&apos;../index.jsp&apos;&quot;/&gt; 访问包下的servlet也是同理 &lt;form action=&quot;../HouseServlet&quot; method=&quot;post&quot;&gt; filter 过滤&lt;filter&gt; &lt;filter-name&gt;LoginFilter&lt;/filter-name&gt; &lt;filter-class&gt;filter.LoginFilter&lt;/filter-class&gt; &lt;/filter&gt; &lt;filter-mapping&gt; &lt;filter-name&gt;LoginFilter&lt;/filter-name&gt; &lt;url-pattern&gt;/jsp/*&lt;/url-pattern&gt; &lt;/filter-mapping&gt; 这样写就是过滤掉webContent/jsp文件夹下的所有文件 *jsp 这样写是过滤所有以.jsp结尾的 mysql 模糊查询SELECT username FROM post WHERE post_content LIKE &apos;%dnf%&apos; %表示由零个或多个字符组成的字符串 在post表中查询 post_content中含有 dnf 的username]]></content>
       <categories>
@@ -115,8 +104,20 @@
       </categories>
       <tags>
         <tag>MyBatis</tag>
-        <tag>MySql</tag>
         <tag>框架</tag>
+        <tag>MySql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[图的存储和遍历]]></title>
+    <url>%2F2019%2F04%2F07%2F%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8%E5%92%8C%E9%81%8D%E5%8E%86%2F</url>
+    <content type="text"><![CDATA[0.图 = 点 + 边 1.邻接矩阵表示12345678910 #define maxn 100typedef struct &#123; int no; //顶点编号 char data[maxn];//顶点的其他信息&#125;VertexType;typedef struct&#123; int edges[maxn][maxn]; //存放边的数组 int n, e; //顶点数，边数 VertexType vex[maxn][maxn]; //存放顶点数组&#125;MGraph; 2.邻接表表示12345678910111213typedef struct EdgeNode&#123; //边表结点 int adjvex; //该边的终点编号( 如u-&gt;v ，这里指的就是v的编号 ) int weight; //边的权值 struct EdgeNode *next; //指向下一条边的指针&#125;EdgeNode;typedef struct VextexNode&#123; char data; //顶点域，存储顶点信息 EdgeNode *firstedge; //边表头指针，指向连接的第一条边&#125;VextexNode, AdjList[maxn]; //AdjList是邻接表类型typedef struct&#123; AdjList adjList; //邻接表 int n, e; //图中顶点数和边数&#125;GraphAdjList; 附：用邻接表表示创建无向图(这里用的是头插法)：12345678910111213141516171819202122232425262728void CreateALGraph(GraphAdjList *Gp)&#123; int i, j, k; EdgeNode *pe; cout &lt;&lt; "输入顶点数和边数(空格分隔）:" &lt;&lt; endl; cin &gt;&gt; Gp-&gt;numNodes &gt;&gt; Gp-&gt;numEdges; for (i = 0 ; i &lt; Gp-&gt;numNodes; i++) &#123; cout &lt;&lt; "输入顶点信息：" &lt;&lt; endl; cin &gt;&gt; Gp-&gt;adjList[i].data; Gp-&gt;adjList[i].firstedge = NULL;/* 将边表置为空表 */ &#125; for (k = 0; k &lt; Gp-&gt;numEdges; k++)/* 建立边表 */ &#123; cout &lt;&lt; "输入边(u,v)的顶点序号i,j"&lt;&lt; endl; cin &gt;&gt; i &gt;&gt; j; pe = (EdgeNode *)malloc(sizeof(EdgeNode)); pe-&gt;adjvex = j; //边的终点编号为j // 将pe的指针指向当前顶点上指向的结点 pe-&gt;next = Gp-&gt;adjList[i].firstedge; Gp-&gt;adjList[i].firstedge = pe;/* 将当前顶点的指针指向pe */ //因为是无向图，所以下面还要以i作为边的终点 pe = (EdgeNode *)malloc(sizeof(EdgeNode)); pe-&gt;adjvex = i; pe-&gt;next = Gp-&gt;adjList[j].firstedge; Gp-&gt;adjList[j].firstedge = pe; &#125;&#125; 3.深度优先遍历注：INF是无穷，visited[] 是全局数组，用来标记点是否被访问，初始置为0 1.邻接矩阵：12345678910void DFS(MGraph g, int v)&#123; int w; cout &lt;&lt; v; //输出当前访问的结点 visited[v] = 1; //将已访问的置为1 for (w = 0; w &lt; g.n; w++)&#123; //找当前顶点v的所有邻接顶点 if (g.edges[v][w] != 0 &amp;&amp; g.edges[v][w] != INF&amp;&amp;visited[w] == 0)&#123; //找顶点v未访问过的邻接点w DFS(g, w); &#125; &#125;&#125; 2.邻接表：123456789101112void DFS(GraphAdjList *g, int v)&#123; EdgeNode *p; cout &lt;&lt; v; //输出当前访问的点 visited[v] = 1; //已访问的置为1 p = g-&gt;adjList[v].firstedge; //p指向顶点v的第一个边邻接点 while (p != NULL)&#123; if (visited[p-&gt;adjvex] == 0)&#123; DFS(g, p-&gt;adjvex); //若p-&gt;adjvex顶点未访问，递归访问它 &#125; p = p-&gt;next; //p指向顶点v的下一个邻接点 &#125;&#125; 4.广度优先遍历(层次)1.邻接矩阵：12345678910111213141516171819202122void BFS(MGraph g, int v)&#123; queue&lt;int&gt; qu; //定义一个队列 qu int visited[maxn]; //定义一个存放结点打的访问标志的数组 int w, i; memset(visited, 0, sizeof(visited)); //初始化访问标志数组 cout &lt;&lt; v; //输出当前访问的顶点编号 visited[v] = 1; //已访问的置为1 qu.push(v); //v进队 while (!qu.empty())&#123; //队列不空时循环 w = qu.front(); qu.pop(); //出队队首顶点 for (int i = 0; i &lt; g.n; i++)&#123; //若当前相邻顶点i未被访问 if (g.edges[v][i] != 0 &amp;&amp; g.edges[v][i] != INF&amp;&amp;visited[i] == 0)&#123; cout &lt;&lt; i; //访问相邻顶点 visited[i]=1; //已访问的置为1 qu.push(i); //该顶点进队 &#125; &#125; &#125; cout &lt;&lt; endl;&#125; 2.邻接表：12345678910111213141516171819202122232425void BFS(GraphAdjList* g, int v)&#123; EdgeNode *p; queue&lt;int&gt; qu; //定义一个队列 qu int visited[maxn]; //定义一个存放结点打的访问标志的数组 int w, i; memset(visited, 0, sizeof(visited)); //初始化访问标志数组 cout &lt;&lt; v; //输出当前访问的顶点编号 visited[v] = 1; //已访问的置为1 qu.push(v); //v进队 while (!qu.empty())&#123; //队列不空时循环 w = qu.front(); qu.pop(); //出队队首顶点w p = g-&gt;adjList[w].firstedge; //找顶点w的第一个邻接点 while (p != NULL)&#123; //若当前相邻的顶点未被访问 if (visited[p-&gt;adjvex] == 0)&#123; cout &lt;&lt; p-&gt;adjvex; //访问相邻顶点 visited[p-&gt;adjvex] = 1; //已访问的置为1 qu.push(p-&gt;adjvex); //该顶点进队 &#125; p = p-&gt;next; //找顶点w的下一个邻接点 &#125; &#125; cout &lt;&lt; endl;&#125;]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图</tag>
       </tags>
   </entry>
   <entry>
