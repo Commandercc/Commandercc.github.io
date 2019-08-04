@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MyBatis自动提交问题]]></title>
+    <url>%2F2019%2F08%2F04%2Fmybatis%E6%95%B0%E6%8D%AE%E6%8F%90%E4%BA%A4openSession()%E8%87%AA%E5%8A%A8%E6%8F%90%E4%BA%A4%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[问题关于这个mybatis的自动提交和手动提交问题，在这个学期，自己做数据库项目时，就遇到过，当时可能比较急，没有顺手把这个问题记录下来，结果今晚写东西的时候再次遇到了（躲得了初一，躲不过十五），还好我脑子里还有点印象，大体知道问题所在，现在赶紧记录下来，防止出现类似错误。 问题描述大体意思是：假设我要往一个user表里插入一个新用户 eclipse（或idea）上显示插入没问题，可是打开mysql查看，就是没插入进去。这里就涉及到Mybatis修改数据的提交问题。 开启自动提交去看MyBatis的源代码可以发现 openSession() 方法有带参数为 autoCommit 的布尔值，也就是是否自动提交可以手动控制的。 当openSession(true),即括号内为true的时候，mybaits是可以自动提交修改后的数据的，这样上面提到的问题就会解决 当openSession(),即括号内为空（或false），为手动提交，需要最后调用 session.commit() 来完成数据更新操作。]]></content>
+      <categories>
+        <category>MyBatis</category>
+      </categories>
+      <tags>
+        <tag>MyBatis</tag>
+        <tag>框架</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[AndroidStudio快速处理编译运行compileDebugJavaWithJavac问题]]></title>
     <url>%2F2019%2F08%2F01%2FcompileDebugJavaWithJavac%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[问题描述compileDebugJavaWithJavac是什么，从字面上看就是在debug调试的执行javac命令，编译器遇到不能解析的内容而抛出的异常，上面一大片报红，很难定位错误的原因在哪里。 解决方案在Terminal框内输入执行下面的命令能快速找到原因，会将出现错误的地方都显示出来 1gradlew compileDebugJavaWithJavac 如下图：]]></content>
@@ -185,8 +197,8 @@
       </categories>
       <tags>
         <tag>MyBatis</tag>
-        <tag>MySql</tag>
         <tag>框架</tag>
+        <tag>MySql</tag>
       </tags>
   </entry>
   <entry>
