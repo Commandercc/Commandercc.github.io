@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[git操作]]></title>
+    <url>%2F2019%2F10%2F29%2F2019-10-29-git%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"><![CDATA[GIt基础创建版本库 通过git init命令把一个目录变成Git可以管理的仓库 1git init 执行完后当前目录下会多一个.git的文件夹，默认情况下该文件夹是隐藏的，可以选择查看隐藏文件来显示 把文件添加到版本库1git add &lt;filename&gt; 把添加的文件提交到仓库1git commit -m "本次提交说明" GIt版本控制查看仓库当前状态1git status 查看某个文件的改动12345678910git diff &lt;filename&gt;$ git diff demo.txtdiff --git a/demo.txt b/demo.txtindex 66b666f..e10e664 100644--- a/demo.txt+++ b/demo.txt@@ -1 +1,2 @@ Creating a new branch is quick ccccc.+ssssssssssssssssssssss. 查看提交日志 git log命令显示从最近到最远的提交日志 ， 如果嫌输出信息太多，看得眼花缭乱的，可以试试加上--pretty=oneline参数： 1git log --pretty=oneline 版本回退 首先，Git必须知道当前版本是哪个版本，在Git中，用HEAD表示当前版本 上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100 1git reset --hard HEAD^ 回退到上一个版本 现在，你回退到了某个版本，关掉了电脑，第二天早上就后悔了，想恢复到新版本怎么办？找不到新版本的commit id怎么办？ git提供了一个命令git reflog用来记录你的每一次命令,找到对应的commit id即可 1git reflog 放弃修改 当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file 当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD，就回到了场景1，第二步按场景1操作。 远程仓库本地库关联远程库123$ git remote add origin git@github.com:自己的Github用户名/远程仓库名.giteg: 我要关联我的远程仓库learngit$ git remote add origin git@github.com:Commandercc/learngit.git 把本地库内容推到远程库123git push -u origin master由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。 从现在起，只要本地作了提交，就可以通过命令： 1git push origin master 克隆远程库123git clone &lt;远程仓库地址&gt;eg:git clone https://github.com/Commandercc/gitskills.git 分支管理创建与合并分支查看分支1git branch 创建分支123创建分支用 git branch &lt;name&gt; 2.23版本之前创建并切换到新的分支 git checkout -b &lt;name&gt; ==&gt; 相当于 git branch dev + git checkout dev 两条命令（先创建再跳转）2.23版本之后创建并切换到新的分支可以用 git switch -c &lt;name&gt; 切换分支12git checkout &lt;name&gt; 或 git switch &lt;name&gt;2.23版本后更推荐新的 switch 命令 合并某个分支到当前分支1git merge &lt;name&gt; 删除某个分支1git branch -d &lt;name&gt; 查看分支合并图123git log --graph (详细)git log --graph --pretty=oneline --abbrev-commit 现场保存1234567891011修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场；查看保存的工作现场： git stash list恢复工作现场:一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；另一种方式是用git stash pop，恢复的同时把stash内容也删了：你可以多次stash，恢复的时候，先用git stash list查看，然后恢复指定的stash，用命令：$ git stash apply stash@&#123;0&#125;(apply 后加要恢复的编号)在master分支上修复的bug，想要合并到当前dev分支，可以用git cherry-pick &lt;commit&gt;命令，把bug提交的修改“复制”到当前分支，避免重复劳动。 删除未合并的分支1git branch -D &lt;name&gt; 强行删除 多人协作查看远程库的信息 当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin。 1git remote 或者用 git remote -v 显示更详细的信息： 推送分支 推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上： 1git push origin master 如果要推送其他分支，比如dev，就改成 1git push origin dev 抓取分支当你的小伙伴从远程库clone时，默认情况下，你的小伙伴只能看到本地的master分支。不信可以用git branch命令看看： 12$ git branch* master 现在，你的小伙伴要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是他用这个命令创建本地dev分支： 1$ git checkout -b dev origin/dev 你的小伙伴已经向origin/dev分支推送了他的提交，而碰巧你也对同样的文件作了修改，并试图推送 ，推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单，Git已经提示我们，先用git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送： 指定本地dev分支与远程origin/dev分支的链接 1git branch --set-upstream-to=origin/dev dev 标签管理 tag就是一个让人容易记住的有意义的名字，它跟某个commit绑在一起 创建标签1git tag &lt;name&gt; 查看所有标签1git tag 默认标签是打在最新提交的commit上的。有时候，如果忘了打标签，比如，现在已经是周五了，但应该在周一打的标签没有打，怎么办？方法是找到历史提交的commit id，然后打上就可以了： 1$ git tag v0.9 f52c633 查看某个标签信息1git show &lt;tagname&gt; 创建带有说明的标签123用-a指定标签名，-m指定说明文字$ git tag -a v0.1 -m "version 0.1 released" 1094adb用命令git show &lt;tagname&gt;可以看到说明文字 删除标签1git tag -d v1.0 推送标签 因为创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除。 如果要推送某个标签到远程，使用命令git push origin： 123git push origin v1.0或一次性推送全部尚未推送到远程的本地标签git push origin --tags 如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除： 12$ git tag -d v0.9Deleted tag 'v0.9' (was f52c633) 然后，从远程删除。删除命令也是push，但是格式如下： 123$ git push origin :refs/tags/v0.9To github.com:michaelliao/learngit.git - [deleted] v0.9]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Dart 学习记录(二)]]></title>
     <url>%2F2019%2F10%2F26%2F2019-10-26-Dart-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E4%BA%8C)%2F</url>
     <content type="text"><![CDATA[运算符除法、整除、取模运算1234var num = 7;print(num / 3); // 除法操作, 结果2.3333..print(num ~/ 3); // 整除操作, 结果2;print(num % 3); // 取模操作, 结果1; ??= 赋值操作dart有一个很多语言都不具备的赋值运算符： 当变量为null时，使用后面的内容进行赋值。 当变量有值时，使用自己原来的值。 12345678main(List&lt;String&gt; args) &#123; var name1 = 'coderwhy'; print(name1); // var name2 = 'kobe'; var name2 = null; name2 ??= 'james'; print(name2); // 当name2初始化为kobe时，结果为kobe，当初始化为null时，赋值了james&#125; ?? 条件运算符Dart中包含一直比较特殊的条件运算符：expr1 ?? expr2 如果expr1是null，则返回expr2的结果; 如果expr1不是null，直接使用expr1的结果。 1234var temp = 'why';temp = null;var name = temp ?? 'kobe';print(name); //输出： Kobe .. 级联语法1234567891011121314151617181920212223242526272829class Person &#123; String name; void run() &#123; print("$&#123;name&#125; is running"); &#125; void eat() &#123; print("$&#123;name&#125; is eating"); &#125; void swim() &#123; print("$&#123;name&#125; is swimming"); &#125;&#125;main(List&lt;String&gt; args) &#123; final p1 = Person(); p1.name = 'sss'; p1.run(); p1.eat(); p1.swim(); //使用级联语法 .. final p2 = Person() ..name = "ccc" ..run() ..eat() ..swim();&#125; 流程控制if和else 参考其他语言的用法但要注意： 不支持非空即真或者非0即真，必须有明确的bool类型 循环操作 基本for循环 123for (var i = 0; i &lt; 5; i++) &#123; print(i);&#125; for in 遍历List和Set类型 1234var names = ['why', 'kobe', 'curry'];for (var name in names) &#123; print(name);&#125; while和do-while 和其他语言一致 break和continue用法也和其他语言一致 switch-case普通的switch使用 注意：每一个case语句，默认情况下必须以一个break结尾 12345678910111213141516171819main(List&lt;String&gt; args) &#123; var direction = 'east'; switch (direction) &#123; case 'east': print('东面'); break; case 'south': print('南面'); break; case 'west': print('西面'); break; case 'north': print('北面'); break; default: print('其他方向'); &#125;&#125; 类和对象类的定义在Dart中，定义类用class关键字。 和Java一样， 类通常有两部分组成：成员（member）和方法（method） 。 123456class 类名 &#123; 类型 成员名; 返回值类型 方法名(参数列表) &#123; 方法体 &#125;&#125; 编写一个简单的Person类 这里有一个注意点: 我们在方法中使用属性(成员/实例变量)时，并没有加this； Dart的开发风格中，在方法中通常使用属性时，会省略this，但是有命名冲突时，this不能省略； 1234567class Person &#123; String name; eat() &#123; print('$name在吃东西'); &#125;&#125; 我们来使用这个类，创建对应的对象： 注意：从Dart2开始，new关键字可以省略。 12345678910main(List&lt;String&gt; args) &#123; // 1.创建类的对象 var p = new Person(); // 直接使用Person()也可以创建 // 2.给对象的属性赋值 p.name = 'why'; // 3.调用对象的方法 p.eat();&#125; 构造方法普通构造方法参考Java， 当通过类创建一个对象时，会调用这个类的构造方法。 当类中没有明确指定构造方法时，将默认拥有一个无参的构造方法 当有了自己的构造方法时，默认打的构造方法将会失效，不能使用 当然， 你可能希望明确的写一个默认的构造方法，但是会和我们自定义的构造方法冲突； 这是因为Dart本身不支持函数的重载（名称相同, 参数不同的方式）。 1234567891011121314class Person &#123; String name; int age; Person(String name, int age) &#123; this.name = name; this.age = age; &#125; @override String toString() &#123; return 'name=$name age=$age'; &#125;&#125; 另外，在实现构造方法时，通常做的事情就是通过参数给属性赋值 为了简化这一过程, Dart提供了一种更加简洁的语法糖形式. 上面的构造方法可以优化成下面的写法： 123456Person(String name, int age) &#123; this.name = name; this.age = age;&#125;// 等同于Person(this.name, this.age); 命名构造方法在开发中，我们确实 希望实现更多的构造方法，怎么办呢？ 因为不支持方法（函数）的重载，所以我们没办法创建相同名称的构造方法 。 我们需要使用命名构造方法： 12345678910111213141516171819202122232425class Person &#123; String name; int age; Person() &#123; name = ''; age = 0; &#125; // 命名构造方法 自己起一个名 这里名字叫做withArgments Person.withArgments(String name, int age) &#123; this.name = name; this.age = age; &#125; @override String toString() &#123; return 'name=$name age=$age'; &#125;&#125;// 创建对象var p1 = new Person();print(p1);var p2 = new Person.withArgments('why', 18);print(p2); 在之后的开发中, 我们也可以利用命名构造方法，提供更加便捷的创建对象方式: 比如开发中，我们需要经常将一个Map转成对象，可以提供如下的构造方法 123456789 // 新的构造方法Person.fromMap(Map&lt;String, Object&gt; map) &#123; this.name = map['name']; this.age = map['age']; &#125; // 通过上面的构造方法创建对象 var p3 = new Person.fromMap(&#123;'name': 'kobe', 'age': 30&#125;); print(p3); 初始化列表 初始化实例参数，用逗号分隔 我们来重新定义一个类Point, 传入x/y，可以得到它们的距离distance: 1234567891011121314class Point &#123; num x; num y; Point(this.x, this.y); // Initializer list sets instance variables before // the constructor body runs. Point.fromJson(Map jsonMap) : x = jsonMap['x'], y = jsonMap['y'] &#123; print('In Point.fromJson(): ($x, $y)'); &#125;&#125; 初始化列表非常适合用来设置 final 变量的值 12345678import 'dart:math';class Point &#123; final num x; final num y; final num distance; Point(this.x, this.y) : distance = sqrt(x * x + y * y);&#125; 重定向构造方法 在某些情况下, 我们希望在一个构造方法中去调用另外一个构造方法, 这个时候可以使用重定向构造方法： 1234567class Person &#123; String name; int age; Person(this.name, this.age); Person.fromName(String name) : this(name, 0);&#125; 常量构造方法在某些情况下，传入相同值时，我们希望返回同一个对象，这个时候，可以使用常量构造方法. 默认情况下，创建对象时，即使传入相同的参数，创建出来的也不是同一个对象，看下面代码: 这里我们使用identical(对象1, 对象2)函数来判断两个对象是否是同一个对象: 1234567891011main(List&lt;String&gt; args) &#123; var p1 = Person('why'); var p2 = Person('why'); print(identical(p1, p2)); //输出结果为 false&#125;class Person &#123; String name; Person(this.name);&#125; 但是, 如果将构造方法前加const进行修饰，那么可以保证同一个参数，创建出来的对象是相同的 这样的构造方法就称之为常量构造方法 1234567891011main(List&lt;String&gt; args) &#123; var p1 = const Person('why'); var p2 = const Person('why'); print(identical(p1, p2)); // true&#125;class Person &#123; final String name; const Person(this.name);&#125; 常量构造方法有一些注意点: 注意一：拥有常量构造方法的类中，所有的成员变量必须是final修饰的. 注意二：为了可以通过常量构造方法，创建出相同的对象，不再使用 new关键字，而是使用const关键字 工厂构造方法 Dart提供了factory关键字, 用于通过工厂去获取对象 1234567891011121314151617181920212223main(List&lt;String&gt; args) &#123; var p1 = Person('why'); var p2 = Person('why'); print(identical(p1, p2)); // true&#125;class Person &#123; String name; static final Map&lt;String, Person&gt; _cache = &lt;String, Person&gt;&#123;&#125;; factory Person(String name) &#123; if (_cache.containsKey(name)) &#123; return _cache[name]; &#125; else &#123; final p = Person._internal(name); _cache[name] = p; return p; &#125; &#125; Person._internal(this.name);&#125; setter和getter 参考java 默认情况下，Dart中类定义的属性是可以直接被外界访问的。 但是某些情况下，我们希望监控这个类的属性被访问的过程，这个时候就可以使用setter和getter了 123456789101112131415161718main(List&lt;String&gt; args) &#123; final d = Dog("黄色"); d.setColor = "黑色"; print(d.getColor);&#125;class Dog &#123; String color; String get getColor &#123; return color; &#125; set setColor(String color) &#123; this.color = color; &#125; Dog(this.color);&#125; 类的继承 关键字： extends 子类中用 super 来访问父类 父类中的所有成员变量和方法都会被继承，但是构造方法除外 12345678910111213141516171819main(List&lt;String&gt; args) &#123; var p = new Person(); p.age = 18; p.run(); print(p.age);&#125;class Animal &#123; int age; run() &#123; print('在奔跑ing'); &#125;&#125;//Person类继承了Animal 类class Person extends Animal &#123;&#125; 子类可以拥有自己的成员变量, 并且可以对父类的方法进行重写： 12345678class Person extends Animal &#123; String name; @override run() &#123; print('$name在奔跑ing'); &#125;&#125; 子类中可以调用父类的构造方法，对某些属性进行初始化： 子类的构造方法在执行前，将隐含调用父类的无参默认构造方法（没有参数且与类同名的构造方法）。 注意：！！！如果父类没有无参默认构造方法，则子类的构造方法必须在初始化列表中通过super显式调用父类的某个构造方法。 12345678910111213141516171819202122232425class Animal &#123; int age; Animal(this.age); run() &#123; print('在奔跑ing'); &#125;&#125;class Person extends Animal &#123; String name; Person(String name, int age) : name=name, super(age); @override run() &#123; print('$name在奔跑ing'); &#125; @override String toString() &#123; return 'name=$name, age=$age'; &#125;&#125; 抽象类 参考java 抽象类使用 abstract 声明的类 抽象类中的抽象方法，不需要在抽象类中实现，只需声明即可 抽象类不能被实例化 即不能new一个抽象类 抽象类中的抽象方法必须被子类实现, 抽象类中的已经被实现方法, 可以不被子类重写. 1234567891011121314151617181920212223242526abstract class Shape &#123; getArea();&#125;class Circle extends Shape &#123; double r; Circle(this.r); @override getArea() &#123; return r * r * 3.14; &#125;&#125;class Reactangle extends Shape &#123; double w; double h; Reactangle(this.w, this.h); @override getArea() &#123; return w * h; &#125;&#125; 隐式接口Dart中的接口比较特殊, 没有一个专门的关键字来声明接口. 默认情况下，定义的每个类都相当于默认也声明了一个接口，可以由其他的类来实现(因为Dart不支持多继承) 在开发中，我们通常将用于给别人实现的类声明为抽象类: 实现接口用 implements 通过implements实现某个类时，类中所有的方法都必须被重新实现(无论这个类原来是否已经实现过该方法)。 12345678910111213141516171819abstract class Runner &#123; run();&#125;abstract class Flyer &#123; fly();&#125;class SuperMan implements Runner, Flyer &#123; @override run() &#123; print('超人在奔跑'); &#125; @override fly() &#123; print('超人在飞'); &#125;&#125; Mixin 混入在上面我们了解了， 在通过implements实现某个类时，类中所有的方法都必须被重新实现(无论这个类原来是否已经实现过该方法)。 Dart提供了另外一种方案: Mixin混入的方式 除了可以通过class定义类之外，也可以通过mixin关键字来定义一个类。 只是通过mixin定义的类用于被其他类混入使用，通过with关键字来进行混入。 123456789101112131415161718192021222324main(List&lt;String&gt; args) &#123; var superMan = SuperMain(); superMan.run(); superMan.fly();&#125;mixin Runner &#123; run() &#123; print('在奔跑'); &#125;&#125;mixin Flyer &#123; fly() &#123; print('在飞翔'); &#125;&#125;// implements的方式要求必须对其中的方法进行重新实现// class SuperMan implements Runner, Flyer &#123;&#125;class SuperMain with Runner, Flyer &#123;&#125; 类成员和方法 前面我们在类中定义的成员和方法都属于对象级别的, 在开发中, 我们有时候也需要定义类级别的成员和方法 在Dart中我们使用 static 关键字来定义: 1234567891011121314151617181920212223242526main(List&lt;String&gt; args) &#123; var stu = Student(); stu.name = 'why'; stu.sno = 110; stu.study(); Student.time = '早上8点'; // stu.time = '早上9点'; 错误做法, 实例对象不能访问类成员 Student.attendClass(); // stu.attendClass(); 错误做法, 实现对象补鞥呢访问类方法&#125;class Student &#123; String name; int sno; static String time; study() &#123; print('$name在学习'); &#125; static attendClass() &#123; print('去上课'); &#125;&#125; 枚举类型枚举的定义 参考java 用关键字 enum 定义 不能子类化、混合或实现枚举 不能显式实例化一个枚举 123456789main(List&lt;String&gt; args) &#123; print(Colors.red);&#125;enum Colors &#123; red, green, blue&#125; 枚举的属性枚举类型中有两个常见的属性： index: 用于表示每个枚举常量的索引，从0开始。 values: 包含每个枚举值的List。 12345678910111213main(List&lt;String&gt; args) &#123; print(Colors.red.index); print(Colors.green.index); print(Colors.blue.index); print(Colors.values);&#125;enum Colors &#123; red, green, blue&#125; 泛型 参考Java List和Map的泛型List使用时的泛型写法： 1234567// 创建List的方式var names1 = ['why', 'kobe', 'james', 111];print(names1.runtimeType); // List&lt;Object&gt;// 限制类型var names2 = &lt;String&gt;['why', 'kobe', 'james', 111]; // 最后一个报错List&lt;String&gt; names3 = ['why', 'kobe', 'james', 111]; // 最后一个报错 Map使用时的泛型写法： 1234567// 创建Map的方式var infos1 = &#123;1: 'one', 'name': 'why', 'age': 18&#125;; print(infos1.runtimeType); // _InternalLinkedHashMap&lt;Object, Object&gt;// 对类型进行显示Map&lt;String, String&gt; infos2 = &#123;'name': 'why', 'age': 18&#125;; // 18不能放在value中var infos3 = &lt;String, String&gt;&#123;'name': 'why', 'age': 18&#125;; // 18不能放在value中 类定义的泛型如果我们需要定义一个类, 用于存储位置信息Location, 但是并不确定使用者希望使用的是int类型,还是double类型, 甚至是一个字符串, 这个时候我们就可以使用泛型。 123456789101112131415main(List&lt;String&gt; args) &#123; Location l2 = Location&lt;int&gt;(10, 20); print(l2.x.runtimeType); // int Location l3 = Location&lt;String&gt;('aaa', 'bbb'); print(l3.x.runtimeType); // String&#125;&#125;class Location&lt;T&gt; &#123; T x; T y; Location(this.x, this.y);&#125; 如果希望类型只能是num类型： 123456789101112131415main(List&lt;String&gt; args) &#123; Location l2 = Location&lt;int&gt;(10, 20); print(l2.x.runtimeType); // 错误的写法, 类型必须继承自num Location l3 = Location&lt;String&gt;('aaa', 'bbb'); print(l3.x.runtimeType);&#125;class Location&lt;T extends num&gt; &#123; T x; T y; Location(this.x, this.y);&#125; 泛型方法的定义123456789main(List&lt;String&gt; args) &#123; var names = ['why', 'kobe']; var first = getFirst(names); print('$first $&#123;first.runtimeType&#125;'); // why String&#125;//一定要注意写法T getFirst&lt;T&gt;(List&lt;T&gt; ts) &#123; return ts[0];&#125; 库的使用 在Dart中，你可以导入一个库来使用它所提供的功能。 库的使用可以使代码的重用性得到提高，并且可以更好的组合代码。 Dart中任何一个dart文件都是一个库，即使你没有用关键字library声明 导入库1import '库所在的uri'; 常见的库URI有三种不同的形式 来自dart标准版，比如dart:io、dart:html、dart:math、dart:core(但是这个可以省略) 12//dart:前缀表示Dart的标准库，如dart:io、dart:html、dart:mathimport 'dart:io'; 使用相对路径导入的库，通常指自己项目中定义的其他dart文件 12//当然，你也可以用相对路径或绝对路径的dart文件来引用import 'lib/student/student.dart'; Pub包管理工具管理的一些库，包括自己的配置以及一些第三方的库，通常使用前缀package 12//Pub包管理系统中有很多功能强大、实用的库，可以使用前缀 package:import 'package:flutter/material.dart'; 库文件中内容的显示和隐藏 如果希望只导入库中某些内容，或者刻意隐藏库里面某些内容，可以使用show和hide关键字 show 关键字，可以显示某个成员（屏蔽其他） hide 关键字，可以隐藏某个成员（显示其他） 123import 'lib/student/student.dart' show Student, Person;import 'lib/student/student.dart' hide Person; 库中内容和当前文件中的名字冲突 当各个库有命名冲突的时候，可以使用as关键字来使用命名空间 123import 'lib/student/student.dart' as Stu;Stu.Student s = new Stu.Student(); 库的定义 library 关键字 通常在定义库时，我们可以使用library关键字给库起一个名字。 但库的名字并不影响导入，因为import语句用的是字符串Uri 1library math; 库的管理和组织 如果库非常大，如何进行管理呢？ 将每一个dart文件作为库文件，使用export关键字在某个库文件中单独导入 mathUtils.dart文件 （分） 123int sum(int num1, int num2) &#123; return num1 + num2;&#125; dateUtils.dart文件 ？（分） 123String dateFormat(DateTime date) &#123; return "2020-12-12";&#125; utils.dart文件 (合) 1234library utils;export "mathUtils.dart";export "dateUtils.dart"; test_libary.dart文件 (用) 123456import "lib/utils.dart";main(List&lt;String&gt; args) &#123; print(sum(10, 20)); print(dateFormat(DateTime.now()));&#125;]]></content>
@@ -277,9 +288,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -290,9 +301,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -339,9 +350,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -352,9 +363,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -365,9 +376,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -378,9 +389,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -391,9 +402,9 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>树</tag>
         <tag>二叉树</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -404,9 +415,9 @@
         <category>c/c++</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>c++</tag>
         <tag>STL</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -417,9 +428,9 @@
         <category>c/c++</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>c++</tag>
         <tag>STL</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -430,9 +441,9 @@
         <category>c/c++</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>c++</tag>
         <tag>STL</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -443,9 +454,9 @@
         <category>c/c++</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>c++</tag>
         <tag>STL</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
