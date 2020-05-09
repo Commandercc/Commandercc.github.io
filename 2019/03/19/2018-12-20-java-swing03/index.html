@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  94 word
+                  104 word
                 </span>
               
 
@@ -428,7 +428,7 @@
 
       
         <h2 id="JList"><a href="#JList" class="headerlink" title="JList"></a>JList</h2><a id="more"></a>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String</span> province[]= &#123;<span class="string">"省份"</span>,<span class="string">"北京"</span>,<span class="string">"天津"</span>,<span class="string">"上海"</span>,<span class="string">"重庆"</span>&#125;;</span><br><span class="line">JList&lt;<span class="keyword">String</span>&gt; jList=<span class="keyword">new</span> JList&lt;&gt;(province);</span><br><span class="line">jList.addListSelectionListener(<span class="keyword">new</span> ListSelectionListener() &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> valueChanged(ListSelectionEvent e) &#123;</span><br><span class="line">		System.out.<span class="built_in">println</span>(jList.getSelectedValue().toString());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String province[]= &#123;&quot;省份&quot;,&quot;北京&quot;,&quot;天津&quot;,&quot;上海&quot;,&quot;重庆&quot;&#125;;</span><br><span class="line">JList&lt;String&gt; jList=new JList&lt;&gt;(province);</span><br><span class="line">jList.addListSelectionListener(new ListSelectionListener() &#123;</span><br><span class="line">	public void valueChanged(ListSelectionEvent e) &#123;</span><br><span class="line">		System.out.println(jList.getSelectedValue().toString());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>JList 通过 getSelectedValue() 方法即可获取选中项<br>当然 用 getSelectedIndex() 方法可以获取到点击的项的下标 如此示例中 北京项 下标为1，天津项 下标为2.</p>
 
       
@@ -551,7 +551,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -562,7 +562,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

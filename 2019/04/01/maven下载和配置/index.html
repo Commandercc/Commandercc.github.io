@@ -441,13 +441,13 @@
 <p><img width="300" src="/2019/04/01/maven下载和配置/002.png"></p>
 <p>这里填入你下载的 maven 目录下 bin 目录的地址。</p>
 <p>2.使用win+r(或右键开始菜单，选择运行), 然后输入cmd 打开命令行，输入 </p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mvn </span>-v</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn -v</span><br></pre></td></tr></table></figure>
 <p>若出现下图所示的，则配置成功。<br><img width="300" src="/2019/04/01/maven下载和配置/003.png"></p>
 <h5 id="maven仓库的相关修改"><a href="#maven仓库的相关修改" class="headerlink" title="maven仓库的相关修改"></a>maven仓库的相关修改</h5><p>仓库，顾名思义是用来存放项目需要的jar包的，maven采用一个仓库，多个项目的方式，让多个项目共享一个仓库里的相同jar包。maven仓库的默认位置是在 C:\Users\你的用户名.m2\repository  因为刚下载和配置好并没有运行过，所以C盘中会看不到这个目录。因为我们需要的各种jar包都是放在这的，所以放在c盘感觉并不好，接下来就更改一下仓库的位置，放到D盘中。</p>
 <p>在D盘中新建一个文件夹叫 maven-repository ，在你的maven安装目录下的conf文件夹下找到 setting.xml 文件，参考我的 D:\apache-maven-3.6.0\conf\setting.xml,打开找到下图的内容将   localRepository  这对标签内填上刚才创建的<br>maven-repository文件夹的地址。<br><img width="300" src="/2019/04/01/maven下载和配置/004.png"></p>
 <p>然后将这个 setting.xml 文件复制一个，粘贴到刚才的maven-repository文件夹下，以后新建项目maven自动将下载的依赖包放到该文件夹下。</p>
 <h5 id="使用阿里云仓库"><a href="#使用阿里云仓库" class="headerlink" title="使用阿里云仓库"></a>使用阿里云仓库</h5><p>maven 会默认从maven官方提供的服务器下载jar包。<br>而官方服务器在国外，被墙了，下的贼慢。 为了快速下载相关jar包，可以使用国内maven 阿里云的下载地址</p>
-<p>打开刚才创建的 maven-repository文件夹下的 setting.xml 文件 找到 mirrors 这对标签，在里面添加如下代码即可。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span>  </span><br><span class="line">   <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </span><br><span class="line">   <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>  </span><br><span class="line">   <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>          </span><br><span class="line"> <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>打开刚才创建的 maven-repository文件夹下的 setting.xml 文件 找到 mirrors 这对标签，在里面添加如下代码即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirror&gt;  </span><br><span class="line">   &lt;id&gt;alimaven&lt;/id&gt;  </span><br><span class="line">   &lt;name&gt;aliyun maven&lt;/name&gt;  </span><br><span class="line">   &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;  </span><br><span class="line">   &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;          </span><br><span class="line"> &lt;/mirror&gt;</span><br></pre></td></tr></table></figure></p>
 <p>如下图：<br><img width="300" src="/2019/04/01/maven下载和配置/005.png"></p>
 
       
@@ -572,7 +572,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -583,7 +583,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

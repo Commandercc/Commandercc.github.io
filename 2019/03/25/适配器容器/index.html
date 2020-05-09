@@ -430,7 +430,7 @@
         <h5 id="这篇主要讲一下适配器容器"><a href="#这篇主要讲一下适配器容器" class="headerlink" title="这篇主要讲一下适配器容器"></a>这篇主要讲一下适配器容器</h5><h5 id="1-stack（栈容器）"><a href="#1-stack（栈容器）" class="headerlink" title="1.stack（栈容器）"></a>1.stack（栈容器）</h5><p>实现头文件：&lt; stack&gt;<br><a id="more"></a></p>
 <p>概述：</p>
 <p>它是一个栈类模板，和数据结构中的栈一样，具有后进先出的特点。栈容器默认的底层容器是deque。也可以指定其他底层容器。<br>例如，以下语句指定myst栈的底层容器为vector：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">stack</span>&lt;<span class="built_in">string</span>,<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; &gt; myst;	<span class="comment">//第2个参数指定底层容器为vector</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;string,vector&lt;string&gt; &gt; myst;	//第2个参数指定底层容器为vector</span><br></pre></td></tr></table></figure>
 <p>主要成员函数：</p>
 <ul>
 <li>empty()：判断栈容器是否为空</li>
@@ -528,7 +528,7 @@ int main()
 }
 </code></pre><p>输出：<br>    队头元素: 3<br>    出队顺序: 3 2 1 (可见是按照值的大小出队)</p>
 <p>注： 优先队列默认是自动的从大到小排列，想要让它从小到大排列，可以包含头文件 &lt; functional&gt;,再如下形式声明即可</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="keyword">int</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;, greater&lt;<span class="keyword">int</span>&gt; &gt;q; <span class="comment">//会对入队的元素从小到大排列</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt; &gt;q; //会对入队的元素从小到大排列</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -654,7 +654,7 @@ int main()
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -665,7 +665,7 @@ int main()
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

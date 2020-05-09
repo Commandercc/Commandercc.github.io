@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="字符串相关的类 String介绍 String类：： 代表字符串。Java 程序中的所有字符串字面值（如 “abc” ）都作为此类的实例实现 String是一个final类，代表不可变的字符序列 字符串是常量，用双引号引起来表示。他们的值在创建之后不能更改 String对象的字符内容是存储在一个字符数组value[]中的">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java常用类">
+<meta property="og:url" content="http://haibolun.top/2020/02/23/Java常用类/index.html">
+<meta property="og:site_name" content="江山如画">
+<meta property="og:description" content="字符串相关的类 String介绍 String类：： 代表字符串。Java 程序中的所有字符串字面值（如 “abc” ）都作为此类的实例实现 String是一个final类，代表不可变的字符序列 字符串是常量，用双引号引起来表示。他们的值在创建之后不能更改 String对象的字符内容是存储在一个字符数组value[]中的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://haibolun.top/2020/02/23/Java常用类/String类内存解析.png">
+<meta property="og:image" content="http://haibolun.top/2020/02/23/Java常用类/String内存解析2.png">
+<meta property="og:image" content="http://haibolun.top/2020/02/23/Java常用类/String内存解析3.png">
+<meta property="og:image" content="http://haibolun.top/2020/02/23/Java常用类/String类内存解析.png">
+<meta property="og:image" content="http://haibolun.top/2020/02/23/Java常用类/StringBuffer和String区别.png">
+<meta property="og:image" content="http://haibolun.top/2020/02/23/Java常用类/时间格式.png">
+<meta property="og:image" content="http://haibolun.top/2020/02/23/Java常用类/jdk8新时间日期类方法.png">
+<meta property="og:image" content="http://haibolun.top/2020/02/23/Java常用类/Instant瞬时.png">
+<meta property="og:image" content="http://haibolun.top/2020/02/23/Java常用类/System属性key-value表.png">
+<meta property="og:updated_time" content="2020-05-09T08:15:29.724Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java常用类">
+<meta name="twitter:description" content="字符串相关的类 String介绍 String类：： 代表字符串。Java 程序中的所有字符串字面值（如 “abc” ）都作为此类的实例实现 String是一个final类，代表不可变的字符序列 字符串是常量，用双引号引起来表示。他们的值在创建之后不能更改 String对象的字符内容是存储在一个字符数组value[]中的">
+<meta name="twitter:image" content="http://haibolun.top/2020/02/23/Java常用类/String类内存解析.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://haibolun.top/2020/02/23/Java常用类/">
+
+
+
+
+
+  <title>java常用类 | 江山如画</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?96ffaa007139b092545b7495dd112319";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">江山如画</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2020/02/23/Java常用类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="1215ccc">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Commandercc/smallthings/master/peitu03.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江山如画">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java常用类</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-23T08:36:00+08:00">
+                2020-02-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java基础复习/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础复习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4k word
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="字符串相关的类-String"><a href="#字符串相关的类-String" class="headerlink" title="字符串相关的类 String"></a>字符串相关的类 String</h5><h6 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h6><ul>
+<li><strong>String类</strong>：： 代表字符串。Java 程序中的所有字符串<strong>字面值</strong>（如 “abc” ）都作<br>为此类的实例实现</li>
+<li>String是一个<strong>final类</strong>，代表不可变的字符序列</li>
+<li>字符串是常量，用双引号引起来表示。他们的值在创建之后不能更改</li>
+<li>String对象的字符内容是存储在一个字符数组value[]中的</li>
+</ul>
+<a id="more"></a>
+<h6 id="内存解析"><a href="#内存解析" class="headerlink" title="内存解析"></a>内存解析</h6><p><img src="/2020/02/23/Java常用类/String类内存解析.png" style="zoom:50%;"></p>
+<p><img src="/2020/02/23/Java常用类/String内存解析2.png" style="zoom: 67%;"></p>
+<h6 id="问题：String-str1-“abc”-与String-str2-new-String-“abc”-的区别"><a href="#问题：String-str1-“abc”-与String-str2-new-String-“abc”-的区别" class="headerlink" title="问题：String str1 = “abc”; 与String str2 = new String(“abc”);的区别"></a>问题：String str1 = “abc”; 与String str2 = new String(“abc”);的区别</h6><p><img src="/2020/02/23/Java常用类/String内存解析3.png" style="zoom:50%;"></p>
+<h6 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h6><p><img src="/2020/02/23/Java常用类/String类内存解析.png" style="zoom:50%;"></p>
+<h6 id="String与基本数据类型转换"><a href="#String与基本数据类型转换" class="headerlink" title="String与基本数据类型转换"></a>String与基本数据类型转换</h6><ul>
+<li>字符串 -&gt; 基本数据类型、包装类<ul>
+<li><strong>Integer</strong>包装类的<strong>public static int parseInt(String s)</strong>：可以将由“数字”字<br>符组成的字符串转换为整型</li>
+<li>类似地,使用java.lang包中的Byte、Short、Long、Float、Double类调相应<br>的类方法可以将由“数字”字符组成的字符串，转化为相应的基本数据类型</li>
+</ul>
+</li>
+<li>基本数据类型、包装类 -&gt; 字符串<ul>
+<li>调用<strong>String</strong>类的<strong>public String valueOf(int n)</strong>可将int型转换为字符串</li>
+<li>相应的valueOf(byte b)、valueOf(long l)、valueOf(float f)、valueOf(double<br>d)、valueOf(boolean b)可由参数的相应类型到字符串的转换</li>
+</ul>
+</li>
+<li>字符数组 -&gt; 字符串<ul>
+<li>String 类的构造器：<strong>String(char[])</strong> 和 和 <strong>String(char[] ，int offset ，int</strong><br><strong>length)</strong> 分别用字符数组中的全部字符和部分字符创建字符串对象</li>
+</ul>
+</li>
+<li>字符串 -&gt;  字符数组<ul>
+<li><strong>public char[] toCharArray()</strong> ：将字符串中的全部字符存放在一个字符数组<br>中的方法</li>
+<li><strong>public void getChars(int srcBegin, int srcEnd, char[] dst,</strong><br><strong>int dstBegin)</strong>：提供了将指定索引范围内的字符串存放到数组中的方法</li>
+</ul>
+</li>
+<li><p>字节数组 -&gt; 字符串</p>
+<ul>
+<li><strong>String(byte[])</strong> ：通过使用平台的默认字符集解码指定的 byte 数组，构<br>造一个新的 String</li>
+<li><strong>String(byte[] ，int offset ，int length)</strong>  ：用指定的字节数组的一部分，<br>即从数组起始位置offset开始取length个字节构造一个字符串对象</li>
+</ul>
+</li>
+<li><p>字符串 -&gt; 字节数组</p>
+<ul>
+<li><strong>public byte[] getBytes()</strong>  ：使用平台的默认字符集将此 String 编码为<br>byte 序列，并将结果存储到一个新的 byte 数组中</li>
+<li><strong>public byte[] getBytes(String charsetName)</strong> ：使用指定的字符集将<br>此 String 编码到 byte 序列，并将结果存储到新的 byte 数组</li>
+</ul>
+</li>
+</ul>
+<h6 id="StringBuffer-类"><a href="#StringBuffer-类" class="headerlink" title="StringBuffer 类"></a>StringBuffer 类</h6><ul>
+<li><p><strong>介绍</strong>：StringBuffer 类不同于String ，<strong>其对象必须使用构造器生成</strong>。有三个构造器：</p>
+<ul>
+<li><strong>StringBuffer()</strong> ：初始容量为16的字符串缓冲区</li>
+<li><strong>StringBuffer(int size)</strong> ：构造指定容量的字符串缓冲区</li>
+<li><strong>StringBuffer(String str)</strong> ：将内容初始化为指定字符串内容</li>
+</ul>
+</li>
+<li><p><strong>StringBuffer和String的区别</strong></p>
+<p><img src="/2020/02/23/Java常用类/StringBuffer和String区别.png" alt></p>
+</li>
+<li><p><strong>常用方法</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">StringBuffer <span class="title">append</span><span class="params">(xxx)</span>：提供了很多的<span class="title">append</span><span class="params">()</span>方法，用于进行字符串拼接</span></span><br><span class="line"><span class="function">StringBuffer <span class="title">delete</span><span class="params">(<span class="keyword">int</span> start,<span class="keyword">int</span> end)</span>：删除指定位置的内容</span></span><br><span class="line"><span class="function">StringBuffer <span class="title">replace</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end, String str)</span>：把[start,end)位置替换为str</span></span><br><span class="line"><span class="function">StringBuffer <span class="title">insert</span><span class="params">(<span class="keyword">int</span> offset, xxx)</span>：在指定位置插入xxx</span></span><br><span class="line"><span class="function">StringBuffer <span class="title">reverse</span><span class="params">()</span> ：把当前字符序列逆转</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="StringBuilder-类"><a href="#StringBuilder-类" class="headerlink" title="StringBuilder 类"></a>StringBuilder 类</h6><ul>
+<li><strong>简介</strong>：<strong>StringBuilder</strong> 和 和 <strong>StringBuffer</strong>  非常类似，均代表可变的字符序列 ， 而且<br>提供相关功能的方法也一样</li>
+</ul>
+<h6 id="对比String-、StringBuffer-、StringBuilder"><a href="#对比String-、StringBuffer-、StringBuilder" class="headerlink" title="对比String 、StringBuffer 、StringBuilder"></a>对比String 、StringBuffer 、StringBuilder</h6><ul>
+<li><strong>String(JDK1.0)</strong>：不可变字符序列</li>
+<li><strong>StringBuffer(JDK1.0)</strong>：可变字符序列、效率低、线程安全</li>
+<li><strong>StringBuilder(JDK 5.0)</strong>：可变字符序列、效率高、线程不安全</li>
+</ul>
+<h6 id="经典题"><a href="#经典题" class="headerlink" title="经典题"></a>经典题</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="keyword">null</span>;</span><br><span class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">sb.append(str);</span><br><span class="line">System.out.println(sb.length());<span class="comment">//4  看源码 会将 "null"这个字符串append</span></span><br><span class="line">System.out.println(sb);<span class="comment">//null</span></span><br><span class="line">StringBuffer sb1 = <span class="keyword">new</span> StringBuffer(str);</span><br><span class="line">System.out.println(sb1);<span class="comment">//报异常</span></span><br></pre></td></tr></table></figure>
+<h5 id="JDK8之前日期时间API"><a href="#JDK8之前日期时间API" class="headerlink" title="JDK8之前日期时间API"></a>JDK8之前日期时间API</h5><h6 id="java-lang-System类"><a href="#java-lang-System类" class="headerlink" title="java.lang.System类"></a>java.lang.System类</h6><ul>
+<li><strong>System类</strong>提供的<strong>public static long currentTimeMillis()</strong>用来返回当前时<br>间与<strong>1970年1月1日0时0分0秒</strong>之间以毫秒为单位的<strong>时间差</strong></li>
+</ul>
+<h6 id="java-util-Date-类"><a href="#java-util-Date-类" class="headerlink" title="java.util.Date 类"></a>java.util.Date 类</h6><ul>
+<li><strong>含义</strong>：表示特定的瞬间，精确到毫秒</li>
+<li><strong>构造器</strong>：<ul>
+<li><strong>Date()</strong>：使用无参构造器创建的对象可以<strong>获取本地当前时间</strong></li>
+<li><strong>Date(long date)</strong></li>
+</ul>
+</li>
+<li><strong>常用方法</strong>：<ul>
+<li><strong>getTime()</strong>:返回自 1970 年 1 月 1 日 00:00:00 GMT 以来此 Date 对象<br>表示的毫秒数</li>
+<li><strong>toString()</strong>:把此 Date 对象转换为以下形式的 String： dow mon dd<br>hh:mm:ss zzz yyyy 其中： dow 是一周中的某一天 (Sun, Mon, Tue,<br>Wed, Thu, Fri, Sat)，zzz是时间标准 （<strong>Sun Apr 05 10:04:51 CST 2020</strong>）</li>
+</ul>
+</li>
+</ul>
+<h6 id="java-text-SimpleDateFormat-类"><a href="#java-text-SimpleDateFormat-类" class="headerlink" title="java.text.SimpleDateFormat 类"></a>java.text.SimpleDateFormat 类</h6><ul>
+<li><p>说明： <strong>Date类的API不易于国际化，大部分被废弃了</strong>，<strong>java.text.SimpleDateFormat</strong><br>类是一个<strong>不与</strong>语言环境有关的方式来<strong>格式化和解析</strong>日期的具体类</p>
+</li>
+<li><p>格式化：</p>
+<ul>
+<li><strong>SimpleDateFormat()</strong> ：默认的模式和语言环境创建对象</li>
+<li><strong>public SimpleDateFormat(String pattern)</strong> ：该构造方法可以用参数pattern<br>指定的格式创建一个对象，该对象调用</li>
+<li><strong>public String format(Date date)</strong> ：方法格式化时间对象date</li>
+</ul>
+</li>
+<li><p>解析：</p>
+<ul>
+<li><strong>public Date parse(String source)</strong>： ：从给定字符串的开始解析文本，以生成<br>一个日期</li>
+</ul>
+</li>
+<li><p><strong>时间格式参照图</strong></p>
+<p><img src="/2020/02/23/Java常用类/时间格式.png" style="zoom: 67%;"></p>
+</li>
+<li><p><strong>Demo</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Date date = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="comment">//产生一个formater格式化的对象</span></span><br><span class="line">        SimpleDateFormat formater = <span class="keyword">new</span> SimpleDateFormat();</span><br><span class="line">        <span class="comment">//打印默认输出的格式</span></span><br><span class="line">        System.out.println(formater.format(date));  <span class="comment">//20-4-5 上午10:19</span></span><br><span class="line">        <span class="comment">//指定格式</span></span><br><span class="line">        SimpleDateFormat formater2 = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy年MM月dd日 EEE HH:mm:ss"</span>);</span><br><span class="line">        System.out.println(formater2.format(date));  <span class="comment">//2020年04月05日 星期日 10:19:27</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 实例化一个指定的格式对象</span></span><br><span class="line">        Date date2 = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            date2 = formater2.parse(<span class="string">"2008年08月08日 星期一 08:08:08"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ParseException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 将指定的日期解析后格式化按指定的格式输出</span></span><br><span class="line">        System.out.println(date2.toString());  <span class="comment">//Fri Aug 08 08:08:08 CST 2008</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="java-util-Calendar-类"><a href="#java-util-Calendar-类" class="headerlink" title="java.util.Calendar 类"></a>java.util.Calendar 类</h6><ul>
+<li><p><strong>简介</strong>: Calendar是一个抽象基类，主用用于完成日期字段之间相互操作的功能</p>
+</li>
+<li><p><strong>获取Calender实例</strong>：</p>
+<ul>
+<li>使用<strong>Calendar.getInstance()</strong>方法</li>
+<li>调用它的子类<strong>GregorianCalendar</strong>的构造器</li>
+</ul>
+</li>
+<li><p><strong>说明</strong>：一个Calendar的实例是系统时间的抽象表示，通过<strong>get(int field)</strong>方法来取得想<br>要的时间信息。比如<strong>YEAR、MONTH、DAY_OF_WEEK、HOUR_OF_DAY 、</strong><br><strong>MINUTE、SECOND</strong></p>
+</li>
+<li><p><strong>注意</strong>：</p>
+<ul>
+<li>获取<strong>月份</strong>时：一月是0，二月是1，以此类推，12月是11</li>
+<li>获取<strong>星期</strong>时：周日是1，周二是2 ， 。。。。周六是7</li>
+</ul>
+</li>
+<li><p><strong>几个方法</strong>：</p>
+<ul>
+<li><strong>public void set(int field,int value)</strong></li>
+<li><strong>public void add(int field,int amount)</strong></li>
+<li><strong>public final Date getTime()</strong></li>
+<li><strong>public final void setTime(Date date)</strong></li>
+</ul>
+</li>
+<li><p><strong>Demo</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Date date = <span class="keyword">new</span> Date();</span><br><span class="line">        Calendar calendar = Calendar.getInstance();</span><br><span class="line">        calendar.setTime(date);</span><br><span class="line">        System.out.println(calendar.getTime()); <span class="comment">//Sun Apr 05 10:41:45 CST 2020</span></span><br><span class="line">        calendar.set(Calendar.DAY_OF_MONTH, <span class="number">8</span>);</span><br><span class="line">        System.out.println(<span class="string">"当前时间日设置为8后,时间是:"</span> + calendar.getTime()); <span class="comment">//Wed Apr 08 10:41:45 CST 2020</span></span><br><span class="line">        calendar.add(Calendar.HOUR, <span class="number">2</span>);</span><br><span class="line">        System.out.println(<span class="string">"当前时间加2小时后,时间是:"</span> + calendar.getTime()); <span class="comment">//Wed Apr 08 12:41:45 CST 2020</span></span><br><span class="line">        calendar.add(Calendar.MONTH, -<span class="number">2</span>);</span><br><span class="line">        System.out.println(<span class="string">"当前日期减2个月后,时间是:"</span> + calendar.getTime()); <span class="comment">//Sat Feb 08 12:41:45 CST 2020</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="JDK8中新日期时间API"><a href="#JDK8中新日期时间API" class="headerlink" title="JDK8中新日期时间API"></a>JDK8中新日期时间API</h5><h6 id="之前日期类的问题"><a href="#之前日期类的问题" class="headerlink" title="之前日期类的问题"></a>之前日期类的问题</h6><ul>
+<li>如果我们可以跟别人说：“我们在1502643933071见面，别晚了！”那么就再简单不<br>过了。但是我们<strong>希望时间与昼夜和四季有关</strong>，于是事情就变复杂了。JDK 1.0中包含了<br>一个<strong>java.util.Date</strong>类，但是它的大多数方法已经在JDK 1.1引入<strong>Calendar类</strong>之后<strong>被弃用</strong><br><strong>了</strong>。而Calendar<strong>并不比</strong>Date好多少。它们面临的问题是：<ul>
+<li><strong>可变性</strong>：像日期和时间这样的类应该是不可变的</li>
+<li><strong>偏移性</strong>：Date中的年份是从1900开始的，而月份都从0开始</li>
+<li><strong>格式化</strong>：格式化只对Date有用，Calendar则不行</li>
+<li><strong>安全性</strong>：不是线程安全的</li>
+</ul>
+</li>
+</ul>
+<h6 id="新时间日期API–java-time-API"><a href="#新时间日期API–java-time-API" class="headerlink" title="新时间日期API–java.time API"></a>新时间日期API–java.time API</h6><ul>
+<li><p><strong>简介</strong>：<strong>Java 8</strong> 吸收了 Joda-Time 的精华，以一个新的开始为 Java 创建优秀的 API。<br>新的 <strong>java.time</strong> 中包含了所有关于<strong>本地日期（LocalDate）、本地时间</strong><br><strong>（LocalTime）、本地日期时间（LocalDateTime）、时区（ZonedDateTime）</strong><br><strong>和持续时间（Duration）的类</strong>。历史悠久的 <strong>Date 类新增了 toInstant() 方法</strong>，<br>用于把 Date 转换成新的表示形式。这些新增的本地化时间日期 API 大大<strong>简</strong><br><strong>化</strong>了日期时间和本地化的管理</p>
+</li>
+<li><p><strong>包</strong>：</p>
+<ul>
+<li><strong>java.time</strong> – 包含值对象的基础包</li>
+<li><strong>java.time.format</strong> – 格式化和解析时间和日期</li>
+<li><strong>java.time.chrono</strong> – 提供对不同的日历系统的访问</li>
+<li><strong>java.time.temporal</strong> – 包括底层框架和扩展特性</li>
+<li><strong>java.time.zone</strong> – 包含时区支持的类</li>
+<li>大多数开发者<strong>只会用到基础包和format包</strong>，也可能会用到temporal包。因此，尽<br>管有68个新的公开类型，大多数开发者，大概将只会用到其中的三分之一</li>
+</ul>
+</li>
+<li><p><strong>类</strong>：</p>
+<ul>
+<li><strong>LocalDate</strong>代表IOS格式（yyyy-MM-dd）的日期,可以存储 生日、纪念日等日期</li>
+<li><strong>LocalTime</strong>表示一个时间，而不是日期</li>
+<li><strong>LocalDateTime</strong>是用来表示日期和时间的，这是一个<strong>最常用</strong>的类之一</li>
+<li><strong>ISO-8601日历系统</strong>是国际标准化组织制定的现代公民的日期和时间的表示<br>法，也就是公历</li>
+</ul>
+</li>
+<li><p><strong>方法</strong>：</p>
+<p><img src="/2020/02/23/Java常用类/jdk8新时间日期类方法.png" style="zoom: 67%;"></p>
+</li>
+<li><p><strong>Demo</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//now()方法</span></span><br><span class="line">       LocalDate localDate = LocalDate.now();</span><br><span class="line">       LocalTime localTime = LocalTime.now();</span><br><span class="line">       LocalDateTime localDateTime = LocalDateTime.now();</span><br><span class="line">  </span><br><span class="line">       System.out.println(localDate); <span class="comment">//2020-04-05</span></span><br><span class="line">       System.out.println(localTime); <span class="comment">//16:15:55.181</span></span><br><span class="line">       System.out.println(localDateTime); <span class="comment">//2020-04-05T16:15:55.181</span></span><br><span class="line">  </span><br><span class="line">       <span class="comment">//of()  T表示分隔符，Z表示的是UTC(世界标准时间)。</span></span><br><span class="line">       LocalDateTime localDateTime1 = LocalDateTime.of(<span class="number">2020</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">16</span>,<span class="number">18</span>,<span class="number">55</span>);</span><br><span class="line">       System.out.println(localDateTime1);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="时间戳？"><a href="#时间戳？" class="headerlink" title="时间戳？"></a>时间戳？</h6><ul>
+<li><strong>时间戳是指格林威治时间1970 年01 月01 日00 时00 分00 秒( 北京时间1970 年01 月01</strong><br><strong>日 日08 时00 分00 秒)</strong>  <strong>起至现在的总秒数</strong></li>
+</ul>
+<h6 id="瞬时-Instant"><a href="#瞬时-Instant" class="headerlink" title="瞬时 Instant"></a>瞬时 Instant</h6><ul>
+<li><p><strong>概念</strong>：时间线上的一个<strong>瞬时点</strong>。 这可能被用来记录应用程序中的事件时间<br>戳。<strong>Instant</strong>表示时间线上的一点，而不需要任何上下文信息，例如，时区。<br>概念上讲，它只是简单的表示自<strong>1970年1月1日0时0分0秒（UTC）</strong>开始的秒<br>数。因为java.time包是基于<strong>纳秒</strong>计算的，所以Instant的精度可以达到<strong>纳秒级</strong>。</p>
+<p> <strong>(1 ns = 10^ -9 s) 1秒 = 1000毫秒 =10^6微秒=10 ^9 纳秒</strong></p>
+</li>
+<li><p><strong>方法</strong>：</p>
+<p><img src="/2020/02/23/Java常用类/Instant瞬时.png" style="zoom: 67%;"></p>
+</li>
+</ul>
+<ul>
+<li><p><strong>Demo</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Instant instant = Instant.now();</span><br><span class="line">        System.out.println(instant); <span class="comment">//2020-04-05T08:27:02.626Z 世界标准时间 北京时间要在基础上+8h</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//偏移8h得到北京时间</span></span><br><span class="line">        OffsetDateTime offsetDateTime = instant.atOffset(ZoneOffset.ofHours(<span class="number">8</span>));</span><br><span class="line">        System.out.println(offsetDateTime); <span class="comment">//2020-04-05T16:27:02.626Z</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取对应毫秒数 自**1970年1月1日0时0分0秒开始</span></span><br><span class="line">        <span class="keyword">long</span> l = instant.toEpochMilli();</span><br><span class="line">        System.out.println(l); <span class="comment">//1586075486287</span></span><br><span class="line">        </span><br><span class="line">        Date date = <span class="keyword">new</span> Date(l);</span><br><span class="line">        System.out.println(date); <span class="comment">//Sun Apr 05 16:37:06 CST 2020</span></span><br><span class="line">        </span><br><span class="line">        SimpleDateFormat format = <span class="keyword">new</span> SimpleDateFormat();</span><br><span class="line">        String format1 = format.format(date);</span><br><span class="line">        System.out.println(format1); <span class="comment">//默认输出格式 20-4-5 下午4:37</span></span><br><span class="line"></span><br><span class="line">        SimpleDateFormat format2 = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy年MM月dd日 EEE HH:mm:ss"</span>);</span><br><span class="line">        System.out.println(format2.format(date)); <span class="comment">//2020年04月05日 星期日 16:37:06</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="格式化与解析日期或时间"><a href="#格式化与解析日期或时间" class="headerlink" title="格式化与解析日期或时间"></a>格式化与解析日期或时间</h6><ul>
+<li><p><strong>java.time.format.DateTimeFormatter</strong> 类：该类提供了三种格式化方法</p>
+<ul>
+<li>预定义的标准格式。如：ISO_LOCAL_DATE_TIME;ISO_LOCAL_DATE;ISO_LOCAL_TIME</li>
+<li>本地化相关的格式。如：ofLocalizedDateTime(FormatStyle.LONG)</li>
+<li><strong>自定义的格式</strong>。如：<strong>ofPattern(“yyyy-MM-dd hh:mm:ss”)</strong></li>
+</ul>
+</li>
+<li><p><strong>Demo</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime localDateTime = LocalDateTime.now();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//DateTimeFormatter 格式化或解析日期时间</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//方式一：预定义的标准格式。如：ISO_LOCAL_DATE_TIME;ISO_LOCAL_DATE;ISO_LOCAL_TIME</span></span><br><span class="line">        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;</span><br><span class="line">        String str1 = formatter.format(localDateTime);</span><br><span class="line"></span><br><span class="line">        System.out.println(localDateTime); <span class="comment">//2020-04-05T16:47:38.470</span></span><br><span class="line">        System.out.println(str1); <span class="comment">//2020-04-05T16:47:38.47</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//方式二：本地化相关的格式。如：ofLocalizedDateTime(FormatStyle.LONG)</span></span><br><span class="line">        <span class="comment">// 还有 FormatStyle.SHORT  FormatStyle.MEDIUM</span></span><br><span class="line">        DateTimeFormatter formatter1 = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);</span><br><span class="line">        System.out.println(formatter1.format(localDateTime));</span><br><span class="line">        <span class="comment">//short: 20-4-5 下午4:56</span></span><br><span class="line">        <span class="comment">//long: 2020年4月5日 下午04时58分11秒</span></span><br><span class="line">        <span class="comment">//medium: 2020-4-5 16:58:40</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//方式三： 自定义格式 如：ofPattern("yyyy-MM-dd hh:mm:ss")</span></span><br><span class="line">        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern(<span class="string">"yyyy-MM-dd hh:mm:ss"</span>);</span><br><span class="line">        System.out.println(formatter2.format(localDateTime)); <span class="comment">//2020-04-05 05:03:32</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//解析</span></span><br><span class="line">        TemporalAccessor accessor = formatter2.parse(<span class="string">"2020-04-05 05:03:32"</span>);</span><br><span class="line">        System.out.println(accessor);</span><br><span class="line">        <span class="comment">//输出：&#123;MilliOfSecond=0, HourOfAmPm=5, MicroOfSecond=0, NanoOfSecond=0, MinuteOfHour=3, SecondOfMinute=32&#125;,ISO resolved to 2020-04-05</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="Java比较器"><a href="#Java比较器" class="headerlink" title="Java比较器"></a>Java比较器</h5><h6 id="自然排序：java-lang-Comparable"><a href="#自然排序：java-lang-Comparable" class="headerlink" title="自然排序：java.lang.Comparable"></a>自然排序：java.lang.Comparable</h6><ul>
+<li><strong>概念</strong>： Comparable接口强行对实现它的每个类的对象进行整体排序。这种排序被称<br>为类的自然排序</li>
+<li><p><strong>用法</strong>：实现 Comparable 的类必须实现 <strong>compareTo(Object obj)</strong> 方法，两个对象即<br>通过 compareTo(Object obj) 方法的返回值来比较大小。如果<strong>当前对象this大</strong><br><strong>于形参对象obj，则返回正整数，如果当前对象this小于形参对象obj，则返回</strong><br><strong>负整数，如果当前对象this等于形参对象obj，则返回零</strong>， 实现Comparable接口的对象列表（和数组）可以通过 <strong>Collections.sort 或Arrays.sort</strong>进行自动排序</p>
+</li>
+<li><p><strong>Comparable  的典型实现</strong>：(默认都是从小到大排列的)</p>
+<ul>
+<li><strong>String</strong>：按照字符串中字符的Unicode值进行比较</li>
+<li><strong>Character</strong>：按照字符的Unicode值来进行比较</li>
+<li><strong>数值类型对应的包装类以及BigInteger、BigDecimal</strong>：按照它们对应的数值<br>大小进行比较</li>
+<li><strong>Boolean</strong>：true 对应的包装类实例大于 false 对应的包装类实例</li>
+<li><strong>Date、Time</strong>等：后面的日期时间比前面的日期时间大</li>
+</ul>
+</li>
+<li><p><strong>Demo</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Goods</span> <span class="keyword">implements</span> <span class="title">Comparable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> price;</span><br><span class="line"></span><br><span class="line">  	<span class="comment">//省略构造方法 、getter()、setter()、toString()方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(o <span class="keyword">instanceof</span> Goods) &#123;</span><br><span class="line">            Goods other = (Goods)o;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.price &gt; other.price) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.price &lt; other.price) &#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"传入的数据类型不符合要求"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Goods[] all = <span class="keyword">new</span> Goods[<span class="number">4</span>];</span><br><span class="line">        all[<span class="number">0</span>] = <span class="keyword">new</span> Goods(<span class="string">"《红楼梦》"</span>, <span class="number">100</span>);</span><br><span class="line">        all[<span class="number">1</span>] = <span class="keyword">new</span> Goods(<span class="string">"《西游记》"</span>, <span class="number">80</span>);</span><br><span class="line">        all[<span class="number">2</span>] = <span class="keyword">new</span> Goods(<span class="string">"《三国演义》"</span>, <span class="number">140</span>);</span><br><span class="line">        all[<span class="number">3</span>] = <span class="keyword">new</span> Goods(<span class="string">"《水浒传》"</span>, <span class="number">120</span>);</span><br><span class="line">        Arrays.sort(all);</span><br><span class="line">        System.out.println(Arrays.toString(all));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">输出结果：</span></span><br><span class="line"><span class="comment">  [Goods&#123;name='《西游记》', price=80.0&#125;, Goods&#123;name='《红楼梦》', 		price=100.0&#125;, Goods&#123;name='《水浒传》', price=120.0&#125;, 					 Goods&#123;name='《三国演义》', price=140.0&#125;]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="定制排序：java-util-Comparator"><a href="#定制排序：java-util-Comparator" class="headerlink" title="定制排序：java.util.Comparator"></a>定制排序：java.util.Comparator</h6><ul>
+<li><p><strong>简介</strong>：当元素的类型没有实现<strong>java.lang.Comparable</strong> 接口而又<strong>不方便修改代码</strong>，<br>了 或者实现了<strong>java.lang.Comparable 接口</strong>的排序规则<strong>不适合当前的操作</strong>，那<br>么可以考虑使用 <strong>Comparator</strong> 的对象来排序</p>
+</li>
+<li><p><strong>用法</strong>：需要重写<strong>compare(Object o1,Object o2)</strong>方法，比较o1和o2的大小,可以将 <strong>Comparator 传递给 sort 方法（如 Collections.sort 或 Arrays.sort）</strong>，从而允许在排序顺序上实现精确控制</p>
+</li>
+<li><p><strong>Demo</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Goods[] all = <span class="keyword">new</span> Goods[<span class="number">4</span>];</span><br><span class="line">        all[<span class="number">0</span>] = <span class="keyword">new</span> Goods(<span class="string">"《红楼梦》"</span>, <span class="number">100</span>);</span><br><span class="line">        all[<span class="number">1</span>] = <span class="keyword">new</span> Goods(<span class="string">"《西游记》"</span>, <span class="number">80</span>);</span><br><span class="line">        all[<span class="number">2</span>] = <span class="keyword">new</span> Goods(<span class="string">"《三国演义》"</span>, <span class="number">140</span>);</span><br><span class="line">        all[<span class="number">3</span>] = <span class="keyword">new</span> Goods(<span class="string">"《水浒传》"</span>, <span class="number">120</span>);</span><br><span class="line">      </span><br><span class="line">        <span class="comment">//将 Comparator 传递给 sort 方法</span></span><br><span class="line">        Arrays.sort(all, <span class="keyword">new</span> Comparator&lt;Goods&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Goods o1, Goods o2)</span> </span>&#123;</span><br><span class="line">               Goods g1 = (Goods)o1;</span><br><span class="line">               Goods g2 = (Goods)o2;</span><br><span class="line">               <span class="keyword">return</span> Double.compare(g1.getPrice(),g2.getPrice());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(Arrays.toString(all));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h5><ul>
+<li><p><strong>介绍</strong>：<strong>System类</strong>代表系统，系统级的很多属性和控制方法都放置在该类的内部。该类位于<strong>java.lang包</strong>，由于该类的<strong>构造器是private的</strong>，所以无法创建该类的对象，也就是无法实例化该类。其内部的<strong>成员变量和成员方法都是static的</strong>，所以也可以<strong>很方便</strong><br><strong>的进行调用</strong></p>
+</li>
+<li><p><strong>成员变量</strong>：System类内部包含<strong>in、out和err</strong>三个成员变量，分别代表<strong>标准输入流</strong><br><strong>(键盘输入)，标准输出流(显示器)和标准错误输出流(显示器)</strong></p>
+</li>
+<li><p><strong>成员方法</strong>：</p>
+<ul>
+<li><p><strong>native long currentTimeMillis()：</strong> 该方法的作用是返回当前的计算机时间，时间的表达格式为当前计算机时间和GMT时间(格林威治时间)1970年1月1号0时0分0秒所差的毫秒数</p>
+</li>
+<li><p><strong>void exit(int status)：</strong> 该方法的作用是退出程序。其中status的值为<strong>0代表正常退出，非零代表异常退出</strong>。 使用该方法可以在图形界面编程中实现程序的退出功能等</p>
+</li>
+<li><p><strong>void gc()</strong>：该方法的作用是请求系统进行<strong>垃圾回收</strong>。至于系统是否立刻回收，则取决于系统中垃圾回收算法的实现以及系统执行时的情况</p>
+</li>
+<li><p><strong>String getProperty(String key)</strong>：方法的作用是获得<strong>系统中属性名为key的属性对应的值</strong>。系统中常见的属性名以及属性的作用如下表所示：</p>
+<p><img src="/2020/02/23/Java常用类/System属性key-value表.png" style="zoom: 67%;"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Math-类"><a href="#Math-类" class="headerlink" title="Math 类"></a>Math 类</h5><ul>
+<li><strong>介绍</strong>：java.lang.Math 提供了一系列静态方法用于科学计算。其方法的参数和返回值类型一般为double</li>
+<li><strong>方法</strong>：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">abs 绝对值</span><br><span class="line">acos,asin,atan,cos,sin,tan 三角函数</span><br><span class="line">sqrt 平方根</span><br><span class="line">pow(<span class="keyword">double</span> a,doble b) a 的b 次幂</span><br><span class="line">log 自然对数</span><br><span class="line">exp e 为底指数</span><br><span class="line">max(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span><br><span class="line">min(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span><br><span class="line">random() 返回<span class="number">0.0</span> 到<span class="number">1.0</span> 的随机数</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">round</span><span class="params">(<span class="keyword">double</span> a)</span> <span class="keyword">double</span> 型数据a 转换为<span class="keyword">long</span> 型（四舍五入）</span></span><br><span class="line"><span class="function"><span class="title">toDegrees</span><span class="params">(<span class="keyword">double</span> angrad)</span> 弧度—&gt; 角度</span></span><br><span class="line"><span class="function"><span class="title">toRadians</span><span class="params">(<span class="keyword">double</span> angdeg)</span> 角度—&gt; 弧度</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/23/多线程/" rel="next" title="多线程">
+                <i class="fa fa-chevron-left"></i> 多线程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/23/枚举类的使用/" rel="prev" title="枚举类">
+                枚举类 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://raw.githubusercontent.com/Commandercc/smallthings/master/peitu03.jpg" alt="1215ccc">
+            
+              <p class="site-author-name" itemprop="name">1215ccc</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Commandercc" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1502149172@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串相关的类-String"><span class="nav-number">1.</span> <span class="nav-text">字符串相关的类 String</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#内存解析"><span class="nav-number">1.2.</span> <span class="nav-text">内存解析</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#问题：String-str1-“abc”-与String-str2-new-String-“abc”-的区别"><span class="nav-number">1.3.</span> <span class="nav-text">问题：String str1 = “abc”; 与String str2 = new String(“abc”);的区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#练习"><span class="nav-number">1.4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#String与基本数据类型转换"><span class="nav-number">1.5.</span> <span class="nav-text">String与基本数据类型转换</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#StringBuffer-类"><span class="nav-number">1.6.</span> <span class="nav-text">StringBuffer 类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#StringBuilder-类"><span class="nav-number">1.7.</span> <span class="nav-text">StringBuilder 类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#对比String-、StringBuffer-、StringBuilder"><span class="nav-number">1.8.</span> <span class="nav-text">对比String 、StringBuffer 、StringBuilder</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#经典题"><span class="nav-number">1.9.</span> <span class="nav-text">经典题</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JDK8之前日期时间API"><span class="nav-number">2.</span> <span class="nav-text">JDK8之前日期时间API</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#java-lang-System类"><span class="nav-number">2.1.</span> <span class="nav-text">java.lang.System类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#java-util-Date-类"><span class="nav-number">2.2.</span> <span class="nav-text">java.util.Date 类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#java-text-SimpleDateFormat-类"><span class="nav-number">2.3.</span> <span class="nav-text">java.text.SimpleDateFormat 类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#java-util-Calendar-类"><span class="nav-number">2.4.</span> <span class="nav-text">java.util.Calendar 类</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JDK8中新日期时间API"><span class="nav-number">3.</span> <span class="nav-text">JDK8中新日期时间API</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#之前日期类的问题"><span class="nav-number">3.1.</span> <span class="nav-text">之前日期类的问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#新时间日期API–java-time-API"><span class="nav-number">3.2.</span> <span class="nav-text">新时间日期API–java.time API</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#时间戳？"><span class="nav-number">3.3.</span> <span class="nav-text">时间戳？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#瞬时-Instant"><span class="nav-number">3.4.</span> <span class="nav-text">瞬时 Instant</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#格式化与解析日期或时间"><span class="nav-number">3.5.</span> <span class="nav-text">格式化与解析日期或时间</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Java比较器"><span class="nav-number">4.</span> <span class="nav-text">Java比较器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#自然排序：java-lang-Comparable"><span class="nav-number">4.1.</span> <span class="nav-text">自然排序：java.lang.Comparable</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#定制排序：java-util-Comparator"><span class="nav-number">4.2.</span> <span class="nav-text">定制排序：java.util.Comparator</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#System类"><span class="nav-number">5.</span> <span class="nav-text">System类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Math-类"><span class="nav-number">6.</span> <span class="nav-text">Math 类</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">1215ccc</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

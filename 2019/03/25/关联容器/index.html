@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  929 word
+                  933 word
                 </span>
               
 
@@ -477,7 +477,7 @@ int main()
 <h5 id="2-map（映射容器）-multimap（多重映射容器）"><a href="#2-map（映射容器）-multimap（多重映射容器）" class="headerlink" title="2.map（映射容器）/ multimap（多重映射容器）"></a>2.map（映射容器）/ multimap（多重映射容器）</h5><p>实现头文件：&lt; set&gt;</p>
 <p>概述：</p>
 <p>map和multimap都是映射类模板。映射是实现关键字与值关系的存储结构，可以使用一个关键字key来访问相应的数据值value。<br>在map和multimap 中的key和value是一个pair类结构。<br>pair类结构的声明形如：</p>
-<figure class="highlight capnproto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pair</span></span></span><br><span class="line"><span class="class"></span>&#123;   T first;</span><br><span class="line">    T second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">struct pair</span><br><span class="line">&#123;   T first;</span><br><span class="line">    T second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>map/multimap利用pair的&lt;运算符将所有元素即key-value对按key的升序排列，以红黑树的形式存储，可以根据key快速地找到与之对应的value（查找时间为O(log2n)）。<br>map中不允许关键字重复出现，支持[]运算符；而multimap中允许关键字重复出现，但不支持[]运算符。</p>
 <p>主要成员函数：</p>
 <ul>
@@ -491,7 +491,7 @@ int main()
 <li>迭代器函数：begin()、end()、rbegin()、rend()</li>
 </ul>
 <p>演示代码：</p>
-<p>1.<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt; mymap; <span class="comment">//定义map容器mymap，其元素类型为pair&lt;char,int&gt;</span></span><br><span class="line">mymap[<span class="string">'a'</span>] = <span class="number">1</span>;   <span class="comment">//或者mymap.insert(pair&lt;char，int&gt;('a',1) );</span></span><br></pre></td></tr></table></figure></p>
+<p>1.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">map&lt;char,int&gt; mymap; //定义map容器mymap，其元素类型为pair&lt;char,int&gt;</span><br><span class="line">mymap[&apos;a&apos;] = 1;   //或者mymap.insert(pair&lt;char，int&gt;(&apos;a&apos;,1) );</span><br></pre></td></tr></table></figure></p>
 <p>2.</p>
 <pre><code>#include&lt;iostream&gt;
 #include &lt;map&gt;
@@ -634,7 +634,7 @@ int main()
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -645,7 +645,7 @@ int main()
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
