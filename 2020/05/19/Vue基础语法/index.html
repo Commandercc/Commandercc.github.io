@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基础语法Mustache将data中的文本数据，插入到HTML中">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue基础语法">
+<meta property="og:url" content="http://haibolun.top/2020/05/19/Vue基础语法/index.html">
+<meta property="og:site_name" content="江山如画">
+<meta property="og:description" content="基础语法Mustache将data中的文本数据，插入到HTML中">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片1.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片2.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片3.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片4.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/5.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/6.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片5.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片6.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片7.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片8.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片9.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片10.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片11.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片12.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片13.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片14.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片15.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片16.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片17.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片18.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片19.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/myblog/source/_posts/Vue基础语法/图片20.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片21.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/22.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片22.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/25.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/24.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/27.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/26.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片26.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片24.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片25.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片27.png">
+<meta property="og:updated_time" content="2020-05-19T13:29:16.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue基础语法">
+<meta name="twitter:description" content="基础语法Mustache将data中的文本数据，插入到HTML中">
+<meta name="twitter:image" content="http://haibolun.top/2020/05/19/Vue基础语法/图片1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://haibolun.top/2020/05/19/Vue基础语法/">
+
+
+
+
+
+  <title>Vue基础语法 | 江山如画</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?96ffaa007139b092545b7495dd112319";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">江山如画</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2020/05/19/Vue基础语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="1215ccc">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Commandercc/smallthings/master/peitu03.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江山如画">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue基础语法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-19T15:40:11+08:00">
+                2020-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.8k word
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h5><h6 id="Mustache"><a href="#Mustache" class="headerlink" title="Mustache"></a>Mustache</h6><p>将data中的文本数据，插入到HTML中</p>
+<a id="more"></a>
+<p><img src="/2020/05/19/Vue基础语法/图片1.png" style="zoom:80%;"></p>
+<h6 id="v-once"><a href="#v-once" class="headerlink" title="v-once"></a>v-once</h6><p>该指令表示元素和组件(组件后面才会学习)只渲染一次，不会随着数据的改变而改变</p>
+<p><img src="/2020/05/19/Vue基础语法/图片2.png" style="zoom:80%;"></p>
+<p><img src="/2020/05/19/Vue基础语法/图片3.png" style="zoom:80%;"></p>
+<h6 id="v-html"><a href="#v-html" class="headerlink" title="v-html"></a>v-html</h6><p>某些情况下，我们从服务器请求到的数据本身就是一个HTML代码，如果我们直接通过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>来输出，会将HTML代码也一起输出。但是我们可能希望的是按照HTML格式进行解析，并且显示对应的内容。<strong>该指令后面往往会跟上一个string类型会将string的html解析出来并且进行渲染</strong></p>
+<p><img src="/2020/05/19/Vue基础语法/图片4.png" style="zoom:80%;"></p>
+<h6 id="v-text"><a href="#v-text" class="headerlink" title="v-text"></a>v-text</h6><p>v-text作用和Mustache比较相似：都是用于将数据显示在界面中，v-text通常情况下，接受一个string类型</p>
+<p><img src="/2020/05/19/Vue基础语法/5.png" style="zoom:80%;"></p>
+<h6 id="v-pre"><a href="#v-pre" class="headerlink" title="v-pre"></a>v-pre</h6><p>v-pre用于跳过这个元素和它子元素的编译过程，用于显示原本的Mustache语法,比如下面的代码：<br>第一个h2元素中的内容会被编译解析出来对应的内容<br>第二个h2元素中会直接显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;message&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/05/19/Vue基础语法/6.png" style="zoom:80%;"></p>
+<h5 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h5><h6 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h6><p>v-bind用于绑定一个或多个属性值，或者向另一个组件传递props值(后面学)在开发中，有哪些属性需要动态进行绑定呢？还是有很多的，比如图片的链接src、网站的链接href、动态绑定一些类、样式等等比如通过Vue实例中的data绑定元素的src和href，代码如下：</p>
+<p><img src="/2020/05/19/Vue基础语法/图片5.png" style="zoom:80%;"></p>
+<p><img src="/2020/05/19/Vue基础语法/图片6.png" alt="图片6" style="zoom:80%;"></p>
+<h6 id="语法糖"><a href="#语法糖" class="headerlink" title="语法糖"></a>语法糖</h6><p>v-bind有一个对应的语法糖，也就是简写方式。在开发中，我们通常会使用语法糖的形式，因为这样更加简洁</p>
+<p>简写方式如下：（一个冒号）</p>
+<p><img src="/2020/05/19/Vue基础语法/图片7.png" style="zoom:80%;"></p>
+<h6 id="v-bind绑定class"><a href="#v-bind绑定class" class="headerlink" title="v-bind绑定class"></a>v-bind绑定class</h6><ul>
+<li>很多时候，我们希望动态的来切换class，比如：当数据为某个状态时，字体显示红色。当数据另一个状态时，字体显示黑色。</li>
+<li>绑定class有两种方式：<ul>
+<li>对象语法</li>
+<li>数组语法</li>
+</ul>
+</li>
+</ul>
+<p><strong>对象语法</strong></p>
+<p>对象语法的含义是:class后面跟的是一个对象，有下面这些用法：</p>
+<p>用法一：直接通过<code>{}</code>绑定一个类</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">:class</span>=<span class="string">"&#123;'active': isActive&#125;"</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>用法二：也可以通过判断，传入多个值</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">:class</span>=<span class="string">"&#123;'active': isActive, 'line': isLine&#125;"</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>用法三：和普通的类同时存在，并不冲突</p>
+<p>注：如果isActive和isLine都为true，那么会有title/active/line三个类</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"title"</span> <span class="attr">:class</span>=<span class="string">"&#123;'active': isActive, 'line': isLine&#125;"</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>用法四：如果过于复杂，可以放在一个methods或者computed中</p>
+<p>注：classes是一个计算属性</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"title"</span> <span class="attr">:class</span>=<span class="string">"classes"</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>数组语法</strong></p>
+<p>数组语法的含义是:class后面跟的是一个数组，有下面这些语法：</p>
+<p>用法一：直接通过<code>{}</code>绑定一个类</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">:class</span>=<span class="string">"['active']"</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>用法二：也可以传入多个值</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">:class</span>=<span class="string">“[‘active’,</span> '<span class="attr">line</span>']"&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>用法三：和普通的类同时存在，并不冲突</p>
+<p>注：会有title/active/line三个类</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"title"</span> <span class="attr">:class</span>=<span class="string">“[‘active’,</span> '<span class="attr">line</span>']"&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>用法四：如果过于复杂，可以放在一个methods或者computed中</p>
+<p>注：classes是一个计算属性</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"title"</span> <span class="attr">:class</span>=<span class="string">"classes"</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h6 id="v-bind绑定style"><a href="#v-bind绑定style" class="headerlink" title="v-bind绑定style"></a>v-bind绑定style</h6><ul>
+<li><p>我们可以利用v-bind:style来绑定一些CSS内联样式。</p>
+<p>在写CSS属性名的时候，比如font-size,我们可以使用<strong>驼峰式</strong> (camelCase)  fontSize ;或<strong>短横线分隔</strong> (kebab-case，记得用单引号括起来) ‘font-size’</p>
+</li>
+<li><p>绑定class有两种方式：</p>
+<ul>
+<li>对象语法</li>
+<li>数组语法</li>
+</ul>
+</li>
+</ul>
+<p><strong>对象语法</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:style="&#123;color: currentColor, fontSize: fontSize + 'px'&#125;"</span><br></pre></td></tr></table></figure>
+<p>style后面跟的是一个对象类型</p>
+<ul>
+<li>对象的key是CSS属性名称</li>
+<li>对象的value是具体赋的值，值可以来自于data中的属性</li>
+</ul>
+<p><strong>数组语法</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:style</span>=<span class="string">"[baseStyles, overridingStyles]"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>style后面跟的是一个数组类型</p>
+<ul>
+<li>多个值以 <strong>，</strong>分割即可</li>
+</ul>
+<h5 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h5><h6 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h6><p>我们知道，在模板中可以直接通过插值语法显示一些data中的数据。但是在某些情况，我们可能需要对数据进行一些转化后再显示，或者需要将多个数据结合起来进行显示。比如我们有firstName和lastName两个变量，我们需要显示完整的名称。但是如果多个地方都需要显示完整的名称，我们就需要写多个<code> </code><br>我们可以将上面的代码换成计算属性：</p>
+<p><strong>计算属性是写在实例的computed选项中</strong></p>
+<p><img src="/2020/05/19/Vue基础语法/图片8.png" style="zoom:80%;"></p>
+<p><img src="/2020/05/19/Vue基础语法/图片9.png" style="zoom:80%;"></p>
+<h6 id="计算属性的缓存"><a href="#计算属性的缓存" class="headerlink" title="计算属性的缓存"></a>计算属性的缓存</h6><p>我们可能会考虑这样的一个问题：</p>
+<ul>
+<li>methods和computed看起来都可以实现我们的功能，那么为什么还要多一个计算属性这个东西呢？</li>
+<li><strong>原因：计算属性会进行缓存，如果多次使用时，计算属性只会调用一次。</strong></li>
+</ul>
+<h5 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h5><h6 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h6><p>在前端开发中，我们需要经常和用于交互。这个时候，我们就必须监听用户发生的时间，比如点击、拖拽、键盘事件等等。在Vue中如何监听事件呢？使用<strong>v-on</strong>指令</p>
+<p><img src="/2020/05/19/Vue基础语法/图片10.png" style="zoom:80%;"></p>
+<p><img src="/2020/05/19/Vue基础语法/图片11.png" style="zoom:80%;"></p>
+<h6 id="语法糖-1"><a href="#语法糖-1" class="headerlink" title="语法糖"></a>语法糖</h6><p><strong>v-on:click可以写成@click</strong></p>
+<p><img src="/2020/05/19/Vue基础语法/图片12.png" style="zoom:80%;"></p>
+<h6 id="v-on参数"><a href="#v-on参数" class="headerlink" title="v-on参数"></a>v-on参数</h6><p>当通过methods中定义方法，以供@click调用时，需要注意参数问题：</p>
+<ul>
+<li>情况一：如果该方法不需要额外参数，那么方法后的()可以不添加。但是注意：如果方法本身中有一个参数，那么会默认将原生事件event参数传递进去</li>
+<li>情况二：如果需要同时传入某个参数，同时需要event时，可以通过<strong>$event</strong>传入事件。</li>
+</ul>
+<p><img src="/2020/05/19/Vue基础语法/图片13.png" style="zoom:80%;"></p>
+<p><img src="/2020/05/19/Vue基础语法/图片14.png" style="zoom:80%;"></p>
+<h6 id="v-on修饰符"><a href="#v-on修饰符" class="headerlink" title="v-on修饰符"></a>v-on修饰符</h6><p>在某些情况下，我们拿到event的目的可能是进行一些事件处理。<br>Vue提供了修饰符来帮助我们方便的处理一些事件：</p>
+<ul>
+<li><strong>.stop</strong> - 调用 event.stopPropagation()。</li>
+<li><strong>.prevent</strong> - 调用 event.preventDefault()。</li>
+<li><strong>.{keyCode | keyAlias}</strong> - 只当事件是从特定键触发时才触发回调。</li>
+<li><strong>.native</strong> - 监听组件根元素的原生事件。</li>
+<li><strong>.once</strong> - 只触发一次回调。</li>
+</ul>
+<p><img src="/2020/05/19/Vue基础语法/图片15.png" style="zoom:80%;"></p>
+<h5 id="v-if、v-else-if、v-else"><a href="#v-if、v-else-if、v-else" class="headerlink" title="v-if、v-else-if、v-else"></a>v-if、v-else-if、v-else</h5><p>这三个指令与JavaScript的条件语句if、else、else if类似。Vue的条件指令可以根据表达式的值在DOM中<strong>渲染或销毁</strong>元素或组件。</p>
+<p><strong>v-if的原理：</strong></p>
+<ul>
+<li>v-if后面的条件为false时，对应的元素以及其子元素不会渲染。<br>也就是根本没有<strong>不会</strong>有对应的标签出现在DOM中。</li>
+</ul>
+<p>简单演示：</p>
+<p><img src="/2020/05/19/Vue基础语法/图片16.png" style="zoom:80%;"></p>
+<p><img src="/2020/05/19/Vue基础语法/图片17.png" style="zoom:80%;"></p>
+<h5 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h5><p>v-show的用法和v-if非常相似，也用于决定一个元素是否渲染：</p>
+<p>v-if和v-show对比</p>
+<ul>
+<li><p>v-if和v-show都可以决定一个元素是否渲染，那么开发中我们如何选择呢？</p>
+<ul>
+<li><p>v-if当条件为false时，压根不会有对应的元素在DOM中。</p>
+</li>
+<li><p>v-show当条件为false时，仅仅是将元素的display属性设置为none而已。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>开发中如何选择呢？</strong></p>
+<ul>
+<li><strong>当需要在显示与隐藏之间切片很频繁时，使用v-show</strong></li>
+<li><strong>当只有一次切换时，通过使用v-if</strong></li>
+</ul>
+</li>
+</ul>
+<h5 id="v-for遍历数组"><a href="#v-for遍历数组" class="headerlink" title="v-for遍历数组"></a>v-for遍历数组</h5><p>当我们有一组数据需要进行渲染时，我们就可以使用v-for来完成。</p>
+<ul>
+<li>v-for的语法类似于JavaScript中的for循环。</li>
+<li><strong>格式如下：item in items的形式</strong>。</li>
+</ul>
+<p>两种情况：</p>
+<ul>
+<li><p>如果在遍历的过程中不需要使用索引值</p>
+<ul>
+<li><strong>语法格式：v-for=”movie in movies”</strong>：依次从movies中取出movie，并且在元素的内容中，我们可以使用Mustache语法，来使用movie</li>
+</ul>
+</li>
+<li><p>如果在遍历的过程中，我们需要拿到元素在数组中的索引值</p>
+<ul>
+<li><strong>语法格式：v-for=(item, index) in items</strong>：其中的index就代表了取出的item在原数组的索引值。</li>
+</ul>
+</li>
+</ul>
+<p>demo：</p>
+<p><img src="/2020/05/19/Vue基础语法/图片18.png" style="zoom:80%;"></p>
+<p><img src="/2020/05/19/Vue基础语法/图片19.png" style="zoom:80%;"></p>
+<h5 id="v-for遍历对象"><a href="#v-for遍历对象" class="headerlink" title="v-for遍历对象"></a>v-for遍历对象</h5><p>v-for可以用户遍历对象：比如某个对象中存储着你的个人信息，我们希望以列表的形式显示出来。</p>
+<p><img src="/2020/05/19/Vue基础语法/myblog\source\_posts\Vue基础语法\图片20.png" style="zoom:80%;"></p>
+<h5 id="组件的key属性"><a href="#组件的key属性" class="headerlink" title="组件的key属性"></a>组件的key属性</h5><p>官方推荐我们在使用v-for时，给对应的元素或组件添加上一个:key属性。</p>
+<p>了解一下：<strong>key的作用主要是为了高效的更新虚拟DOM</strong></p>
+<h5 id="检测数据更新"><a href="#检测数据更新" class="headerlink" title="检测数据更新"></a>检测数据更新</h5><p>因为Vue是响应式的，所以当数据发生变化时，Vue会自动检测数据变化，视图会发生对应的更新。<br>Vue中包含了一组观察数组编译的方法，使用它们改变数组也会触发视图的更新。</p>
+<ul>
+<li>push()</li>
+<li>pop()</li>
+<li>shift()</li>
+<li>unshift()</li>
+<li>splice()</li>
+<li>sort()</li>
+<li>reverse()</li>
+</ul>
+<p><img src="/2020/05/19/Vue基础语法/图片21.png" style="zoom:80%;"></p>
+<h5 id="表单绑定v-model"><a href="#表单绑定v-model" class="headerlink" title="表单绑定v-model"></a>表单绑定v-model</h5><h6 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h6><p>表单控件在实际开发中是非常常见的。特别是对于用户信息的提交，需要大量的表单。<strong>Vue中使用v-model指令来实现表单元素和数据的双向绑定。</strong></p>
+<p>案例的解析：<br>当我们在输入框输入内容时，因为input中的v-model绑定了message，所以会实时将输入的内容传递给message，message发生改变。当message发生改变时，因为上面我们使用Mustache语法，将message的值插入到DOM中，所以DOM会发生响应的改变。所以，通过v-model实现了双向的绑定。</p>
+<p><img src="/2020/05/19/Vue基础语法/22.png" style="zoom:80%;"></p>
+<h6 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h6><p><strong>v-model其实是一个语法糖，它的背后本质上是包含两个操作：</strong></p>
+<ul>
+<li>1.v-bind绑定一个value属性</li>
+<li>2.v-on指令给当前元素绑定input事件</li>
+</ul>
+<p>也就是说下面的代码：等同于下面的代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"message"</span>&gt;</span></span><br><span class="line">等同于</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-bind:value</span>=<span class="string">"message"</span> <span class="attr">v-on:input</span>=<span class="string">"message = $event.target.value"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2020/05/19/Vue基础语法/图片22.png" style="zoom:80%;"></p>
+<h6 id="v-model：radio-单选框"><a href="#v-model：radio-单选框" class="headerlink" title="v-model：radio  单选框"></a>v-model：radio  单选框</h6><p><strong>注意：v-model 绑定同一个值</strong></p>
+<p><img src="/2020/05/19/Vue基础语法/25.png" style="zoom:80%;"></p>
+<p><img src="/2020/05/19/Vue基础语法/24.png" style="zoom:80%;"></p>
+<h6 id="v-model：checkbox"><a href="#v-model：checkbox" class="headerlink" title="v-model：checkbox"></a>v-model：checkbox</h6><p>复选框分为两种情况：单个勾选框和多个勾选框</p>
+<ul>
+<li>单个勾选框：<ul>
+<li>v-model即为布尔值。</li>
+<li>此时input的value并不影响v-model的值。</li>
+<li>选中时，v-model 绑定的值 即为 true</li>
+</ul>
+</li>
+<li>多个复选框：<ul>
+<li>当是多个复选框时，因为可以选中多个，所以对应的data中属性是一个数组。</li>
+<li>当选中某一个时，就会将input的value添加到数组中。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/05/19/Vue基础语法/27.png" style="zoom:80%;"></p>
+<p><img src="/2020/05/19/Vue基础语法/26.png" style="zoom:80%;"></p>
+<h6 id="v-model：select"><a href="#v-model：select" class="headerlink" title="v-model：select"></a>v-model：select</h6><p>和checkbox一样，select也分单选和多选两种情况。</p>
+<ul>
+<li><p>单选：只能选中一个值。</p>
+<ul>
+<li>v-model绑定的是一个值。当我们选中option中的一个时，会将它对应的value赋值到mySelect中</li>
+</ul>
+</li>
+<li><p>多选：可以选中多个值。</p>
+<ul>
+<li>v-model绑定的是一个数组。当选中多个值时，就会将选中的option对应的value添加到数组mySelects中</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/05/19/Vue基础语法/图片26.png" style="zoom:80%;"></p>
+<p><img src="/2020/05/19/Vue基础语法/图片24.png" style="zoom:80%;"></p>
+<p><img src="/2020/05/19/Vue基础语法/图片25.png" style="zoom:80%;"></p>
+<h5 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h5><ul>
+<li>lazy修饰符：<br>默认情况下，v-model默认是在input事件中同步输入框的数据的。也就是说，一旦有数据发生改变对应的data中的数据就会自动发生改变。<strong>lazy修饰符可以让数据在失去焦点或者回车时才会更新</strong>。</li>
+<li>number修饰符：<br>默认情况下，在输入框中无论我们输入的是字母还是数字，都会被当做字符串类型进行处理。但是如果我们希望处理的是数字类型，那么最好直接将内容当做数字处理。<strong>number修饰符可以让在输入框中输入的内容自动转成数字类型</strong>。</li>
+<li>trim修饰符：<br>如果输入的内容首尾有很多空格，通常我们希望将其去除，<strong>trim修饰符可以过滤内容左右两边的空格</strong>。</li>
+</ul>
+<p><img src="/2020/05/19/Vue基础语法/图片27.png" style="zoom:80%;"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"><i class="fa fa-tag"></i> vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/19/Vue基础/" rel="next" title="Vue基础">
+                <i class="fa fa-chevron-left"></i> Vue基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://raw.githubusercontent.com/Commandercc/smallthings/master/peitu03.jpg" alt="1215ccc">
+            
+              <p class="site-author-name" itemprop="name">1215ccc</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Commandercc" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1502149172@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#基础语法"><span class="nav-number">1.</span> <span class="nav-text">基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Mustache"><span class="nav-number">1.1.</span> <span class="nav-text">Mustache</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#v-once"><span class="nav-number">1.2.</span> <span class="nav-text">v-once</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#v-html"><span class="nav-number">1.3.</span> <span class="nav-text">v-html</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#v-text"><span class="nav-number">1.4.</span> <span class="nav-text">v-text</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#v-pre"><span class="nav-number">1.5.</span> <span class="nav-text">v-pre</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#v-bind"><span class="nav-number">2.</span> <span class="nav-text">v-bind</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#概述"><span class="nav-number">2.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#语法糖"><span class="nav-number">2.2.</span> <span class="nav-text">语法糖</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#v-bind绑定class"><span class="nav-number">2.3.</span> <span class="nav-text">v-bind绑定class</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#v-bind绑定style"><span class="nav-number">2.4.</span> <span class="nav-text">v-bind绑定style</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算属性"><span class="nav-number">3.</span> <span class="nav-text">计算属性</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#概念"><span class="nav-number">3.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#计算属性的缓存"><span class="nav-number">3.2.</span> <span class="nav-text">计算属性的缓存</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#v-on"><span class="nav-number">4.</span> <span class="nav-text">v-on</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#概述-1"><span class="nav-number">4.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#语法糖-1"><span class="nav-number">4.2.</span> <span class="nav-text">语法糖</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#v-on参数"><span class="nav-number">4.3.</span> <span class="nav-text">v-on参数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#v-on修饰符"><span class="nav-number">4.4.</span> <span class="nav-text">v-on修饰符</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#v-if、v-else-if、v-else"><span class="nav-number">5.</span> <span class="nav-text">v-if、v-else-if、v-else</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#v-show"><span class="nav-number">6.</span> <span class="nav-text">v-show</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#v-for遍历数组"><span class="nav-number">7.</span> <span class="nav-text">v-for遍历数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#v-for遍历对象"><span class="nav-number">8.</span> <span class="nav-text">v-for遍历对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#组件的key属性"><span class="nav-number">9.</span> <span class="nav-text">组件的key属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#检测数据更新"><span class="nav-number">10.</span> <span class="nav-text">检测数据更新</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#表单绑定v-model"><span class="nav-number">11.</span> <span class="nav-text">表单绑定v-model</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#概述-2"><span class="nav-number">11.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#原理"><span class="nav-number">11.2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#v-model：radio-单选框"><span class="nav-number">11.3.</span> <span class="nav-text">v-model：radio  单选框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#v-model：checkbox"><span class="nav-number">11.4.</span> <span class="nav-text">v-model：checkbox</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#v-model：select"><span class="nav-number">11.5.</span> <span class="nav-text">v-model：select</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修饰符"><span class="nav-number">12.</span> <span class="nav-text">修饰符</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">1215ccc</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

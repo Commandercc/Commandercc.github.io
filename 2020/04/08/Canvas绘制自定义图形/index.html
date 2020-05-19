@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="android,自定义view,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Path操作速查表">
+<meta name="keywords" content="android,自定义view">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Canvas绘制自定义图形">
+<meta property="og:url" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/index.html">
+<meta property="og:site_name" content="江山如画">
+<meta property="og:description" content="Path操作速查表">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/Path方法表.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/2.3.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/2.4.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/2.5.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/2.6.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/2.7.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/2.8.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/Users/ZX/Desktop/Android扩展/img/2.9.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/2.10.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/2.11.jpg">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/2.12.jpg">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/2.13.jpg">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/2.14.jpg">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/2.16.jpg">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/2-17.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/重置路径.png">
+<meta property="og:updated_time" content="2020-05-11T03:05:04.934Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Canvas绘制自定义图形">
+<meta name="twitter:description" content="Path操作速查表">
+<meta name="twitter:image" content="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/Path方法表.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/">
+
+
+
+
+
+  <title>Canvas绘制自定义图形 | 江山如画</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?96ffaa007139b092545b7495dd112319";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">江山如画</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2020/04/08/Canvas绘制自定义图形/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="1215ccc">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Commandercc/smallthings/master/peitu03.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江山如画">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Canvas绘制自定义图形</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-08T23:55:26+08:00">
+                2020-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自定义view/" itemprop="url" rel="index">
+                    <span itemprop="name">自定义view</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.6k word
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="Path操作速查表"><a href="#Path操作速查表" class="headerlink" title="Path操作速查表"></a>Path操作速查表</h5><a id="more"></a>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/Path方法表.png" alt></p>
+<h5 id="Canvas绘制自定义图形"><a href="#Canvas绘制自定义图形" class="headerlink" title="Canvas绘制自定义图形"></a>Canvas绘制自定义图形</h5><p>前面写的就是<code>Canvas</code> 所有的简单图形的绘制。除了简单图形的绘制， <code>Canvas</code> 还可以使用 <code>drawPath(Path path)</code> 来绘制自定义图形。</p>
+<h6 id="drawPath-Path-path-Paint-paint-画自定义图形"><a href="#drawPath-Path-path-Paint-paint-画自定义图形" class="headerlink" title="drawPath(Path path, Paint paint) 画自定义图形"></a>drawPath(Path path, Paint paint) 画自定义图形</h6><p>前面的那些方法，都是绘制<strong>某个给定的图形</strong>，而 <code>drawPath()</code> 可以绘制<strong>自定义图形</strong>。当你要绘制的图形比较特殊，使用前面的那些方法做不到的时候，就可以使用 <code>drawPath()</code> 来绘制。</p>
+<p><code>drawPath(path)</code> 这个方法是通过描述路径的方式来绘制图形的，它的 <code>path</code> 参数就是用来描述图形路径的对象。<code>path</code> 的类型是 <code>Path</code> ，使用方法大概像下面这样：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyView</span> : <span class="type">View &#123;</span></span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(context: Context?, attrs: AttributeSet?) : <span class="keyword">super</span>(context, attrs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> paint = Paint()</span><br><span class="line">    <span class="keyword">val</span> path = Path()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDraw</span><span class="params">(canvas: <span class="type">Canvas</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onDraw(canvas)</span><br><span class="line">        paint.color = Color.RED</span><br><span class="line">        paint.style = Paint.Style.FILL</span><br><span class="line"> </span><br><span class="line">        path.addArc(<span class="number">200f</span>, <span class="number">200f</span>, <span class="number">400f</span>, <span class="number">400f</span>, -<span class="number">225f</span>, <span class="number">225f</span>);</span><br><span class="line">        path.arcTo(<span class="number">400f</span>, <span class="number">200f</span>, <span class="number">600f</span>, <span class="number">400f</span>, -<span class="number">180f</span>, <span class="number">225f</span>, <span class="literal">false</span>);</span><br><span class="line">        path.lineTo(<span class="number">400f</span>, <span class="number">542f</span>);</span><br><span class="line">        canvas.drawPath(path,paint)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Path</code> 可以描述直线、二次曲线、三次曲线、圆、椭圆、弧形、矩形、圆角矩形。把这些图形结合起来，就可以描述出很多复杂的图形。</p>
+<p><code>Path</code> 有两类方法，一类是直接描述路径的，另一类是辅助的设置或计算。</p>
+<h6 id="Path-方法第一类：直接描述路径"><a href="#Path-方法第一类：直接描述路径" class="headerlink" title="Path 方法第一类：直接描述路径"></a>Path 方法第一类：直接描述路径</h6><p><strong>第一组： <code>addXxx()</code> ——添加子图形</strong></p>
+<p><strong>addCircle(float x, float y, float radius, Direction dir) 添加圆</strong></p>
+<p><code>x</code>, <code>y</code>, <code>radius</code> 这三个参数是圆的基本信息，最后一个参数 <code>dir</code> 是画圆的路径的方向。</p>
+<p>路径方向有两种：<strong>顺时针</strong> (<code>CW</code> clockwise) 和<strong>逆时针</strong> (<code>CCW</code> counter-clockwise) 。对于普通情况，这个参数填 <code>CW</code> 还是填 <code>CCW</code> 没有影响。它只是在<strong>需要填充图形</strong> (<code>Paint.Style</code> 为 <code>FILL</code> 或 <code>FILL_AND_STROKE</code>) ，并且<strong>图形出现自相交</strong>时，用于判断填充范围的。下面再讨论<strong>dir</strong>这个参数</p>
+<p>在用 <code>addCircle()</code> 为 <code>Path</code> 中新增一个圆之后，调用 <code>canvas.drawPath(path, paint)</code> ，就能画一个圆出来</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path.addCircle(<span class="number">300f</span>,<span class="number">300f</span>,<span class="number">200f</span>,Path.Direction.CW)</span><br><span class="line">canvas.drawPath(path,paint)</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/2.3.png" alt></p>
+<p>其他的 <code>Path.add-()</code> 方法和这类似，例如：</p>
+<p><strong>addOval(float left, float top, float right, float bottom, Direction dir) / addOval(RectF oval, Direction dir) 添加椭圆</strong></p>
+<p><strong>addRect(float left, float top, float right, float bottom, Direction dir) / addRect(RectF rect, Direction dir) 添加矩形</strong></p>
+<p><strong>addRoundRect(RectF rect, float rx, float ry, Direction dir) / addRoundRect(float left, float top, float right, float bottom, float rx, float ry, Direction dir) / addRoundRect(RectF rect, float[] radii, Direction dir) / addRoundRect(float left, float top, float right, float bottom, float[] radii, Direction dir) 添加圆角矩形</strong></p>
+<p><strong>addPath(Path path) 添加另一个 Path</strong></p>
+<p>和前面addCircle()的使用都差不多，不再做过多介绍</p>
+<p><strong>第二组：<code>xxxTo()</code> ——画线（直线或曲线）</strong></p>
+<p><strong>lineTo(float x, float y) / rLineTo(float x, float y) 画直线</strong></p>
+<p>从<strong>当前位置</strong>向目标位置画一条直线， <code>x</code> 和 <code>y</code> 是目标位置的坐标。这两个方法的区别是，<code>lineTo(x, y)</code> 的参数是<strong>绝对坐标</strong>，而 <code>rLineTo(x, y)</code> 的参数是相对当前位置的<strong>相对坐标</strong> （前缀 <code>r</code> 指的就是 <code>relatively</code> 「相对地」)。</p>
+<p><strong>当前位置</strong>：所谓当前位置，即<strong>最后一次</strong>调用画 <code>Path</code> 的方法的终点位置。初始值为原点 (0, 0)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">paint.setStyle(Style.STROKE);</span><br><span class="line">path.lineTo(<span class="number">100</span>, <span class="number">100</span>); <span class="comment">// 由当前位置 (0, 0) 向 (100, 100) 画一条直线</span></span><br><span class="line">path.rLineTo(<span class="number">100</span>, <span class="number">0</span>); <span class="comment">// 由当前位置 (100, 100) 向正右方 100 像素的位置画一条直线</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/2.4.png" alt></p>
+<p><strong>quadTo(float x1, float y1, float x2, float y2) / rQuadTo(float dx1, float dy1, float dx2, float dy2) 画二次贝塞尔曲线</strong></p>
+<p>这条二次贝塞尔曲线的起点就是当前位置，而参数中的 <code>x1</code>, <code>y1</code> 和 <code>x2</code>, <code>y2</code> 则分别是控制点和终点的坐标。和 <code>rLineTo(x, y)</code> 同理，<code>rQuadTo(dx1, dy1, dx2, dy2)</code> 的参数也是相对坐标</p>
+<p><strong>cubicTo(float x1, float y1, float x2, float y2, float x3, float y3) / rCubicTo(float x1, float y1, float x2, float y2, float x3, float y3) 画三次贝塞尔曲线</strong></p>
+<p><strong>moveTo(float x, float y) / rMoveTo(float x, float y) 移动到目标位置</strong></p>
+<p>不论是直线还是贝塞尔曲线，都是以当前位置作为起点，而不能指定起点。但你可以通过 <code>moveTo(x, y)</code> 或 <code>rMoveTo()</code> 来改变当前位置，从而间接地设置这些方法的起点。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">path.lineTo(<span class="number">300f</span>,<span class="number">300f</span>) <span class="comment">//画斜线</span></span><br><span class="line">path.moveTo(<span class="number">600f</span>,<span class="number">300f</span>) <span class="comment">//移动点</span></span><br><span class="line">path.lineTo(<span class="number">600f</span>,<span class="number">0f</span>) <span class="comment">//画直线</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/2.5.png" alt></p>
+<p><code>moveTo(x, y)</code> 虽然不添加图形，但它会设置图形的起点，所以它是非常重要的一个辅助方法。</p>
+<p>第二组还有两个特殊的方法： <code>arcTo()</code> 和 <code>addArc()</code>。它们也是用来画线的，但并不使用当前位置作为弧线的起点。</p>
+<p><strong>arcTo(RectF oval, float startAngle, float sweepAngle, boolean forceMoveTo) </strong></p>
+<p><strong>arcTo(float left, float top, float right, float bottom, float startAngle, float sweepAngle, boolean forceMoveTo)</strong> </p>
+<p><strong>arcTo(RectF oval, float startAngle, float sweepAngle) 画弧形</strong></p>
+<p>这个方法和 <code>Canvas.drawArc()</code> 比起来，少了一个参数 <code>useCenter</code>，而多了一个参数 <code>forceMoveTo</code> 。</p>
+<p>少了 <code>useCenter</code> ，是因为 <code>arcTo()</code> 只用来画弧形而不画扇形，所以不再需要 <code>useCenter</code> 参数；而多出来的这个 <code>forceMoveTo</code> 参数的意思是，绘制是要「抬一下笔移动过去」，还是「直接拖着笔过去」，区别在于是否留下移动的<strong>痕迹</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">path.lineTo(<span class="number">100f</span>,<span class="number">100f</span>)</span><br><span class="line">path.arcTo(<span class="number">100f</span>,<span class="number">100f</span>,<span class="number">300f</span>,<span class="number">300f</span>,-<span class="number">90f</span>,<span class="number">90f</span>,<span class="keyword">true</span>) <span class="comment">//前面4个参数代表所在椭圆的上下左右4个顶点距离父容器左边和上边的距离，第5个参数表示从-90度位置开始画，第6个参数表示划过90弧度，第7个参数表示直接从前面（100,100）点的位置移过来，不留痕迹</span></span><br><span class="line">canvas.drawPath(path,paint)</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/2.6.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">path.lineTo(<span class="number">100f</span>,<span class="number">100f</span>)</span><br><span class="line">path.arcTo(<span class="number">100f</span>,<span class="number">100f</span>,<span class="number">300f</span>,<span class="number">300f</span>,-<span class="number">90f</span>,<span class="number">90f</span>,<span class="keyword">false</span>) <span class="comment">//这次留下移动轨迹，直接连线连到弧形起点</span></span><br><span class="line">canvas.drawPath(path,paint)</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/2.7.png" alt></p>
+<p><strong>addArc(float left, float top, float right, float bottom, float startAngle, float sweepAngle) / addArc(RectF oval, float startAngle, float sweepAngle)</strong></p>
+<p>又是一个弧形的方法。一个叫 <code>arcTo</code> ，一个叫 <code>addArc()</code>，都是弧形，区别在哪里？其实很简单： <code>addArc()</code> 只是一个直接使用了 <code>forceMoveTo = true</code> 的简化版 <code>arcTo()</code> ，其<strong>只有6个参数</strong>。</p>
+<p><strong>close() 封闭当前子图形</strong></p>
+<p>它的作用是把当前的子图形封闭，即由当前位置向当前子图形的起点绘制一条直线。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">path.moveTo(<span class="number">300f</span>,<span class="number">300f</span>)</span><br><span class="line">path.lineTo(<span class="number">600f</span>,<span class="number">300f</span>)</span><br><span class="line">path.lineTo(<span class="number">450f</span>,<span class="number">450f</span>)</span><br><span class="line">canvas.drawPath(path,paint) <span class="comment">//未使用close</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/2.8.png" style="zoom:50%;"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">path.moveTo(<span class="number">300f</span>,<span class="number">300f</span>)</span><br><span class="line">path.lineTo(<span class="number">600f</span>,<span class="number">300f</span>)</span><br><span class="line">path.lineTo(<span class="number">450f</span>,<span class="number">450f</span>)</span><br><span class="line">path.close()  <span class="comment">//调用close来封闭图形 path.lineTo(300f, 300f)</span></span><br><span class="line">canvas.drawPath(path,paint)</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/Users\ZX\Desktop\Android扩展\img\2.9.png" style="zoom: 67%;"></p>
+<p><code>close()</code> 和 <code>lineTo(起点坐标)</code> 是完全等价的。</p>
+<p>不是所有的子图形都需要使用 <code>close()</code> 来封闭。当<strong>需要填充图形时（即 <code>Paint.Style</code> 为 <code>FILL</code> 或 <code>FILL_AND_STROKE</code>）</strong>，<code>Path</code> 会自动封闭子图形</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">paint.style = Paint.Style.FILL</span><br><span class="line">path.moveTo(<span class="number">300f</span>,<span class="number">300f</span>)</span><br><span class="line">path.lineTo(<span class="number">600f</span>,<span class="number">300f</span>)</span><br><span class="line">path.lineTo(<span class="number">450f</span>,<span class="number">450f</span>)</span><br><span class="line">canvas.drawPath(path,paint)</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/2.10.png" alt></p>
+<p>以上就是 <code>Path</code> 的第一类方法：直接描述路径的。</p>
+<h6 id="Path-方法第二类：辅助的设置或计算"><a href="#Path-方法第二类：辅助的设置或计算" class="headerlink" title="Path 方法第二类：辅助的设置或计算"></a>Path 方法第二类：辅助的设置或计算</h6><p>这类方法的使用场景比较少,理解其中一个方法： <code>setFillType(FillType fillType)</code>。</p>
+<p><strong>Path.setFillType(Path.FillType ft) 设置填充方式</strong></p>
+<p>前面在说 <code>dir</code> 参数的时候提到， <code>Path.setFillType(fillType)</code> 是用来设置图形自相交时的填充算法的：</p>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/2.11.jpg" style="zoom:50%;"></p>
+<p>方法中填入不同的 <code>FillType</code> 值，就会有不同的填充效果。<code>FillType</code> 的取值有四个：</p>
+<ul>
+<li><code>EVEN_ODD</code></li>
+<li><code>WINDING</code> （默认值）</li>
+<li><code>INVERSE_EVEN_ODD</code></li>
+<li><code>INVERSE_WINDING</code></li>
+</ul>
+<p>其中后面的两个带有 <code>INVERSE_</code> 前缀的，只是前两个的<strong>反色版本</strong>，所以只要把前两个，即 <code>EVEN_ODD</code> 和 <code>WINDING</code>，搞明白就可以了。</p>
+<p><strong>先来看一下通常情形下的效果</strong></p>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/2.12.jpg" style="zoom:50%;"></p>
+<p><strong>接下来了解一下填充的原理</strong></p>
+<p><strong>EVEN_ODD</strong></p>
+<p>即 even-odd rule （奇偶原则）：<strong>对于平面中的任意一点，向任意方向射出一条射线，这条射线和图形相交的次数（相交才算，相切不算哦）如果是奇数，则这个点被认为在图形内部，是要被涂色的区域；如果是偶数，则这个点被认为在图形外部，是不被涂色的区域</strong>。射线的方向无所谓，同一个点射向任何方向的射线，结果都是一样的还以左右相交的双圆为例：</p>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/2.13.jpg" style="zoom: 67%;"></p>
+<p><strong>WINDING</strong></p>
+<p>即 non-zero winding rule （非零环绕数原则）：首先，它需要你图形中的所有线条都是有绘制方向的：</p>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/2.14.jpg" style="zoom: 67%;"></p>
+<p>然后，同样是<strong>从平面中的点向任意方向射出一条射线，但计算规则不一样：以 0 为初始值，对于射线和图形的所有交点，遇到每个顺时针的交点（图形从射线的左边向右穿过）把结果加 1，遇到每个逆时针的交点（图形从射线的右边向左穿过）把结果减 1，最终把所有的交点都算上，得到的结果如果不是 0，则认为这个点在图形内部，是要被涂色的区域；如果是 0，则认为这个点在图形外部，是不被涂色的区域。</strong>和前面奇偶规则一样，射线的方向并不影响结果。</p>
+<p><strong>关于图形的方向</strong></p>
+<p>图形的方向：对于添加子图形类方法（如 <code>Path.addCircle()</code> <code>Path.addRect()</code>）的方向，由方法的 <code>dir</code> 参数来控制，这个在前面已经讲过了；而对于画线类的方法（如 <code>Path.lineTo()</code> <code>Path.arcTo()</code>）就更简单了，线的方向就是图形的方向。</p>
+<p>所以，完整版的 <code>EVEN_ODD</code> 和 <code>WINDING</code> 的效果应该是这样的：</p>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/2.16.jpg" style="zoom:50%;"></p>
+<h6 id="Canvas绘制Bitmap和文字"><a href="#Canvas绘制Bitmap和文字" class="headerlink" title="Canvas绘制Bitmap和文字"></a>Canvas绘制Bitmap和文字</h6><p><strong>drawBitmap(Bitmap bitmap, float left, float top, Paint paint) 画 Bitmap</strong></p>
+<p>绘制 <code>Bitmap</code> 对象，也就是把这个 <code>Bitmap</code> 中的像素内容贴过来。其中 <code>left</code> 和 <code>top</code> 是要把 <code>bitmap</code> 绘制到的位置坐标。它的使用非常简单。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyView</span> : <span class="type">View &#123;</span></span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(context: Context?, attrs: AttributeSet?) : <span class="keyword">super</span>(context, attrs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> paint = Paint()</span><br><span class="line">    <span class="keyword">val</span> bitmap = BitmapFactory.decodeResource(context.resources,R.drawable.test_006)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDraw</span><span class="params">(canvas: <span class="type">Canvas</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onDraw(canvas)</span><br><span class="line">        paint.color = Color.RED</span><br><span class="line">        paint.style = Paint.Style.FILL</span><br><span class="line">        paint.strokeWidth = <span class="number">10f</span></span><br><span class="line">        canvas.drawBitmap(bitmap,<span class="number">300f</span>,<span class="number">300f</span>,paint)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/2-17.png" style="zoom:50%;"></p>
+<p>它还有一些重载方法，不列举了</p>
+<p><strong>drawText(String text, float x, float y, Paint paint) 绘制文字</strong></p>
+<p>界面里所有的显示内容，都是绘制出来的，包括文字。 <code>drawText()</code> 这个方法就是用来绘制文字的。参数 <code>text</code> 是用来绘制的字符串，<code>x</code> 和 <code>y</code> 是绘制的起点坐标。</p>
+<p><strong>Paint.setTextSize(float textSize)</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">paint.setTextSize(<span class="number">18</span>);</span><br><span class="line">canvas.drawText(text, <span class="number">100</span>, <span class="number">25</span>, paint);</span><br><span class="line">paint.setTextSize(<span class="number">36</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="重置路径"><a href="#重置路径" class="headerlink" title="重置路径"></a>重置路径</h5><p>重置Path有两个方法，分别是reset和rewind，两者区别主要有一下两点：</p>
+<p><img src="/2020/04/08/Canvas绘制自定义图形/重置路径.png" alt></p>
+<p><strong>这个两个方法应该何时选择呢？</strong></p>
+<p>选择权重: FillType &gt; 数据结构</p>
+<p><strong>因为“FillType”影响的是显示效果，而“数据结构”影响的是重建速度。</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag"><i class="fa fa-tag"></i> android</a>
+          
+            <a href="/tags/自定义view/" rel="tag"><i class="fa fa-tag"></i> 自定义view</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/08/Canvas和Paint基础/" rel="next" title="Canvas和Paint基础">
+                <i class="fa fa-chevron-left"></i> Canvas和Paint基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/09/贝塞尔曲线/" rel="prev" title="贝塞尔曲线">
+                贝塞尔曲线 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://raw.githubusercontent.com/Commandercc/smallthings/master/peitu03.jpg" alt="1215ccc">
+            
+              <p class="site-author-name" itemprop="name">1215ccc</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Commandercc" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1502149172@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Path操作速查表"><span class="nav-number">1.</span> <span class="nav-text">Path操作速查表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Canvas绘制自定义图形"><span class="nav-number">2.</span> <span class="nav-text">Canvas绘制自定义图形</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#drawPath-Path-path-Paint-paint-画自定义图形"><span class="nav-number">2.1.</span> <span class="nav-text">drawPath(Path path, Paint paint) 画自定义图形</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Path-方法第一类：直接描述路径"><span class="nav-number">2.2.</span> <span class="nav-text">Path 方法第一类：直接描述路径</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Path-方法第二类：辅助的设置或计算"><span class="nav-number">2.3.</span> <span class="nav-text">Path 方法第二类：辅助的设置或计算</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Canvas绘制Bitmap和文字"><span class="nav-number">2.4.</span> <span class="nav-text">Canvas绘制Bitmap和文字</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#重置路径"><span class="nav-number">3.</span> <span class="nav-text">重置路径</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">1215ccc</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

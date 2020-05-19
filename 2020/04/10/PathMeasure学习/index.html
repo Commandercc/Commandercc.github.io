@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="android,自定义view,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概述顾名思义，PathMeasure是一个用来测量Path的类，主要有以下方法:">
+<meta name="keywords" content="android,自定义view">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PathMeasure学习">
+<meta property="og:url" content="http://haibolun.top/2020/04/10/PathMeasure学习/index.html">
+<meta property="og:site_name" content="江山如画">
+<meta property="og:description" content="概述顾名思义，PathMeasure是一个用来测量Path的类，主要有以下方法:">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://haibolun.top/2020/04/10/PathMeasure学习/1.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/10/PathMeasure学习/2.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/10/PathMeasure学习/3.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/10/PathMeasure学习/4.jpg">
+<meta property="og:image" content="http://haibolun.top/2020/04/10/PathMeasure学习/5.jpg">
+<meta property="og:image" content="http://haibolun.top/2020/04/10/PathMeasure学习/6.jpg">
+<meta property="og:image" content="http://haibolun.top/2020/04/10/PathMeasure学习/7.jpg">
+<meta property="og:image" content="http://haibolun.top/2020/04/10/PathMeasure学习/8.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/10/PathMeasure学习/9.jpg">
+<meta property="og:image" content="http://haibolun.top/2020/04/10/PathMeasure学习/10.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/10/PathMeasure学习/11.png">
+<meta property="og:updated_time" content="2020-05-11T07:24:30.137Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PathMeasure学习">
+<meta name="twitter:description" content="概述顾名思义，PathMeasure是一个用来测量Path的类，主要有以下方法:">
+<meta name="twitter:image" content="http://haibolun.top/2020/04/10/PathMeasure学习/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://haibolun.top/2020/04/10/PathMeasure学习/">
+
+
+
+
+
+  <title>PathMeasure学习 | 江山如画</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?96ffaa007139b092545b7495dd112319";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">江山如画</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2020/04/10/PathMeasure学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="1215ccc">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Commandercc/smallthings/master/peitu03.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江山如画">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PathMeasure学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-10T13:38:45+08:00">
+                2020-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自定义view/" itemprop="url" rel="index">
+                    <span itemprop="name">自定义view</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k word
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h5><p>顾名思义，PathMeasure是一个用来测量Path的类，主要有以下方法:</p>
+<a id="more"></a>
+<h6 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h6><p><img src="/2020/04/10/PathMeasure学习/1.png" alt></p>
+<h6 id="公共方法"><a href="#公共方法" class="headerlink" title="公共方法"></a>公共方法</h6><p><img src="/2020/04/10/PathMeasure学习/2.png" alt></p>
+<h5 id="方法详解"><a href="#方法详解" class="headerlink" title="方法详解"></a>方法详解</h5><h6 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h6><p><strong>无参构造函数：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PathMeasure ()</span><br></pre></td></tr></table></figure>
+<p>用这个构造函数可创建一个空的 PathMeasure，但是使用之前需要先调用 setPath 方法来与 Path 进行关联。被关联的 Path 必须是已经创建好的，如果关联之后 Path 内容进行了更改，则需要使用 setPath 方法重新关联。</p>
+<p><strong>有参构造函数：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PathMeasure (Path path, boolean forceClosed)</span><br></pre></td></tr></table></figure>
+<p>用这个构造函数是创建一个 PathMeasure 并关联一个 Path， 其实和创建一个空的 PathMeasure 后调用 setPath 进行关联效果是一样的，同样，被关联的 Path 也必须是已经创建好的，如果关联之后 Path 内容进行了更改，则需要使用 setPath 方法重新关联。</p>
+<p>该方法有两个参数，第一个参数自然就是被关联的 Path 了，第二个参数是用来确保 Path 闭合，如果设置为 true， 则不论之前Path是否闭合，都会自动闭合该 Path(如果Path可以闭合的话)。</p>
+<p><strong>在这里有两点需要明确:</strong></p>
+<blockquote>
+<ul>
+<li><ol>
+<li>不论 forceClosed 设置为何种状态(true 或者 false)， 都不会影响原有Path的状态，<strong>即 Path 与 PathMeasure 关联之后，之前的的 Path 不会有任何改变。</strong></li>
+</ol>
+</li>
+<li><ol>
+<li>forceClosed 的设置状态可能会影响测量结果，<strong>如果 Path 未闭合但在与 PathMeasure 关联的时候设置 forceClosed 为 true 时，测量结果可能会比 Path 实际长度稍长一点，获取到到是该 Path 闭合时的状态。</strong></li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<h6 id="setPath、-isClosed-和-getLength"><a href="#setPath、-isClosed-和-getLength" class="headerlink" title="setPath、 isClosed 和 getLength"></a>setPath、 isClosed 和 getLength</h6><p><strong>setPath</strong> 是 PathMeasure 与 Path 关联的重要方法，效果和 构造函数 中两个参数的作用是一样的。</p>
+<p><strong>isClosed</strong> 用于判断 Path 是否闭合，但是如果你在关联 Path 的时候设置 forceClosed 为 true 的话，这个方法的返回值则一定为true。</p>
+<p><strong>getLength</strong> 用于获取 Path 的总长度。</p>
+<h6 id="getSegment"><a href="#getSegment" class="headerlink" title="getSegment"></a>getSegment</h6><p>getSegment 用于获取Path的一个片段，方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">getSegment</span> <span class="params">(<span class="keyword">float</span> startD, <span class="keyword">float</span> stopD, Path dst, <span class="keyword">boolean</span> startWithMoveTo)</span></span></span><br></pre></td></tr></table></figure>
+<p>方法各个参数释义：</p>
+<p><img src="/2020/04/10/PathMeasure学习/3.png" style="zoom: 80%;"></p>
+<ul>
+<li>如果 startD、stopD 的数值不在取值范围 [0, getLength] 内，或者 startD == stopD 则返回值为 false，不会改变 dst 内容。</li>
+<li>如果在安卓4.4或者之前的版本，在默认开启硬件加速的情况下，更改 dst 的内容后可能绘制会出现问题，请关闭硬件加速或者给 dst 添加一个单个操作，例如: dst.rLineTo(0, 0)</li>
+</ul>
+<h6 id="示意Demo1："><a href="#示意Demo1：" class="headerlink" title="示意Demo1："></a>示意Demo1：</h6><p>我们创建了一个 Path， 并在其中添加了一个矩形，现在我们想截取矩形中的一部分，就是下图中红色的部分。</p>
+<blockquote>
+<p>矩形边长400dp，起始点在左上角，顺时针</p>
+</blockquote>
+<p><img src="/2020/04/10/PathMeasure学习/4.jpg" style="zoom:67%;"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">canvas.translate(mViewWidth / <span class="number">2</span>, mViewHeight / <span class="number">2</span>);          <span class="comment">// 平移坐标系</span></span><br><span class="line"></span><br><span class="line">Path path = <span class="keyword">new</span> Path();                                     <span class="comment">// 创建Path并添加了一个矩形,设置绘制方向为顺时针</span></span><br><span class="line">path.addRect(-<span class="number">200</span>, -<span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>, Path.Direction.CW);</span><br><span class="line"></span><br><span class="line">Path dst = <span class="keyword">new</span> Path();                                      <span class="comment">// 创建用于存储截取后内容的 Path，此时path中并没有内容</span></span><br><span class="line"></span><br><span class="line">PathMeasure measure = <span class="keyword">new</span> PathMeasure(path, <span class="keyword">false</span>);         <span class="comment">// 将 Path 与 PathMeasure 关联</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 截取一部分存入dst中，并使用 moveTo 保持截取得到的 Path 第一个点的位置不变</span></span><br><span class="line">measure.getSegment(<span class="number">200</span>, <span class="number">600</span>, dst, <span class="keyword">true</span>);                    </span><br><span class="line"></span><br><span class="line">canvas.drawPath(dst, mDeafultPaint);                        <span class="comment">// 绘制 dst</span></span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<p><img src="/2020/04/10/PathMeasure学习/5.jpg" style="zoom:67%;"></p>
+<p>从上图可以看到我们成功到将需要到片段截取了出来，然而当 dst 中有内容时会怎样呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">canvas.translate(mViewWidth / <span class="number">2</span>, mViewHeight / <span class="number">2</span>);          <span class="comment">// 平移坐标系</span></span><br><span class="line"></span><br><span class="line">Path path = <span class="keyword">new</span> Path();                                     <span class="comment">// 创建Path并添加了一个矩形</span></span><br><span class="line">path.addRect(-<span class="number">200</span>, -<span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>, Path.Direction.CW);</span><br><span class="line"></span><br><span class="line">Path dst = <span class="keyword">new</span> Path();                                      <span class="comment">// 创建用于存储截取后内容的 Path</span></span><br><span class="line">dst.lineTo(-<span class="number">300</span>, -<span class="number">300</span>);                                     <span class="comment">// &lt;--- 在 dst 中添加一条线段</span></span><br><span class="line"></span><br><span class="line">PathMeasure measure = <span class="keyword">new</span> PathMeasure(path, <span class="keyword">false</span>);         <span class="comment">// 将 Path 与 PathMeasure 关联</span></span><br><span class="line"></span><br><span class="line">measure.getSegment(<span class="number">200</span>, <span class="number">600</span>, dst, <span class="keyword">true</span>);                   <span class="comment">// 截取一部分 并使用 moveTo 保持截取得到的 Path 第一个点的位置不变</span></span><br><span class="line"></span><br><span class="line">canvas.drawPath(dst, mDeafultPaint);                        <span class="comment">// 绘制 Path</span></span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<p><img src="/2020/04/10/PathMeasure学习/6.jpg" style="zoom:67%;"></p>
+<p>从上面的示例可以看到 dst 中的线段保留了下来，可以得到结论：<strong>被截取的 Path 片段会添加到 dst 中，而不是替换 dst 中到内容。</strong></p>
+<p>前面两个例子中 startWithMoveTo 均为 true， 如果设置为false会怎样呢?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">canvas.translate(mViewWidth / <span class="number">2</span>, mViewHeight / <span class="number">2</span>);          <span class="comment">// 平移坐标系</span></span><br><span class="line"></span><br><span class="line">Path path = <span class="keyword">new</span> Path();                                     <span class="comment">// 创建Path并添加了一个矩形</span></span><br><span class="line">path.addRect(-<span class="number">200</span>, -<span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>, Path.Direction.CW);</span><br><span class="line"></span><br><span class="line">Path dst = <span class="keyword">new</span> Path();                                      <span class="comment">// 创建用于存储截取后内容的 Path</span></span><br><span class="line">dst.lineTo(-<span class="number">300</span>, -<span class="number">300</span>);                                     <span class="comment">// 在 dst 中添加一条线段</span></span><br><span class="line"></span><br><span class="line">PathMeasure measure = <span class="keyword">new</span> PathMeasure(path, <span class="keyword">false</span>);         <span class="comment">// 将 Path 与 PathMeasure 关联</span></span><br><span class="line"></span><br><span class="line">measure.getSegment(<span class="number">200</span>, <span class="number">600</span>, dst, <span class="keyword">false</span>);                   <span class="comment">// &lt;--- 截取一部分 不使用 startMoveTo, 保持 dst 的连续性</span></span><br><span class="line"></span><br><span class="line">canvas.drawPath(dst, mDeafultPaint);                        <span class="comment">// 绘制 Path</span></span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<p><img src="/2020/04/10/PathMeasure学习/7.jpg" style="zoom:67%;"></p>
+<p>从该示例我们又可以得到一条结论：<strong>如果 startWithMoveTo 为 true, 则被截取出来到Path片段保持原状，如果 startWithMoveTo 为 false，则会将截取出来的 Path 片段的起始点移动到 dst 的最后一个点，以保证 dst 的连续性。</strong></p>
+<p>从而我们可以用以下规则来判断 startWithMoveTo 的取值：</p>
+<p><img src="/2020/04/10/PathMeasure学习/8.png" style="zoom: 80%;"></p>
+<h6 id="nextContour"><a href="#nextContour" class="headerlink" title="nextContour"></a>nextContour</h6><p>我们知道 Path 可以由多条曲线构成，但不论是 getLength , getSegment 或者是其它方法，都只会在其中第一条线段上运行，而这个 <code>nextContour</code> 就是用于跳转到下一条曲线到方法，<strong>如果跳转成功，则返回 true， 如果跳转失败，则返回 false。</strong></p>
+<h6 id="示意Demo2："><a href="#示意Demo2：" class="headerlink" title="示意Demo2："></a>示意Demo2：</h6><p>如下，我们创建了一个 Path 并使其中包含了两个闭合的曲线，内部的边长是200，外面的边长是400，现在我们使用 PathMeasure 分别测量两条曲线的总长度。</p>
+<p><img src="/2020/04/10/PathMeasure学习/9.jpg" style="zoom:67%;"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">canvas.translate(mViewWidth / <span class="number">2</span>, mViewHeight / <span class="number">2</span>);      <span class="comment">// 平移坐标系</span></span><br><span class="line"></span><br><span class="line">Path path = <span class="keyword">new</span> Path();</span><br><span class="line"></span><br><span class="line">path.addRect(-<span class="number">100</span>, -<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, Path.Direction.CW);  <span class="comment">// 添加小矩形 周长800</span></span><br><span class="line">path.addRect(-<span class="number">200</span>, -<span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>, Path.Direction.CW);  <span class="comment">// 添加大矩形 周长1600</span></span><br><span class="line"></span><br><span class="line">canvas.drawPath(path,mDeafultPaint);                    <span class="comment">// 绘制 Path</span></span><br><span class="line"></span><br><span class="line">PathMeasure measure = <span class="keyword">new</span> PathMeasure(path, <span class="keyword">false</span>);     <span class="comment">// 将Path与PathMeasure关联</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">float</span> len1 = measure.getLength();                       <span class="comment">// 获得第一条路径的长度</span></span><br><span class="line"></span><br><span class="line">measure.nextContour();                                  <span class="comment">// 跳转到下一条路径</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">float</span> len2 = measure.getLength();                       <span class="comment">// 获得第二条路径的长度</span></span><br><span class="line"></span><br><span class="line">Log.i(<span class="string">"LEN"</span>,<span class="string">"len1="</span>+len1);                              <span class="comment">// 输出两条路径的长度</span></span><br><span class="line">Log.i(<span class="string">"LEN"</span>,<span class="string">"len2="</span>+len2);</span><br></pre></td></tr></table></figure>
+<p>log输出结果:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">com.gcssloop.canvas I/LEN: len1=<span class="number">800.0</span></span><br><span class="line">com.gcssloop.canvas I/LEN: len2=<span class="number">1600.0</span></span><br></pre></td></tr></table></figure>
+<p>通过测试，我们可以得到以下内容：</p>
+<ul>
+<li>1.曲线的顺序与 Path 中添加的顺序有关。</li>
+<li>2.getLength 获取到到是当前一条曲线分长度，而不是整个 Path 的长度。</li>
+<li>3.getLength 等方法是针对当前的曲线。</li>
+</ul>
+<h6 id="getPosTan"><a href="#getPosTan" class="headerlink" title="getPosTan"></a>getPosTan</h6><p>这个方法是用于得到路径上<strong>某一长度的位置以及该位置的正切值</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">getPosTan</span> <span class="params">(<span class="keyword">float</span> distance, <span class="keyword">float</span>[] pos, <span class="keyword">float</span>[] tan)</span></span></span><br></pre></td></tr></table></figure>
+<p>参数释义：</p>
+<p><img src="/2020/04/10/PathMeasure学习/10.png" style="zoom: 80%;"></p>
+<p><strong>使用 Math.atan2(tan[1], tan[0]) 将 <code>tan</code> 转化为角(单位为弧度)的时候要注意参数顺序。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 省略部分代码</span></span><br><span class="line">tan = <span class="keyword">new</span> <span class="keyword">float</span>[<span class="number">2</span>];</span><br><span class="line">PathMeasure measure = <span class="keyword">new</span> PathMeasure(path, <span class="keyword">false</span>);     <span class="comment">// 创建 PathMeasure</span></span><br><span class="line">measure.getPosTan(measure.getLength() * currentValue, pos, tan);        <span class="comment">// 获取当前位置的坐标以及趋势</span></span><br><span class="line"><span class="keyword">float</span> degrees = (<span class="keyword">float</span>) (Math.atan2(tan[<span class="number">1</span>], tan[<span class="number">0</span>]) * <span class="number">180.0</span> / Math.PI); <span class="comment">// 计算图片旋转角度</span></span><br></pre></td></tr></table></figure>
+<h6 id="getMatrix"><a href="#getMatrix" class="headerlink" title="getMatrix"></a>getMatrix</h6><p>这个方法是用于得到路径上<strong>某一长度的位置以及该位置的正切值的矩阵</strong>：</p>
+<p>boolean getMatrix (float distance, Matrix matrix, int flags)</p>
+<p>方法参数含义：</p>
+<p><img src="/2020/04/10/PathMeasure学习/11.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//示意操作</span></span><br><span class="line"><span class="comment">// 获取当前位置的坐标以及趋势的矩阵</span></span><br><span class="line">measure.getMatrix(measure.getLength() * currentValue, mMatrix, PathMeasure.TANGENT_MATRIX_FLAG | PathMeasure.POSITION_MATRIX_FLAG);</span><br><span class="line"></span><br><span class="line">mMatrix.preTranslate(-mBitmap.getWidth() / <span class="number">2</span>, -mBitmap.getHeight() / <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="Path-amp-SVG"><a href="#Path-amp-SVG" class="headerlink" title="Path &amp; SVG"></a>Path &amp; SVG</h5><p>我们知道，用Path可以创建出各种个样的图形，但如果图形<strong>过于复杂</strong>时，用代码写就不现实了，不仅麻烦，而且容易出错，所以在绘制复杂的图形时我们一般是<strong>将 SVG 图像转换为 Path</strong>。</p>
+<h6 id="什么是SVG？"><a href="#什么是SVG？" class="headerlink" title="什么是SVG？"></a>什么是SVG？</h6><p>SVG 是一种矢量图，内部用的是 <strong>xml 格式</strong>化存储方式存储这操作和数据，你完全可以将 SVG 看作是 Path 的各项操作简化书写后的存储格式。</p>
+<p>Path 和 SVG 结合通常能诞生出一些奇妙的东西，具体去查看其它文章。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag"><i class="fa fa-tag"></i> android</a>
+          
+            <a href="/tags/自定义view/" rel="tag"><i class="fa fa-tag"></i> 自定义view</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/09/贝塞尔曲线/" rel="next" title="贝塞尔曲线">
+                <i class="fa fa-chevron-left"></i> 贝塞尔曲线
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/10/Android Matrix详解/" rel="prev" title="Matrix详解">
+                Matrix详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://raw.githubusercontent.com/Commandercc/smallthings/master/peitu03.jpg" alt="1215ccc">
+            
+              <p class="site-author-name" itemprop="name">1215ccc</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Commandercc" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1502149172@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#构造方法"><span class="nav-number">1.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#公共方法"><span class="nav-number">1.2.</span> <span class="nav-text">公共方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法详解"><span class="nav-number">2.</span> <span class="nav-text">方法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#构造函数"><span class="nav-number">2.1.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#setPath、-isClosed-和-getLength"><span class="nav-number">2.2.</span> <span class="nav-text">setPath、 isClosed 和 getLength</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#getSegment"><span class="nav-number">2.3.</span> <span class="nav-text">getSegment</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#示意Demo1："><span class="nav-number">2.4.</span> <span class="nav-text">示意Demo1：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#nextContour"><span class="nav-number">2.5.</span> <span class="nav-text">nextContour</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#示意Demo2："><span class="nav-number">2.6.</span> <span class="nav-text">示意Demo2：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#getPosTan"><span class="nav-number">2.7.</span> <span class="nav-text">getPosTan</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#getMatrix"><span class="nav-number">2.8.</span> <span class="nav-text">getMatrix</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Path-amp-SVG"><span class="nav-number">3.</span> <span class="nav-text">Path &amp; SVG</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#什么是SVG？"><span class="nav-number">3.1.</span> <span class="nav-text">什么是SVG？</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">1215ccc</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
