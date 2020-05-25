@@ -80,21 +80,21 @@
 
 
 
-<meta name="description" content="事件分发、拦截与消费">
+<meta name="description" content="简述顶级View对点击事件的分发： 点击事件达到顶级View（一般是一个 ViewGroup ）以后，会调用 ViewGroup的 dispatchTouchEvent 方法，然后的逻辑是这样的：如果顶级 ViewGroup 拦截事件的 onInterceptTouchEvent 返回 true，则事件由 ViewGroup 处理，这时如果 ViewGroup 的 mOnTouchListener">
 <meta name="keywords" content="android,自定义view">
 <meta property="og:type" content="article">
 <meta property="og:title" content="事件分发机制详解">
 <meta property="og:url" content="http://haibolun.top/2020/05/11/事件分发机制详解/index.html">
 <meta property="og:site_name" content="江山如画">
-<meta property="og:description" content="事件分发、拦截与消费">
+<meta property="og:description" content="简述顶级View对点击事件的分发： 点击事件达到顶级View（一般是一个 ViewGroup ）以后，会调用 ViewGroup的 dispatchTouchEvent 方法，然后的逻辑是这样的：如果顶级 ViewGroup 拦截事件的 onInterceptTouchEvent 返回 true，则事件由 ViewGroup 处理，这时如果 ViewGroup 的 mOnTouchListener">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haibolun.top/2020/05/11/事件分发机制详解/事件分发、拦截和消费.png">
 <meta property="og:image" content="http://haibolun.top/2020/05/11/事件分发机制详解/执行顺序.jpg">
 <meta property="og:image" content="http://haibolun.top/2020/05/11/事件分发机制详解/1.jpg">
-<meta property="og:updated_time" content="2020-05-19T07:32:50.344Z">
+<meta property="og:updated_time" content="2020-05-21T12:32:20.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事件分发机制详解">
-<meta name="twitter:description" content="事件分发、拦截与消费">
+<meta name="twitter:description" content="简述顶级View对点击事件的分发： 点击事件达到顶级View（一般是一个 ViewGroup ）以后，会调用 ViewGroup的 dispatchTouchEvent 方法，然后的逻辑是这样的：如果顶级 ViewGroup 拦截事件的 onInterceptTouchEvent 返回 true，则事件由 ViewGroup 处理，这时如果 ViewGroup 的 mOnTouchListener">
 <meta name="twitter:image" content="http://haibolun.top/2020/05/11/事件分发机制详解/事件分发、拦截和消费.png">
 
 
@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.4k word
+                  1.6k word
                 </span>
               
 
@@ -410,7 +410,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 min
+                  6 min
                 </span>
               
             </div>
@@ -431,7 +431,9 @@
       
 
       
-        <h5 id="事件分发、拦截与消费"><a href="#事件分发、拦截与消费" class="headerlink" title="事件分发、拦截与消费"></a>事件分发、拦截与消费</h5><p><img src="/2020/05/11/事件分发机制详解/事件分发、拦截和消费.png" alt></p>
+        <h5 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h5><p><strong>顶级View对点击事件的分发</strong>：</p>
+<p>点击事件达到顶级View（一般是一个 ViewGroup ）以后，会调用 ViewGroup的 dispatchTouchEvent 方法，然后的逻辑是这样的：如果顶级 ViewGroup 拦截事件的 onInterceptTouchEvent 返回 true，则事件由 ViewGroup 处理，这时如果 ViewGroup 的 mOnTouchListener 被设置，则 onTouch 会被调用，否则 onTouchEvent 会被调用。也就是说，如果都提供的话，onTouch 会屏蔽掉 onTouchEvent 。在 onTouchEvent 中，如果设置了 mOnClickListener，则 onClick 会被调用。如果顶级 ViewGroup 不拦截事件，则事件会传递给它所在的点击事件链上的子View，这时子 View 的 dispatchTouchEvent 会被调用。到此为止，事件已经从顶级View传递给了下一层View，接下来的传递过程和顶级 View 是一致的，如此循环，完成整个事件的分发。</p>
+<h5 id="事件分发、拦截与消费"><a href="#事件分发、拦截与消费" class="headerlink" title="事件分发、拦截与消费"></a>事件分发、拦截与消费</h5><p><img src="/2020/05/11/事件分发机制详解/事件分发、拦截和消费.png" alt></p>
 <a id="more"></a>
 <h6 id="View-相关"><a href="#View-相关" class="headerlink" title="View 相关"></a>View 相关</h6><p><code>dispatchTouchEvent</code> 是事件分发机制中的核心，所有的事件调度都归它管</p>
 <p>我们知道 View 可以注册很多事件监听器，例如：单击事件(onClick)、长按事件(onLongClick)、触摸事件(onTouch)，并且View自身也有 onTouchEvent 方法，那么问题来了，这么多与事件相关的方法应该由谁管理？毋庸置疑就是 <code>dispatchTouchEvent</code>，所以 View 也会有事件分发。</p>
@@ -598,7 +600,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">114</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -669,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#事件分发、拦截与消费"><span class="nav-number">1.</span> <span class="nav-text">事件分发、拦截与消费</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#View-相关"><span class="nav-number">1.1.</span> <span class="nav-text">View 相关</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ViewGroup相关"><span class="nav-number">1.2.</span> <span class="nav-text">ViewGroup相关</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#简述"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事件分发、拦截与消费"><span class="nav-number">2.</span> <span class="nav-text">事件分发、拦截与消费</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#View-相关"><span class="nav-number">2.1.</span> <span class="nav-text">View 相关</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ViewGroup相关"><span class="nav-number">2.2.</span> <span class="nav-text">ViewGroup相关</span></a></li></ol></li></ol></div>
             
 
           </div>
