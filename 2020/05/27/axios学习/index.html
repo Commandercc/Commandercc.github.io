@@ -89,11 +89,11 @@
 <meta property="og:description" content="为什么要用axios">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haibolun.top/2020/05/27/axios学习/图片1.png">
-<meta property="og:image" content="http://haibolun.top/2020/05/27/axios学习/myblog/source/_posts/axios学习/图片2.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/27/axios学习/图片2.png">
 <meta property="og:image" content="http://haibolun.top/2020/05/27/axios学习/图片3.png">
-<meta property="og:image" content="http://haibolun.top/2020/05/27/axios学习/myblog/source/_posts/axios学习/图片4.png">
-<meta property="og:image" content="http://haibolun.top/2020/05/27/axios学习/myblog/source/_posts/axios学习/图片5.png">
-<meta property="og:updated_time" content="2020-05-27T03:39:43.157Z">
+<meta property="og:image" content="http://haibolun.top/2020/05/27/axios学习/图片4.png">
+<meta property="og:image" content="http://haibolun.top/2020/05/27/axios学习/图片5.png">
+<meta property="og:updated_time" content="2020-05-27T03:47:11.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="axios学习">
 <meta name="twitter:description" content="为什么要用axios">
@@ -462,7 +462,7 @@
 <li>实例配置, 在创建axios实例时传入的配置，如果不传实例配置就会使用全局配置</li>
 <li>请求配置，在使用axios请求时，可以单独传入新的配置</li>
 </ul>
-<h6 id="常见配置"><a href="#常见配置" class="headerlink" title="常见配置"></a>常见配置</h6><p><img src="/2020/05/27/axios学习/myblog\source\_posts\axios学习\图片2.png" style="zoom:80%;"></p>
+<h6 id="常见配置"><a href="#常见配置" class="headerlink" title="常见配置"></a>常见配置</h6><p><img src="/2020/05/27/axios学习/图片2.png" style="zoom:80%;"></p>
 <p><strong>这三种配置的优先级为：请求配置 &gt; 实例配置 &gt; 全局配置</strong></p>
 <h6 id="axios拦截器"><a href="#axios拦截器" class="headerlink" title="axios拦截器"></a>axios拦截器</h6><p><strong>请求拦截器：</strong></p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">axios.interceptors.request.use(</span><br><span class="line">  config =&gt; &#123;&#125;, <span class="comment">// 在发送请求前的一些处理逻辑</span></span><br><span class="line">  err =&gt; &#123;&#125; <span class="comment">// 在请求错误后的处理</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
@@ -473,9 +473,9 @@
 <p>请求拦截中错误拦截较少，通常都是配置相关的拦截可能的错误比如请求超时，可以将页面跳转到一个错误页面中。</p>
 <p><strong>响应拦截：</strong></p>
 <p>响应的成功拦截中，主要是对数据进行过滤。</p>
-<p><img src="/2020/05/27/axios学习/myblog\source\_posts\axios学习\图片4.png" style="zoom:80%;"></p>
+<p><img src="/2020/05/27/axios学习/图片4.png" style="zoom:80%;"></p>
 <p>响应的失败拦截中，可以根据status判断报错的错误码，跳转到不同的错误提示页面</p>
-<p><img src="/2020/05/27/axios学习/myblog\source\_posts\axios学习\图片5.png" style="zoom:80%;"></p>
+<p><img src="/2020/05/27/axios学习/图片5.png" style="zoom:80%;"></p>
 <h6 id="axios错误处理"><a href="#axios错误处理" class="headerlink" title="axios错误处理"></a>axios错误处理</h6><p>一般来说，如果我们在调用接口时请求错误或者响应错误，程序处理流程都会进入到<code>catch</code>代码块中，例如：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="keyword">get</span>(<span class="string">'/data.json'</span>).then(callback).<span class="keyword">catch</span>(err =&gt; &#123;</span><br><span class="line">    console.log(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
       
