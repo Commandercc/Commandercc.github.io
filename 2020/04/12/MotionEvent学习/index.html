@@ -89,13 +89,13 @@
 <meta property="og:description" content="概述Android 将所有的输入事件都放在了 MotionEvent 中，随着安卓的不断发展壮大，MotionEvent 也开始变得越来越复杂。主要学一下单点触控、多点触控、鼠标事件 以及 getAction() 和 getActionMasked()">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://haibolun.top/2020/04/12/MotionEvent学习/单点触控事件.png">
-<meta property="og:image" content="http://haibolun.top/2020/04/12/MotionEvent学习/myblog/source/_posts/MotionEvent学习/单点触控方法.png">
+<meta property="og:image" content="http://haibolun.top/2020/04/12/MotionEvent学习/单点触控方法.png">
 <meta property="og:image" content="http://haibolun.top/2020/04/12/MotionEvent学习/get和getRaw.jpg">
 <meta property="og:image" content="http://haibolun.top/2020/04/12/MotionEvent学习/1.png">
 <meta property="og:image" content="http://haibolun.top/2020/04/12/MotionEvent学习/2.png">
 <meta property="og:image" content="http://haibolun.top/2020/04/12/MotionEvent学习/3.png">
 <meta property="og:image" content="http://haibolun.top/2020/04/12/MotionEvent学习/4.png">
-<meta property="og:updated_time" content="2020-05-12T02:27:28.980Z">
+<meta property="og:updated_time" content="2020-06-10T12:29:07.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MotionEvent学习">
 <meta name="twitter:description" content="概述Android 将所有的输入事件都放在了 MotionEvent 中，随着安卓的不断发展壮大，MotionEvent 也开始变得越来越复杂。主要学一下单点触控、多点触控、鼠标事件 以及 getAction() 和 getActionMasked()">
@@ -440,7 +440,7 @@
 <h5 id="单点触控"><a href="#单点触控" class="headerlink" title="单点触控"></a>单点触控</h5><p>涉及事件：</p>
 <p><img src="/2020/04/12/MotionEvent学习/单点触控事件.png" style="zoom:80%;"></p>
 <p>方法：</p>
-<p><img src="/2020/04/12/MotionEvent学习/myblog\source\_posts\MotionEvent学习\单点触控方法.png" style="zoom:80%;"></p>
+<p><img src="/2020/04/12/MotionEvent学习/单点触控方法.png" style="zoom:80%;"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">event.getX();       //触摸点相对于其所在组件坐标系的坐标</span><br><span class="line">event.getY();</span><br><span class="line"></span><br><span class="line">event.getRawX();    //触摸点相对于屏幕默认坐标系的坐标</span><br><span class="line">event.getRawY();</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/04/12/MotionEvent学习/get和getRaw.jpg" alt></p>
 <p>针对单点触控的事件处理一般是这样写的:</p>
@@ -614,7 +614,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">130</span>
+                  <span class="site-state-item-count">131</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
