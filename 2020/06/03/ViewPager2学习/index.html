@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://haibolun.top/2020/06/03/ViewPager2学习/滑动效果.webp">
 <meta property="og:image" content="http://haibolun.top/2020/06/03/ViewPager2学习/position详解.png">
 <meta property="og:image" content="http://haibolun.top/2020/06/03/ViewPager2学习/一屏多页效果.webp">
-<meta property="og:updated_time" content="2020-06-06T04:00:42.094Z">
+<meta property="og:updated_time" content="2020-06-14T09:38:32.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ViewPager2学习">
 <meta name="twitter:description" content="引入1implementation &quot;androidx.viewpager2:viewpager2:1.0.0&quot;">
@@ -502,7 +502,7 @@
 <h6 id="ViewPager2的一屏多页效果"><a href="#ViewPager2的一屏多页效果" class="headerlink" title="ViewPager2的一屏多页效果"></a>ViewPager2的一屏多页效果</h6><p>ViewPager2的一屏多页实现跟ViewPager并无多大差别。需要把ViewPager2父容器的clipChildren设置为false，同时ViewPager2的clipChildren也设置为false并且将ViewPager2的offscreenPageLimit 设置为2以及为ViewPager2设置marge即可。代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">LinearLayout linearLayout = findViewById(R.id.linearLayout);</span><br><span class="line">linearLayout.setClipChildren(<span class="keyword">false</span>);</span><br><span class="line">vp2.setClipChildren(<span class="keyword">false</span>);</span><br><span class="line">vp2.setOffscreenPageLimit(<span class="number">2</span>);</span><br><span class="line">ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams)vp2.getLayoutParams();</span><br><span class="line">params.setMarginStart(<span class="number">80</span>);</span><br><span class="line">params.setMarginEnd(<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line">CompositePageTransformer compositePageTransformer = <span class="keyword">new</span> CompositePageTransformer();</span><br><span class="line">compositePageTransformer.addTransformer(<span class="keyword">new</span> MarginPageTransformer(<span class="number">25</span>));</span><br><span class="line">compositePageTransformer.addTransformer(<span class="keyword">new</span> ScaleInTransformer());</span><br><span class="line">vp2.setPageTransformer(compositePageTransformer);</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/06/03/ViewPager2学习/一屏多页效果.webp" style="zoom:50%;"></p>
-<h5 id="Demo地址"><a href="#Demo地址" class="headerlink" title="Demo地址"></a>Demo地址</h5><p><a href="https://github.com/Commandercc/DemoEX/blob/master/ViewPager2Demo.zip?raw=true" target="_blank" rel="noopener">https://github.com/Commandercc/DemoEX/blob/master/ViewPager2Demo.zip?raw=true</a></p>
+<h5 id="Demo地址"><a href="#Demo地址" class="headerlink" title="Demo地址"></a>Demo地址</h5><p><a href="https://github.com/Commandercc/DemoEX/blob/master/ViewPager2Demo.zip" target="_blank" rel="noopener">https://github.com/Commandercc/DemoEX/blob/master/ViewPager2Demo.zip</a></p>
 
       
     </div>
@@ -624,7 +624,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">131</span>
+                  <span class="site-state-item-count">140</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

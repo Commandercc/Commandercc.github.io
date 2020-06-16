@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="江山如画">
 <meta property="og:description" content="LinearLayout">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-09T02:50:58.720Z">
+<meta property="og:updated_time" content="2020-06-15T07:58:22.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android布局">
 <meta name="twitter:description" content="LinearLayout">
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  402 word
+                  437 word
                 </span>
               
 
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 min
+                  2 min
                 </span>
               
             </div>
@@ -430,7 +430,9 @@
         <h5 id="LinearLayout"><a href="#LinearLayout" class="headerlink" title="LinearLayout"></a>LinearLayout</h5><a id="more"></a>
 <ul>
 <li><p>如果只是指定一部分的控件<code>layout_weight</code>值，别的自动调节,UI效果会更好</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这里只指定了EditText的layout_weight，而让Button自动适应--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/input_message"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_weight</span>=<span class="string">"2"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:hint</span>=<span class="string">"在这里输入消息"</span></span></span><br><span class="line"><span class="tag">    /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/send_button"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:text</span>=<span class="string">"发送"</span></span></span><br><span class="line"><span class="tag">    /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>例如下面的效果就是：Button的宽度仍然按照<code>wrap_content</code>来计算，而<code>EditText</code>则会沾满屏幕所有的剩余空间。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这里只指定了EditText的layout_weight，而让Button自动适应--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/input_message"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:hint</span>=<span class="string">"在这里输入消息"</span></span></span><br><span class="line"><span class="tag">    /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/send_button"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:text</span>=<span class="string">"发送"</span></span></span><br><span class="line"><span class="tag">    /&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h5 id="RelativeLayout"><a href="#RelativeLayout" class="headerlink" title="RelativeLayout"></a>RelativeLayout</h5><ul>
@@ -588,7 +590,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">131</span>
+                  <span class="site-state-item-count">140</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
