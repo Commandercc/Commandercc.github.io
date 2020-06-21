@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="android,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概述WebSettings用于管理WebView状态配置，当WebView第一次被创建时，WebView包含着一个默认的配置，这些默认的配置将通过get方法返回，通过WebView中的getSettings方法获得一个WebSettings对象 即如下调用： 1webview.getSettings().setJavaScriptEnabled(true); 其次，下面这些方法没啥好说的，用到啥就">
+<meta name="keywords" content="android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebView控件之Websettings学习">
+<meta property="og:url" content="http://haibolun.top/2020/06/18/WebView控件之WebSettings学习/index.html">
+<meta property="og:site_name" content="江山如画">
+<meta property="og:description" content="概述WebSettings用于管理WebView状态配置，当WebView第一次被创建时，WebView包含着一个默认的配置，这些默认的配置将通过get方法返回，通过WebView中的getSettings方法获得一个WebSettings对象 即如下调用： 1webview.getSettings().setJavaScriptEnabled(true); 其次，下面这些方法没啥好说的，用到啥就">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-18T13:59:29.487Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WebView控件之Websettings学习">
+<meta name="twitter:description" content="概述WebSettings用于管理WebView状态配置，当WebView第一次被创建时，WebView包含着一个默认的配置，这些默认的配置将通过get方法返回，通过WebView中的getSettings方法获得一个WebSettings对象 即如下调用： 1webview.getSettings().setJavaScriptEnabled(true); 其次，下面这些方法没啥好说的，用到啥就">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://haibolun.top/2020/06/18/WebView控件之WebSettings学习/">
+
+
+
+
+
+  <title>WebView控件之Websettings学习 | 江山如画</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?96ffaa007139b092545b7495dd112319";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">江山如画</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://haibolun.top/2020/06/18/WebView控件之WebSettings学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="1215ccc">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://raw.githubusercontent.com/Commandercc/smallthings/master/peitu03.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江山如画">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">WebView控件之Websettings学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-18T21:14:58+08:00">
+                2020-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.5k word
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h5><p><code>WebSettings</code>用于管理<code>WebView</code>状态配置，当<code>WebView</code>第一次被创建时，<code>WebView</code>包含着一个默认的配置，这些默认的配置将通过<code>get</code>方法返回，通过<code>WebView</code>中的<code>getSettings</code>方法获得一个<code>WebSettings</code>对象</p>
+<p><strong>即如下调用：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webview.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<p>其次，下面这些方法没啥好说的，用到啥就过来查。</p>
+<a id="more"></a>
+<h5 id="方法学习"><a href="#方法学习" class="headerlink" title="方法学习"></a>方法学习</h5><p><strong>1. setSupportZoom(boolean support)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>是否支持使用屏幕控件或手势进行缩放，默认是<code>true</code>，支持缩放。</p>
+<p><strong>getSettings.setSupportZoom(false);</strong></p>
+</blockquote>
+<p><strong>2. setMediaPlaybackRequiresUserGesture(boolean require)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>是否通过手势触发播放媒体，默认是<code>true</code>，需要手势触发。</p>
+<p><strong>getSettings.setMediaPlaybackRequiresUserGesture(false);</strong></p>
+</blockquote>
+<p><strong>3. setBuiltInZoomControls(boolean enabled)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>是否使用其内置的变焦机制，该机制集合屏幕缩放控件使用，默认是<code>false</code>，不使用内置变焦机制。</p>
+<p><strong>getSettings.setBuiltInZoomControls(true);</strong></p>
+</blockquote>
+<p><strong>4. setDisplayZoomControls(boolean enabled)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>使用内置缩放机制时，是否展现在屏幕缩放控件上，默认<code>true</code>，展现在控件上。</p>
+<p><strong>getSettings.setDisplayZoomControls(false);</strong></p>
+</blockquote>
+<p><strong>5. setAllowFileAccess(boolean allow)</strong></p>
+<blockquote>
+<p>设置在<code>WebView</code>内部是否允许访问文件，默认允许访问。</p>
+<p><strong>getSettings.setAllowFileAccess(false);</strong></p>
+</blockquote>
+<p><strong>6. setAllowContentAccess(boolean allow)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>是否使用其内置的变焦机制，该机制结合屏幕缩放控件使用，默认是<code>false</code>，不使用内置变焦机制。</p>
+<p><strong>getSettings.setAllowContentAccess(false);</strong></p>
+</blockquote>
+<p><strong>7. setLoadWithOverviewMode(boolean overview)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>是否使用预览模式加载界面。</p>
+<p><strong>getSettings.setLoadWithOverviewMode(false);</strong></p>
+</blockquote>
+<p><strong>8. setSaveFormData(boolean save)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>是否保存表单数据，默认<code>true</code>，保存数据。</p>
+<p><strong>getSettings.setSaveFormData(false);</strong></p>
+</blockquote>
+<p><strong>9. setTextZoom(int textZoom)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>中加载页面字体变焦百分比，默认100，整型数。</p>
+<p><strong>getSettings.setTextZoom(100);</strong></p>
+</blockquote>
+<p><strong>10. setAcceptThirdPartyCookies(boolean accept)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>访问第三方<code>Cookies</code>策略，参考<code>CookieManager</code>提供的方法：<code>setShouldAcceptThirdPartyCookies</code>。</p>
+<p><strong>getSettings.setAcceptThirdPartyCookies(false);</strong></p>
+</blockquote>
+<p><strong>11. setUseWideViewPort(boolean use)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>是否使用<code>viewport</code>，当该属性被设置为<code>false</code>时，加载页面的宽度总是适应<code>WebView</code>控件宽度；当被设置为<code>true</code>，当前页面包含<code>viewport</code>属性标签，在标签中指定宽度值生效，如果页面不包含<code>viewport</code>标签，无法提供一个宽度值，这个时候该方法将被使用。</p>
+<p><strong>getSettings.setUseWideViewPort(false)；</strong></p>
+</blockquote>
+<p><strong>12. setSupportMultipleWindows(boolean support)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>是否支持多屏窗口，参考<code>WebChromeClient#onCreateWindow</code>，默认<code>false</code>，不支持。</p>
+<p><strong>getSettings.setSupportMultipleWindows(true);</strong></p>
+</blockquote>
+<p><strong>13. setLayoutAlgorithm(LayoutAlgorithm l)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>底层的布局算法，参考<code>LayoutAlgorithm#NARROW_COLUMNS</code>，将会重新生成<code>WebView</code>布局</p>
+<p><strong>getSettings.setLayoutAlgorithm(LayoutAlgorithm l)；</strong></p>
+</blockquote>
+<p><strong>14. setStandardFontFamily(String font)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>标准字体库字体，默认字体<code>“sans-serif”</code>。</p>
+<p><strong>getSettings.setStandardFontFamily(“sans-serif”);</strong></p>
+</blockquote>
+<p><strong>15.setFixedFontFamily(String font) </strong></p>
+<blockquote>
+<p>设置<code>WebView</code>固定的字体库字体，默认<code>“monospace”</code>。</p>
+<p><strong>getSettings.setFixedFontFamily(“monospace”);</strong></p>
+</blockquote>
+<p><strong>16. setSansSerifFontFamily(String font)</strong></p>
+<blockquote>
+<p>设置<code>WebView Sans SeriFontFamily</code>字体库字体，默认<code>“sans-serif”</code>。</p>
+<p><strong>getSettings.setSansSerifFontFamily(“sans-serif”);</strong></p>
+</blockquote>
+<p><strong>17. setSerifFontFamily(String font)</strong></p>
+<blockquote>
+<p>设置<code>WebView seri FontFamily</code>字体库字体，默认<code>“sans-serif”</code>。</p>
+<p><strong>getSettings.setSansSerifFontFamily(“sans-serif”);</strong></p>
+</blockquote>
+<p><strong>18. setCursiveFontFamily(String font)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>字体库字体，默认<code>“cursive”</code></p>
+<p><strong>getSettings.setCursiveFontFamily(“cursive”);</strong></p>
+</blockquote>
+<p><strong>19. setFantasyFontFamily(String font)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>字体库字体，默认<code>“fantasy”</code>。</p>
+<p><strong>getSettings.setFantasyFontFamily(“fantasy”);</strong></p>
+</blockquote>
+<p><strong>20. setMinimumFontSize(int size)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>字体最小值，默认值8，取值1到72</p>
+<p><strong>getSettings.setMinimumFontSize(8);</strong></p>
+</blockquote>
+<p><strong>21. setMinimumLogicalFontSize(int size)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>逻辑上最小字体值，默认值8，取值1到72</p>
+<p><strong>getSettings.setMinimumLogicalFontSize(8);</strong></p>
+</blockquote>
+<p><strong>22. setDefaultFontSize(int size)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>默认值字体值，默认值16，取值1到72</p>
+<p><strong>getSettings.setDefaultFontSize(16);</strong></p>
+</blockquote>
+<p><strong>23. setDefaultFixedFontSize(int size)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>默认固定的字体值，默认值16，取值1到72</p>
+<p><strong>getSettings.setDefaultFixedFontSize(16);</strong></p>
+</blockquote>
+<p><strong>24. setLoadsImagesAutomatically(boolean flag)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>是否加载图片资源，默认<code>true</code>，自动加载图片</p>
+<p><strong>getSettings.setLoadsImagesAutomatically(false);</strong></p>
+</blockquote>
+<p><strong>25. setBlockNetworkImage(boolean flag)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>是否以<code>http、https</code>方式访问从网络加载图片资源，默认<code>false</code></p>
+<p><strong>getSettings.setBlockNetworkImage(true);</strong></p>
+</blockquote>
+<p><strong>26. setBlockNetworkLoads(boolean flag)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>是否从网络加载资源，<code>Application</code>需要设置访问网络权限，否则报异常</p>
+<p><strong>getSettings.setBlockNetworkLoads(true);</strong></p>
+</blockquote>
+<p><strong>27. setJavaScriptEnabled(boolean flag)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>是否允许执行<code>JavaScript</code>脚本，默认<code>false</code>，不允许</p>
+<p><strong>getSettings.setJavaScriptEnabled(true);</strong></p>
+</blockquote>
+<p><strong>28. setAllowUniversalAccessFromFileURLs(boolean flag)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>运行中的脚本可以是否访问任何原始起点内容，默认<code>true</code></p>
+<p><strong>getSettings.setAllowUniversalAccessFromFileURLs(false);</strong></p>
+</blockquote>
+<p><strong>29. setAllowFileAccessFromFileURLs(boolean flag)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>运行中的一个文件方案被允许访问其他文件方案中的内容，默认值<code>true</code></p>
+<p><strong>getSettings.setAllowFileAccessFromFileURLs(false);</strong></p>
+</blockquote>
+<p><strong>30. setGeolocationDatabasePath(String databasePath)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>保存地理位置信息数据路径，指定的路径<code>Application</code>具备写入权限</p>
+<p><strong>getSettings.setGeolocationDatabasePath(String path);</strong></p>
+</blockquote>
+<p><strong>31. setAppCacheEnabled(boolean flag)</strong></p>
+<blockquote>
+<p>设置<code>Application</code>缓存<code>API</code>是否开启，默认<code>false</code>，设置有效的缓存路径参考<code>setAppCachePath(String path)</code>方法</p>
+<p><strong>getSettings.setAppCacheEnabled(true);</strong></p>
+</blockquote>
+<p><strong>32. setAppCachePath(String appCachePath)</strong></p>
+<blockquote>
+<p>设置当前<code>Application</code>缓存文件路径，<code>Application Cache API</code>能够开启需要指定<code>Application</code>具备写入权限的路径</p>
+<p><strong>getSettings.setAppCachePath(String appCachePath);</strong></p>
+</blockquote>
+<p><strong>33. setDatabaseEnabled(boolean flag)</strong></p>
+<blockquote>
+<p>设置是否开启数据库存储<code>API</code>权限，默认<code>false</code>，未开启，可以参考<code>setDatabasePath(String path)</code></p>
+</blockquote>
+<p><strong>34. setDomStorageEnabled(boolean flag)</strong></p>
+<blockquote>
+<p>设置是否开启<code>DOM</code>存储<code>API</code>权限，默认<code>false</code>，未开启，设置为<code>true</code>，<code>WebView</code>能够使用<code>DOM storage API</code></p>
+<p><strong>getSettings.setDomStorageEnabled(true);</strong></p>
+</blockquote>
+<p><strong>35. setGeolocationEnabled(boolean flag)</strong></p>
+<blockquote>
+<p>设置是否开启定位功能，默认<code>true</code>，开启定位</p>
+<p><strong>getSettings.setGeolocationEnabled(false);</strong></p>
+</blockquote>
+<p><strong>36. etJavaScriptCanOpenWindowsAutomatically(boolean flag)</strong></p>
+<blockquote>
+<p>设置脚本是否允许自动打开弹窗，默认<code>false</code>，不允许</p>
+<p><strong>getSettings.setJavaScriptCanOpenWindowsAutomatically(true);</strong></p>
+</blockquote>
+<p><strong>37. setDefaultTextEncodingName(String encoding)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>加载页面文本内容的编码，默认<code>“UTF-8”</code>。</p>
+<p><strong>getSettings.setDefaultTextEncodingName(“UTF-8”);</strong></p>
+</blockquote>
+<p><strong>38. setUserAgentString(String ua)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>代理字符串，如果<code>String</code>为<code>null</code>或为空，将使用系统默认值</p>
+<p><strong>getSettings.setUserAgentString(String ua);</strong></p>
+</blockquote>
+<p><strong>39. setNeedInitialFocus(boolean flag)</strong></p>
+<blockquote>
+<p>设置<code>WebView</code>是否需要设置一个节点获取焦点当被回调的时候，默认<code>true</code></p>
+<p><strong>getSettings.setNeedInitialFocus(false);</strong></p>
+</blockquote>
+<p><strong>40. setCacheMode(int mode)</strong></p>
+<blockquote>
+<p>重写缓存被使用到的方法，该方法基于<code>Navigation Type</code>，加载普通的页面，将会检查缓存同时重新验证是否需要加载，如果不需要重新加载，将直接从缓存读取数据，允许客户端通过指定<code>LOAD_DEFAULT、LOAD_CACHE_ELSE_NETWORK、LOAD_NO_CACHE、LOAD_CACHE_ONLY</code>其中之一重写该行为方法，默认值<code>LOAD_DEFAULT</code></p>
+<p><strong>getSettings.setCacheMode(WebSettings.LOAD_DEFAULT);</strong></p>
+</blockquote>
+<p><strong>41. setMixedContentMode(int mode)</strong></p>
+<blockquote>
+<p>设置当一个安全站点企图加载来自一个不安全站点资源时WebView的行为，<code>android.os.Build.VERSION_CODES.KITKAT</code>默认为<code>MIXED_CONTENT_ALWAYS_ALLOW</code>，<code>android.os.Build.VERSION_CODES#LOLLIPOP</code>默认为<code>MIXED_CONTENT_NEVER_ALLOW</code>，取值其中之一：<code>MIXED_CONTENT_NEVER_ALLOW、MIXED_CONTENT_ALWAYS_ALLOW、MIXED_CONTENT_COMPATIBILITY_MODE.</code></p>
+<p><strong>getSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);</strong></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag"><i class="fa fa-tag"></i> android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/16/jetpack之Navigation/" rel="next" title="jetpack之Navigation">
+                <i class="fa fa-chevron-left"></i> jetpack之Navigation
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://raw.githubusercontent.com/Commandercc/smallthings/master/peitu03.jpg" alt="1215ccc">
+            
+              <p class="site-author-name" itemprop="name">1215ccc</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">141</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Commandercc" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1502149172@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法学习"><span class="nav-number">2.</span> <span class="nav-text">方法学习</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">1215ccc</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
